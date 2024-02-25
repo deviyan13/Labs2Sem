@@ -5,13 +5,22 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
+
     ui->setupUi(this);
 
     scene = new QGraphicsScene(this);
     ui->graphicsView->setScene(scene);
     ui->graphicsView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
-    //rect = new Rectangle();
+    ui->deductSpeed->setStyleSheet("QPushButton:disabled { color: gray; background-color: lightgray; }");
+    ui->addSpeed->setStyleSheet("QPushButton:disabled { color: gray; background-color: lightgray; }");
+    ui->stopMoving->setStyleSheet("QPushButton:disabled { color: gray; background-color: lightgray; }");
+    ui->startMoving->setStyleSheet("QPushButton:disabled { color: gray; background-color: lightgray; }");
+
+    ui->addSpeed->setDisabled(true);
+    ui->deductSpeed->setDisabled(true);
+    ui->stopMoving->setDisabled(true);
+    ui->stopMoving->setDisabled(true);
 
     wagon = new Wagon();
 
@@ -34,6 +43,18 @@ MainWindow::MainWindow(QWidget *parent)
 
     connect(ui->deductSpeed, &QPushButton::clicked,
             wagon, &Rectangle::deductSpeed);
+
+    connect(wagon, &Wagon::stop, this, [this]() {
+        movingObjectTimer->stop();
+        wagon->setSpeed(0);
+
+        ui->stopMoving->setDisabled(true);
+        ui->startMoving->setDisabled(false);
+        ui->addSpeed->setDisabled(true);
+        ui->deductSpeed->setDisabled(true);
+    });
+
+
 }
 
 
@@ -45,11 +66,21 @@ MainWindow::~MainWindow()
 void MainWindow::on_startMoving_clicked()
 {
     movingObjectTimer->start(1000/120);
+    wagon->setSpeed(1);
+
+    ui->startMoving->setDisabled(true);
+    ui->stopMoving->setDisabled(false);
+    ui->addSpeed->setDisabled(false);
+    ui->deductSpeed->setDisabled(false);
 }
 
 void MainWindow::on_stopMoving_clicked()
 {
     movingObjectTimer->stop();
+    wagon->setSpeed(0);
+
+    ui->stopMoving->setDisabled(true);
+    ui->startMoving->setDisabled(false);
+    ui->addSpeed->setDisabled(true);
+    ui->deductSpeed->setDisabled(true);
 }
-
-

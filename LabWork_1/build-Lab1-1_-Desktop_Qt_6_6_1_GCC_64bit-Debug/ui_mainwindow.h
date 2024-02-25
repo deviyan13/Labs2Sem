@@ -40,6 +40,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName("MainWindow");
+        MainWindow->setEnabled(true);
         MainWindow->resize(800, 600);
         MainWindow->setMinimumSize(QSize(800, 600));
         MainWindow->setMaximumSize(QSize(800, 600));
@@ -54,11 +55,14 @@ public:
 
         stopMoving = new QPushButton(centralwidget);
         stopMoving->setObjectName("stopMoving");
+        stopMoving->setEnabled(true);
 
         gridLayout->addWidget(stopMoving, 1, 0, 1, 1);
 
         graphicsView = new QGraphicsView(centralwidget);
         graphicsView->setObjectName("graphicsView");
+        graphicsView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+        graphicsView->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
 
         gridLayout->addWidget(graphicsView, 5, 0, 1, 1);
 

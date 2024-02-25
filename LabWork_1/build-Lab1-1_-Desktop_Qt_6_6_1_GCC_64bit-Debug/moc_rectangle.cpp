@@ -39,27 +39,31 @@ namespace {
 struct qt_meta_stringdata_CLASSRectangleENDCLASS_t {};
 static constexpr auto qt_meta_stringdata_CLASSRectangleENDCLASS = QtMocHelpers::stringData(
     "Rectangle",
-    "moveRect",
-    ""
+    "stop",
+    "",
+    "moveRect"
 );
 #else  // !QT_MOC_HAS_STRING_DATA
 struct qt_meta_stringdata_CLASSRectangleENDCLASS_t {
-    uint offsetsAndSizes[6];
+    uint offsetsAndSizes[8];
     char stringdata0[10];
-    char stringdata1[9];
+    char stringdata1[5];
     char stringdata2[1];
+    char stringdata3[9];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(sizeof(qt_meta_stringdata_CLASSRectangleENDCLASS_t::offsetsAndSizes) + ofs), len 
 Q_CONSTINIT static const qt_meta_stringdata_CLASSRectangleENDCLASS_t qt_meta_stringdata_CLASSRectangleENDCLASS = {
     {
         QT_MOC_LITERAL(0, 9),  // "Rectangle"
-        QT_MOC_LITERAL(10, 8),  // "moveRect"
-        QT_MOC_LITERAL(19, 0)   // ""
+        QT_MOC_LITERAL(10, 4),  // "stop"
+        QT_MOC_LITERAL(15, 0),  // ""
+        QT_MOC_LITERAL(16, 8)   // "moveRect"
     },
     "Rectangle",
-    "moveRect",
-    ""
+    "stop",
+    "",
+    "moveRect"
 };
 #undef QT_MOC_LITERAL
 #endif // !QT_MOC_HAS_STRING_DATA
@@ -71,15 +75,21 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSRectangleENDCLASS[] = {
       12,       // revision
        0,       // classname
        0,    0, // classinfo
-       1,   14, // methods
+       2,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       0,       // signalCount
+       1,       // signalCount
+
+ // signals: name, argc, parameters, tag, flags, initial metatype offsets
+       1,    0,   26,    2, 0x06,    1 /* Public */,
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    0,   20,    2, 0x0a,    1 /* Public */,
+       3,    0,   27,    2, 0x0a,    2 /* Public */,
+
+ // signals: parameters
+    QMetaType::Void,
 
  // slots: parameters
     QMetaType::Void,
@@ -96,6 +106,8 @@ Q_CONSTINIT const QMetaObject Rectangle::staticMetaObject = { {
     qt_incomplete_metaTypeArray<qt_meta_stringdata_CLASSRectangleENDCLASS_t,
         // Q_OBJECT / Q_GADGET
         QtPrivate::TypeAndForceComplete<Rectangle, std::true_type>,
+        // method 'stop'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'moveRect'
         QtPrivate::TypeAndForceComplete<void, std::false_type>
     >,
@@ -108,8 +120,18 @@ void Rectangle::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
         auto *_t = static_cast<Rectangle *>(_o);
         (void)_t;
         switch (_id) {
-        case 0: _t->moveRect(); break;
+        case 0: _t->stop(); break;
+        case 1: _t->moveRect(); break;
         default: ;
+        }
+    } else if (_c == QMetaObject::IndexOfMethod) {
+        int *result = reinterpret_cast<int *>(_a[0]);
+        {
+            using _t = void (Rectangle::*)();
+            if (_t _q_method = &Rectangle::stop; *reinterpret_cast<_t *>(_a[1]) == _q_method) {
+                *result = 0;
+                return;
+            }
         }
     }
     (void)_a;
@@ -136,14 +158,20 @@ int Rectangle::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 1)
+        if (_id < 2)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 1;
+        _id -= 2;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 1)
+        if (_id < 2)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 1;
+        _id -= 2;
     }
     return _id;
+}
+
+// SIGNAL 0
+void Rectangle::stop()
+{
+    QMetaObject::activate(this, &staticMetaObject, 0, nullptr);
 }
 QT_WARNING_POP

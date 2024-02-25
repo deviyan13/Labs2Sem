@@ -5,6 +5,7 @@
 #include <QGraphicsItem>
 #include <QGraphicsScene>
 #include <QGraphicsView>
+#include <QMessageBox>
 
 class Rectangle : public QObject, public QGraphicsItem
 {
@@ -24,6 +25,9 @@ protected:
 
 private:
     qreal speedMoving = 0;
+
+signals:
+    void stop();
 
 public slots:
     void moveRect();

@@ -1,5 +1,6 @@
 #include "rectangle.h"
 #include <QPainter>
+#include <QTimer>
 
 Rectangle::Rectangle()
 {
@@ -32,14 +33,34 @@ qreal Rectangle::getSpeed() const
 
 void Rectangle::addSpeed()
 {
-    qreal newSpeed = getSpeed() + qreal(1);
-    setSpeed(newSpeed);
+    if(speedMoving < 20)
+    {
+        qreal newSpeed = getSpeed() + qreal(1);
+        setSpeed(newSpeed);
+    }
+    else
+    {
+        QMessageBox message;
+        message.setText("Не нарушаем! У тебя и так педаль в пол!");
+        message.setIcon(QMessageBox::Warning);
+
+        message.setModal(true);
+        message.exec();
+    }
 }
 
 void Rectangle::deductSpeed()
 {
-    qreal newSpeed = getSpeed() + qreal(-1);
-    setSpeed(newSpeed);
+    if(speedMoving > 1)
+    {
+        qreal newSpeed = getSpeed() + qreal(-1);
+        setSpeed(newSpeed);
+    }
+    else
+    {
+        speedMoving = 0;
+        emit stop();
+    }
 }
 
 void Rectangle::moveRect()
