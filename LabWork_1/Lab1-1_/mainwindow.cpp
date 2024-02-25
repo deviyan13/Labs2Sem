@@ -11,6 +11,7 @@ MainWindow::MainWindow(QWidget *parent)
     scene = new QGraphicsScene(this);
     ui->graphicsView->setScene(scene);
     ui->graphicsView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    ui->graphicsView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
     ui->deductSpeed->setStyleSheet("QPushButton:disabled { color: gray; background-color: lightgray; }");
     ui->addSpeed->setStyleSheet("QPushButton:disabled { color: gray; background-color: lightgray; }");
@@ -31,6 +32,11 @@ MainWindow::MainWindow(QWidget *parent)
 
     connect(speedUpdating, &QTimer::timeout, [this](){
         ui->speed->setText("Speed: " + QString::number(wagon->getSpeed()));
+        if(wagon->getSpeed() == 20 || wagon->getSpeed() == 0)
+            {
+            ui->addSpeed->setDisabled(true);
+        }
+        else ui->addSpeed->setDisabled(false);
     });
 
     speedUpdating->start(10);
@@ -52,6 +58,13 @@ MainWindow::MainWindow(QWidget *parent)
         ui->startMoving->setDisabled(false);
         ui->addSpeed->setDisabled(true);
         ui->deductSpeed->setDisabled(true);
+    });
+
+
+    connect(wagon, &Wagon::highSpeed, this, [this]() {
+        ui->addSpeed->setDisabled(false);
+        ui->deductSpeed->setDisabled(false);
+        ui->addSpeed->setDisabled(true);
     });
 
 

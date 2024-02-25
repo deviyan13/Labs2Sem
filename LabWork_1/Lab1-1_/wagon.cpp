@@ -2,7 +2,7 @@
 
 Wagon::Wagon()
 {
-    speedMoving = 5;
+    speedMoving = 0;
 }
 
 QRectF Wagon::boundingRect() const

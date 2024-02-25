@@ -26,8 +26,10 @@ protected:
 private:
     qreal speedMoving = 0;
 
+
 signals:
     void stop();
+    void highSpeed();
 
 public slots:
     void moveRect();
