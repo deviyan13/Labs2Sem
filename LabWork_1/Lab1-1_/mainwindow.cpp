@@ -13,7 +13,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->graphicsView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     ui->graphicsView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
-    ui->deductSpeed->setStyleSheet("QPushButton:disabled { color: gray; background-color: lightgray; }");
+    ui->deductSpeed->setStyleSheet("QPushButton:disabled { color: gray; background-color: lightgray; }"); // стиль кнопок при дизактивации
     ui->addSpeed->setStyleSheet("QPushButton:disabled { color: gray; background-color: lightgray; }");
     ui->stopMoving->setStyleSheet("QPushButton:disabled { color: gray; background-color: lightgray; }");
     ui->startMoving->setStyleSheet("QPushButton:disabled { color: gray; background-color: lightgray; }");
@@ -30,27 +30,38 @@ MainWindow::MainWindow(QWidget *parent)
     movingObjectTimer = new QTimer(this);
     speedUpdating = new QTimer(this);
 
-    connect(speedUpdating, &QTimer::timeout, [this](){
+    connect(speedUpdating, &QTimer::timeout, [this](){                          //обновление счетчика скорости
         ui->speed->setText("Speed: " + QString::number(wagon->getSpeed()));
+
         if(wagon->getSpeed() == 20 || wagon->getSpeed() == 0)
             {
             ui->addSpeed->setDisabled(true);
         }
+
         else ui->addSpeed->setDisabled(false);
     });
 
     speedUpdating->start(10);
 
+
+
     connect(movingObjectTimer, &QTimer::timeout,
             wagon, &Rectangle::moveRect);
 
     connect(ui->addSpeed, &QPushButton::clicked,
-            wagon, &Rectangle::addSpeed);
+             wagon, &Rectangle::addSpeed);
 
     connect(ui->deductSpeed, &QPushButton::clicked,
             wagon, &Rectangle::deductSpeed);
 
-    connect(wagon, &Wagon::stop, this, [this]() {
+    btSpeedAddTimer = new QTimer(this); // таймеры для обновления скорости при зажатии кнопок
+    connect(btSpeedAddTimer, &QTimer::timeout, wagon, &Rectangle::addSpeed);
+
+    btSpeedDeductTimer = new QTimer(this);
+    connect(btSpeedDeductTimer, &QTimer::timeout, wagon, &Rectangle::deductSpeed);
+
+
+    connect(wagon, &Wagon::stop, this, [this]() { // выключение кнопок при нажатии противоположных по функции
         movingObjectTimer->stop();
         wagon->setSpeed(0);
 
@@ -66,6 +77,8 @@ MainWindow::MainWindow(QWidget *parent)
         ui->deductSpeed->setDisabled(false);
         ui->addSpeed->setDisabled(true);
     });
+
+
 
 
 }
@@ -97,3 +110,29 @@ void MainWindow::on_stopMoving_clicked()
     ui->addSpeed->setDisabled(true);
     ui->deductSpeed->setDisabled(true);
 }
+
+void MainWindow::on_addSpeed_pressed() //работа добавления и убывания скорости при зажатии кнопок
+{
+    int interval = 150;
+    btSpeedAddTimer->start(interval);
+}
+
+
+void MainWindow::on_addSpeed_released()
+{
+    btSpeedAddTimer->stop();
+}
+
+
+void MainWindow::on_deductSpeed_pressed()
+{
+    int interval = 150;
+    btSpeedDeductTimer->start(interval);
+}
+
+
+void MainWindow::on_deductSpeed_released()
+{
+    btSpeedDeductTimer->stop();
+}
+

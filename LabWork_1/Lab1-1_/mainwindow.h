@@ -21,11 +21,18 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-
 private slots:
     void on_startMoving_clicked();
 
     void on_stopMoving_clicked();
+
+    void on_addSpeed_pressed();
+
+    void on_addSpeed_released();
+
+    void on_deductSpeed_pressed();
+
+    void on_deductSpeed_released();
 
 private:
     Ui::MainWindow *ui;
@@ -33,5 +40,6 @@ private:
     Rectangle* rect;
     QTimer* movingObjectTimer, *speedUpdating;
     Wagon* wagon;
+    QTimer *btSpeedAddTimer, *btSpeedDeductTimer;
 };
 #endif // MAINWINDOW_H
