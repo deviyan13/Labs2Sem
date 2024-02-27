@@ -76,6 +76,9 @@ MainWindow::MainWindow(QWidget *parent)
         ui->addSpeed->setDisabled(false);
         ui->deductSpeed->setDisabled(false);
         ui->addSpeed->setDisabled(true);
+
+        QMessageBox message;
+        message.warning(this, "Warning", "Не нарушаем! У тебя и так педаль в пол!");
     });
 
 
@@ -102,6 +105,7 @@ void MainWindow::on_startMoving_clicked()
 
 void MainWindow::on_stopMoving_clicked()
 {
+    int speedAtTheMoment = wagon->getSpeed();
     movingObjectTimer->stop();
     wagon->setSpeed(0);
 
@@ -109,6 +113,12 @@ void MainWindow::on_stopMoving_clicked()
     ui->startMoving->setDisabled(false);
     ui->addSpeed->setDisabled(true);
     ui->deductSpeed->setDisabled(true);
+
+    if(speedAtTheMoment > 10)
+    {
+        QMessageBox message;
+        message.information(this, "Stop", "Надеюсь, ты был пристегнут...");
+    }
 }
 
 void MainWindow::on_addSpeed_pressed() //работа добавления и убывания скорости при зажатии кнопок

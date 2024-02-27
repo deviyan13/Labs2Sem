@@ -48,12 +48,6 @@ void Rectangle::addSpeed()
 
 
         emit highSpeed();
-        QMessageBox message;
-        message.setText("Не нарушаем! У тебя и так педаль в пол!");
-        message.setIcon(QMessageBox::Warning);
-
-        message.setModal(true);
-        message.exec();
     }
 }
 
