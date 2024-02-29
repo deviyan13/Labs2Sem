@@ -37,6 +37,13 @@
        </widget>
       </item>
       <item>
+       <widget class="QPushButton" name="rectangle">
+        <property name="text">
+         <string>▬</string>
+        </property>
+       </widget>
+      </item>
+      <item>
        <widget class="QPushButton" name="triangle">
         <property name="text">
          <string>▲</string>
@@ -44,9 +51,9 @@
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="hexagon">
+       <widget class="QPushButton" name="rhomb">
         <property name="text">
-         <string>⬣</string>
+         <string>⧫</string>
         </property>
        </widget>
       </item>
@@ -58,9 +65,9 @@
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="rectangle">
+       <widget class="QPushButton" name="hexagon">
         <property name="text">
-         <string>▬</string>
+         <string>⬣</string>
         </property>
        </widget>
       </item>
@@ -79,9 +86,9 @@
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="rhomb">
+       <widget class="QPushButton" name="star8">
         <property name="text">
-         <string>⧫</string>
+         <string>✸</string>
         </property>
        </widget>
       </item>

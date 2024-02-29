@@ -6,13 +6,13 @@
 class Hexagon : public Polygon
 {
 public:
-    Hexagon();
+    Hexagon(double);
     QRectF boundingRect() const override;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
     QPainterPath shape() const override;
 
 private:
-    QPoint points[6];
+    QPolygonF hexagon;
 };
 
 #endif // HEXAGON_H

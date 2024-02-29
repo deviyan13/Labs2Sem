@@ -6,13 +6,13 @@
 class Rhomb: public Polygon
 {
 public:
-    Rhomb();
+    Rhomb(QPointF p1, QPointF p2, QPointF p3, QPointF p4);
     QRectF boundingRect() const override;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
     QPainterPath shape() const override;
 
 private:
-    QPoint points[4];
+    QPolygonF rhomb;
 };
 
 

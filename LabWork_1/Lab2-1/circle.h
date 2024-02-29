@@ -6,14 +6,15 @@
 class Circle : public Shape
 {
 public:
-    Circle();
+    Circle(double);
 
     QRectF boundingRect() const override;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
 
     QPainterPath shape() const override;
+
 private:
-    int radius;
+    double radius;
 };
 
 #endif // CIRCLE_H

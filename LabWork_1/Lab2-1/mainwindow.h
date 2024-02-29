@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QTimer>
+#include <QVector>
 
 #include "polygon.h"
 #include "square.h"
@@ -11,8 +12,9 @@
 #include "rectangle.h"
 #include "circle.h"
 #include "hexagon.h"
-#include"star5.h"
+#include "star5.h"
 #include "star6.h"
+#include "star8.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -46,9 +48,14 @@ private slots:
 
     void on_star6_clicked();
 
+    void on_star8_clicked();
+
 private:
+
     Ui::MainWindow *ui;
     QGraphicsScene *scene;
+
+    QVector<Shape*> objects;
 
 };
 #endif // MAINWINDOW_H

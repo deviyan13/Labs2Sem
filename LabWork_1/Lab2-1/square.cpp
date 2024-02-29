@@ -1,23 +1,32 @@
 #include "square.h"
 
-Square::Square()
+Square::Square(QPointF p1, QPointF p2, QPointF p3, QPointF p4)
 {
+    square = (QPolygonF() << p1 << p2 << p3 << p4);
     setTransformOriginPoint(boundingRect().width() / 2.0, boundingRect().height() / 2.0);
-    points[0] = QPoint(0, 0);
-    points[1] = QPoint(50, 0);
-    points[2] = QPoint(50, 50);
-    points[3] = QPoint(0, 50);
+
+    const int sides = 4;
+
+    for(int i = 0; i < sides - 1; i++)
+    {
+        Area += (square[i].x() * square[i + 1].y() - square[i].y() * square[i + 1].x());
+    }
+    Area += (square[sides - 1].x() * square[0].y() - square[sides - 1].y() * square[0].x());
+    Area = abs(Area) / 2;
+
+    Perimetr += QLineF(p1, p2).length() * 4;
+
+    // Area = 2500;
+    // Perimetr = 200;
 }
 
 QRectF Square::boundingRect() const {
-    return QRectF(0, 0, 50, 50);
+    return square.boundingRect();
 }
 
 void Square::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) {
     painter->setBrush(Qt::red);
-    QPolygonF pol;
-    pol << points[0] << points[1] << points[2] << points[3];
-    painter->drawPolygon(pol);
+    painter->drawPolygon(square);
 
     Q_UNUSED(option)
     Q_UNUSED(widget)

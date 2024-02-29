@@ -1,31 +1,50 @@
 #include "star5.h"
 
-Star5::Star5()
+Star5::Star5(double externalRadius, double internalRadius)
 {
     setTransformOriginPoint(boundingRect().width() / 2.0, boundingRect().height() / 2.0);
-    points[0] = QPoint(0,54);
-    points[1] = QPoint(62,54);
-    points[2] = QPoint(80,0);
-    points[3] = QPoint(98,54);
-    points[4] = QPoint(160,54);
-    points[5] = QPoint(110,90);
-    points[6] = QPoint(130,148);
-    points[7] = QPoint(80,112);
-    points[8] = QPoint(30,148);
-    points[9] = QPoint(50,90);
+
+    const int sides = 10;
+
+    for (int i = 0; i < sides; ++i) {
+        qreal angle = 2 * M_PI * i / sides - M_PI / 10;
+        qreal x;
+        qreal y;
+
+        if(i % 2 == 0)
+        {
+            x = externalRadius * cos(angle);
+            y = externalRadius * sin(angle);
+        }
+
+        else
+        {
+            x = internalRadius * cos(angle);
+            y = internalRadius * sin(angle);
+        }
+
+        star5 << QPointF(x, y);
+    }
+
+    for(int i = 0; i < sides - 1; i++)
+    {
+        Area += (star5[i].x() * star5[i + 1].y() - star5[i].y() * star5[i + 1].x());
+    }
+    Area += (star5[sides - 1].x() * star5[0].y() - star5[sides - 1].y() * star5[0].x());
+    Area = abs(Area) / 2;
+
+    Perimetr += QLineF(star5[0], star5[1]).length() * sides;
 }
 
 QRectF Star5::boundingRect() const
 {
-    return QRectF(0, 0, 160, 148);
+    return star5.boundingRect();
 }
 
 void Star5::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
     painter->setBrush(Qt::lightGray);
-    QPolygonF pol;
-    pol << points[0] << points[1] << points[2] << points[3] << points[4] << points[5] << points[6] << points[7] << points[8] << points[9];
-    painter->drawPolygon(pol);
+    painter->drawPolygon(star5);
 
     Q_UNUSED(option)
     Q_UNUSED(widget)
@@ -33,8 +52,6 @@ void Star5::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWi
 
 QPainterPath Star5::shape() const {
     QPainterPath path;
-    QPolygonF pol;
-    pol << points[0] << points[1] << points[2] << points[3] << points[4] << points[5] << points[6] << points[7] << points[8] << points[9];
-    path.addPolygon(pol);
+    path.addPolygon(star5);
     return path;
 }

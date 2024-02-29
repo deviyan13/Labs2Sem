@@ -1,38 +1,49 @@
 #include "star8.h"
 
-Star8::Star8()
+Star8::Star8(double externalRadius, double internalRadius)
 {
     setTransformOriginPoint(boundingRect().width() / 2.0, boundingRect().height() / 2.0);
-    points[0] = QPoint(0,80);
-    points[1] = QPoint(40,45);
-    points[2] = QPoint(40,0);
-    points[3] = QPoint(80,25);
-    points[4] = QPoint(120,0);
-    points[5] = QPoint(120,45);
-    points[6] = QPoint(160,80);
-    points[7] = QPoint(120,115);
-    points[8] = QPoint(120,160);
-    points[9] = QPoint(80,135);
-    points[10] = QPoint(40,160);
-    points[11] = QPoint(40,115);
-    points[12] = QPoint(160,80);
-    points[13] = QPoint(120,115);
-    points[14] = QPoint(120,160);
-    points[15] = QPoint(80,135);
+    const int sides = 16;
+
+    for (int i = 0; i < sides; ++i) {
+        qreal angle = 2 * M_PI * i / sides;
+        qreal x;
+        qreal y;
+
+        if(i % 2 == 0)
+        {
+            x = externalRadius * cos(angle);
+            y = externalRadius * sin(angle);
+        }
+
+        else
+        {
+            x = internalRadius * cos(angle);
+            y = internalRadius * sin(angle);
+        }
+
+        star8 << QPointF(x, y);
+    }
+
+    for(int i = 0; i < sides - 1; i++)
+    {
+        Area += (star8[i].x() * star8[i + 1].y() - star8[i].y() * star8[i + 1].x());
+    }
+    Area += (star8[sides - 1].x() * star8[0].y() - star8[sides - 1].y() * star8[0].x());
+    Area = abs(Area) / 2;
+
+    Perimetr += QLineF(star8[0], star8[1]).length() * sides;
 }
 
 QRectF Star8::boundingRect() const
 {
-    return QRectF(0, 0, 160, 160);
+    return star8.boundingRect();
 }
 
 void Star8::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
     painter->setBrush(QColor(qRgb(130,100,90)));
-    QPolygonF pol;
-    pol << points[0] << points[1] << points[2] << points[3] << points[4] << points[5] << points[6] << points[7] << points[8] << points[9]
-        << points[10] << points[11] << points[12] << points[13] << points[14] << points[15];
-    painter->drawPolygon(pol);
+    painter->drawPolygon(star8);
 
     Q_UNUSED(option)
     Q_UNUSED(widget)
@@ -41,9 +52,6 @@ void Star8::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWi
 QPainterPath Star8::shape() const
 {
     QPainterPath path;
-    QPolygonF pol;
-    pol << points[0] << points[1] << points[2] << points[3] << points[4] << points[5] << points[6] << points[7] << points[8] << points[9]
-        << points[10] << points[11] << points[12] << points[13] << points[14] << points[15];
-    path.addPolygon(pol);
+    path.addPolygon(star8);
     return path;
 }

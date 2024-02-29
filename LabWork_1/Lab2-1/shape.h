@@ -12,7 +12,7 @@
 #include <QAction>
 #include <QSlider>
 #include <QMenu>
-#include<QAction>
+#include <QAction>
 
 class Shape : public QGraphicsItem {
 public:
@@ -21,14 +21,21 @@ public:
     void wheelEvent(QGraphicsSceneWheelEvent *event) override;
     void rotateShape(qreal angle);
     void mousePressEvent(QGraphicsSceneMouseEvent *event) override;
-
-    bool isDelete();
+    void mouseReleaseEvent(QGraphicsSceneMouseEvent *event) override;
 
     virtual QRectF boundingRect() const override = 0;
     virtual void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override = 0;
 
-private:
+    virtual double getArea();
+    virtual double getPerimetr();
+
+protected:
+    double Area;
+    double Perimetr;
     qreal originalSize;
+
+private:
+
     qreal rotationAngle;
     bool isScaling;
     bool isRotating;
@@ -38,6 +45,8 @@ private:
     QAction *removeAct;
     QAction *setScaleAct;
     QAction *setRotateAct;
+    QAction *showArea;
+    QAction *showPerimetr;
 };
 
 #endif // SHAPE_H

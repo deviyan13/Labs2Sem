@@ -6,13 +6,13 @@
 class Star5 : public Polygon
 {
 public:
-    Star5();
+    Star5(double, double);
     QRectF boundingRect() const override;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
     QPainterPath shape() const override;
 
 private:
-    QPoint points[10];
+    QPolygonF star5;
 };
 
 #endif // STAR5_H

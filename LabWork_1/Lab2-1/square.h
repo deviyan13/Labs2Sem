@@ -6,13 +6,12 @@
 class Square : public Polygon
 {
 public:
-    Square();
-
+    Square(QPointF p1, QPointF p2, QPointF p3, QPointF p4);
     QRectF boundingRect() const override;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
 
 private:
-    QPoint points[4];
+    QPolygonF square;
 };
 
 #endif // SQUARE_H

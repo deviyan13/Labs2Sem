@@ -13,9 +13,12 @@ Shape::Shape(QGraphicsItem *parent) : QGraphicsItem(parent) {
     isRotating = false;
     isDeleting = false;
     originalSize = 1;
+
     removeAct = contextMenu.addAction("Удалить");
     setScaleAct = contextMenu.addAction("Масштибировать по колесику мыши");
     setRotateAct = contextMenu.addAction("Поворачивать по колесику мыши");
+    showArea = contextMenu.addAction("Площадь фигуры");
+    showPerimetr = contextMenu.addAction("Периметр фигуры");
 }
 
 void Shape::wheelEvent(QGraphicsSceneWheelEvent *event) {
@@ -31,6 +34,7 @@ void Shape::wheelEvent(QGraphicsSceneWheelEvent *event) {
         {
             originalSize += delt;
             setScale(originalSize);
+            //Area = (originalSize) * (originalSize);
             event->accept();
         }
     }
@@ -45,9 +49,8 @@ void Shape::rotateShape(qreal angle) {
 }
 
 void Shape::mousePressEvent(QGraphicsSceneMouseEvent *event) {
-    if (event->button() == Qt::RightButton) {
-
-
+    if (event->button() == Qt::RightButton)
+    {
 
         QAction *selectedAction = contextMenu.exec(event->screenPos());
 
@@ -65,11 +68,39 @@ void Shape::mousePressEvent(QGraphicsSceneMouseEvent *event) {
             isScaling = false;
             isRotating = true;
         }
+        else if(selectedAction == showArea)
+        {
+            qDebug() << getArea();
+        }
+        else if(selectedAction == showPerimetr)
+        {
+            qDebug() << getPerimetr();
+        }
     }
+
+    else if(event->button() == Qt::LeftButton)
+    {
+        setCursor(Qt::ClosedHandCursor);
+    }
+
     QGraphicsItem::mousePressEvent(event);
 }
 
-bool Shape::isDelete()
+void Shape::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
-    return isDeleting;
+    setCursor(Qt::OpenHandCursor);
+
+    QGraphicsItem::mouseReleaseEvent(event);
 }
+
+double Shape::getArea()
+{
+   return Area * originalSize * originalSize;
+}
+
+double Shape::getPerimetr()
+{
+    return Perimetr * originalSize;
+}
+
+

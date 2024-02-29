@@ -6,14 +6,14 @@
 class Triangle : public Polygon
 {
 public:
-    Triangle();
+    Triangle(QPointF p1, QPointF p2, QPointF p3);
 
     QRectF boundingRect() const override;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
 
     QPainterPath shape() const override;
 private:
-    QPoint points[3];
+    QPolygonF triangle;
 };
 
-#endif // TRIANGLE_H
+#endif //TREIANGLE_H

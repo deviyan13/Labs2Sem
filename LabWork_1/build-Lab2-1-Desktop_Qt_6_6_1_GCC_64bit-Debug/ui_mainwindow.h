@@ -29,13 +29,14 @@ public:
     QGridLayout *gridLayout;
     QHBoxLayout *horizontalLayout;
     QPushButton *square;
-    QPushButton *triangle;
-    QPushButton *hexagon;
-    QPushButton *circle;
     QPushButton *rectangle;
+    QPushButton *triangle;
+    QPushButton *rhomb;
+    QPushButton *circle;
+    QPushButton *hexagon;
     QPushButton *star5;
     QPushButton *star6;
-    QPushButton *rhomb;
+    QPushButton *star8;
     QGraphicsView *graphicsView;
     QMenuBar *menubar;
     QStatusBar *statusbar;
@@ -63,25 +64,30 @@ public:
 
         horizontalLayout->addWidget(square);
 
+        rectangle = new QPushButton(centralwidget);
+        rectangle->setObjectName("rectangle");
+
+        horizontalLayout->addWidget(rectangle);
+
         triangle = new QPushButton(centralwidget);
         triangle->setObjectName("triangle");
 
         horizontalLayout->addWidget(triangle);
 
-        hexagon = new QPushButton(centralwidget);
-        hexagon->setObjectName("hexagon");
+        rhomb = new QPushButton(centralwidget);
+        rhomb->setObjectName("rhomb");
 
-        horizontalLayout->addWidget(hexagon);
+        horizontalLayout->addWidget(rhomb);
 
         circle = new QPushButton(centralwidget);
         circle->setObjectName("circle");
 
         horizontalLayout->addWidget(circle);
 
-        rectangle = new QPushButton(centralwidget);
-        rectangle->setObjectName("rectangle");
+        hexagon = new QPushButton(centralwidget);
+        hexagon->setObjectName("hexagon");
 
-        horizontalLayout->addWidget(rectangle);
+        horizontalLayout->addWidget(hexagon);
 
         star5 = new QPushButton(centralwidget);
         star5->setObjectName("star5");
@@ -93,10 +99,10 @@ public:
 
         horizontalLayout->addWidget(star6);
 
-        rhomb = new QPushButton(centralwidget);
-        rhomb->setObjectName("rhomb");
+        star8 = new QPushButton(centralwidget);
+        star8->setObjectName("star8");
 
-        horizontalLayout->addWidget(rhomb);
+        horizontalLayout->addWidget(star8);
 
 
         gridLayout->addLayout(horizontalLayout, 0, 0, 1, 1);
@@ -124,13 +130,14 @@ public:
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "Lab1-2", nullptr));
         square->setText(QCoreApplication::translate("MainWindow", "\342\226\240", nullptr));
-        triangle->setText(QCoreApplication::translate("MainWindow", "\342\226\262", nullptr));
-        hexagon->setText(QCoreApplication::translate("MainWindow", "\342\254\243", nullptr));
-        circle->setText(QCoreApplication::translate("MainWindow", "\342\227\217", nullptr));
         rectangle->setText(QCoreApplication::translate("MainWindow", "\342\226\254", nullptr));
+        triangle->setText(QCoreApplication::translate("MainWindow", "\342\226\262", nullptr));
+        rhomb->setText(QCoreApplication::translate("MainWindow", "\342\247\253", nullptr));
+        circle->setText(QCoreApplication::translate("MainWindow", "\342\227\217", nullptr));
+        hexagon->setText(QCoreApplication::translate("MainWindow", "\342\254\243", nullptr));
         star5->setText(QCoreApplication::translate("MainWindow", "\342\230\205", nullptr));
         star6->setText(QCoreApplication::translate("MainWindow", "\342\234\241", nullptr));
-        rhomb->setText(QCoreApplication::translate("MainWindow", "\342\247\253", nullptr));
+        star8->setText(QCoreApplication::translate("MainWindow", "\342\234\270", nullptr));
     } // retranslateUi
 
 };
