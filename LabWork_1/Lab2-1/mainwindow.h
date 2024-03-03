@@ -56,6 +56,11 @@ private:
     QGraphicsScene *scene;
 
     QVector<Shape*> objects;
+    QTimer *updatingScene;
+
+signals:
+
+    void addedToScene();
 
 };
 #endif // MAINWINDOW_H

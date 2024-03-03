@@ -3,6 +3,7 @@
 #include "qmenu.h"
 #include <QDebug>
 #include <mainwindow.h>
+#include <QItemSelectionModel>
 
 Shape::Shape(QGraphicsItem *parent) : QGraphicsItem(parent){
     setFlag(QGraphicsItem::ItemIsSelectable);
@@ -17,9 +18,9 @@ Shape::Shape(QGraphicsItem *parent) : QGraphicsItem(parent){
     removeAct = contextMenu.addAction("Удалить");
     setScaleAct = contextMenu.addAction("Масштибировать по колесику мыши");
     setRotateAct = contextMenu.addAction("Поворачивать по колесику мыши");
-    showArea = contextMenu.addAction("Площадь фигуры");
-    showPerimetr = contextMenu.addAction("Периметр фигуры");
-    showCenter = contextMenu.addAction("test");
+    // showArea = contextMenu.addAction("Площадь фигуры");
+    // showPerimetr = contextMenu.addAction("Периметр фигуры");
+    // showCenter = contextMenu.addAction("test");
 }
 
 void Shape::wheelEvent(QGraphicsSceneWheelEvent *event) {
@@ -31,7 +32,7 @@ void Shape::wheelEvent(QGraphicsSceneWheelEvent *event) {
     else if (isScaling)
     {
         qreal delt = event->delta() / 1000.0;
-        if(originalSize + delt > 0 && originalSize + delt < 7)
+        if(originalSize + delt > 0.2 && originalSize + delt < 7)
         {
             originalSize += delt;
             setScale(originalSize);
@@ -49,6 +50,7 @@ void Shape::rotateShape(qreal angle) {
 }
 
 void Shape::mousePressEvent(QGraphicsSceneMouseEvent *event) {
+
     if (event->button() == Qt::RightButton)
     {
 
@@ -69,18 +71,18 @@ void Shape::mousePressEvent(QGraphicsSceneMouseEvent *event) {
             isScaling = false;
             isRotating = true;
         }
-        else if(selectedAction == showArea)
-        {
-            qDebug() << getArea();
-        }
-        else if(selectedAction == showPerimetr)
-        {
-            qDebug() << getPerimetr();
-        }
-        else if(selectedAction == showCenter)
-        {
-            qDebug() << getCenter();
-        }
+        // else if(selectedAction == showArea)
+        // {
+        //     qDebug() << getArea();
+        // }
+        // else if(selectedAction == showPerimetr)
+        // {
+        //     qDebug() << getPerimetr();
+        // }
+        // else if(selectedAction == showCenter)
+        // {
+        //     qDebug() << getCenter();
+        // }
     }
 
     else if(event->button() == Qt::LeftButton)

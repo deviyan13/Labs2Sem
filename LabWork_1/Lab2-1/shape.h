@@ -52,9 +52,9 @@ private:
     QAction *removeAct;
     QAction *setScaleAct;
     QAction *setRotateAct;
-    QAction *showArea;
-    QAction *showPerimetr;
-    QAction *showCenter;
+    // QAction *showArea;
+    // QAction *showPerimetr;
+    // QAction *showCenter;
 
 signals:
     void isDeleted();

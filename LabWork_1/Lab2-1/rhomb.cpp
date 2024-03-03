@@ -38,6 +38,13 @@ QRectF Rhomb::boundingRect() const {
 }
 
 void Rhomb::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) {
+
+    // if (isSelected()) {
+    //     // Отрисовываем элемент с особой стилистикой, если он выбран
+    //     painter->setBrush(Qt::white);
+    // } else {
+    //     painter->setBrush(Qt::blue);
+    // }
     painter->setBrush(Qt::yellow);
     painter->drawPolygon(rhomb);
 

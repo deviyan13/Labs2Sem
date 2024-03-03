@@ -42,12 +42,12 @@ public:
     QPushButton *star8;
     QGridLayout *gridLayout_2;
     QLabel *label_2;
-    QLineEdit *lineEdit_3;
-    QLineEdit *lineEdit;
+    QLineEdit *perimetr_line;
+    QLineEdit *area_line;
     QLabel *label_4;
     QLabel *label_3;
-    QLineEdit *lineEdit_4;
-    QLineEdit *lineEdit_2;
+    QLineEdit *yCenter;
+    QLineEdit *xCenter;
     QLabel *label;
     QMenuBar *menubar;
     QStatusBar *statusbar;
@@ -144,17 +144,17 @@ public:
 
         gridLayout_2->addWidget(label_2, 1, 0, 1, 1);
 
-        lineEdit_3 = new QLineEdit(centralwidget);
-        lineEdit_3->setObjectName("lineEdit_3");
-        lineEdit_3->setReadOnly(true);
+        perimetr_line = new QLineEdit(centralwidget);
+        perimetr_line->setObjectName("perimetr_line");
+        perimetr_line->setReadOnly(true);
 
-        gridLayout_2->addWidget(lineEdit_3, 0, 3, 1, 1);
+        gridLayout_2->addWidget(perimetr_line, 0, 3, 1, 1);
 
-        lineEdit = new QLineEdit(centralwidget);
-        lineEdit->setObjectName("lineEdit");
-        lineEdit->setReadOnly(true);
+        area_line = new QLineEdit(centralwidget);
+        area_line->setObjectName("area_line");
+        area_line->setReadOnly(true);
 
-        gridLayout_2->addWidget(lineEdit, 0, 1, 1, 1);
+        gridLayout_2->addWidget(area_line, 0, 1, 1, 1);
 
         label_4 = new QLabel(centralwidget);
         label_4->setObjectName("label_4");
@@ -166,15 +166,15 @@ public:
 
         gridLayout_2->addWidget(label_3, 0, 2, 1, 1);
 
-        lineEdit_4 = new QLineEdit(centralwidget);
-        lineEdit_4->setObjectName("lineEdit_4");
+        yCenter = new QLineEdit(centralwidget);
+        yCenter->setObjectName("yCenter");
 
-        gridLayout_2->addWidget(lineEdit_4, 1, 3, 1, 1);
+        gridLayout_2->addWidget(yCenter, 1, 3, 1, 1);
 
-        lineEdit_2 = new QLineEdit(centralwidget);
-        lineEdit_2->setObjectName("lineEdit_2");
+        xCenter = new QLineEdit(centralwidget);
+        xCenter->setObjectName("xCenter");
 
-        gridLayout_2->addWidget(lineEdit_2, 1, 1, 1, 1);
+        gridLayout_2->addWidget(xCenter, 1, 1, 1, 1);
 
         label = new QLabel(centralwidget);
         label->setObjectName("label");
