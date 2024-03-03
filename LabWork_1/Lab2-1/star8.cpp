@@ -2,7 +2,6 @@
 
 Star8::Star8(double externalRadius, double internalRadius)
 {
-    setTransformOriginPoint(boundingRect().width() / 2.0, boundingRect().height() / 2.0);
     const int sides = 16;
 
     for (int i = 0; i < sides; ++i) {
@@ -33,6 +32,25 @@ Star8::Star8(double externalRadius, double internalRadius)
     Area = abs(Area) / 2;
 
     Perimetr += QLineF(star8[0], star8[1]).length() * sides;
+
+
+
+
+    qreal x = 0, y = 0;
+
+    for(int i = 0; i < sides; i++)
+    {
+        x += star8[i].x();
+        y += star8[i].y();
+    }
+
+    x /= sides * 1.0;
+    y /= sides * 1.0;
+
+
+    originPoint = QPointF(x, y);
+    setTransformOriginPoint(originPoint);
+
 }
 
 QRectF Star8::boundingRect() const

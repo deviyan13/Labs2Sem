@@ -1,10 +1,7 @@
 #include "triangle.h"
 
-Triangle::Triangle(QPointF p1, QPointF p2, QPointF p3) {
-    setTransformOriginPoint(boundingRect().width() / 2.0, boundingRect().height() / 2.0);
-
-    triangle = (QPolygonF() << p1 << p2 << p3);
-    setTransformOriginPoint(boundingRect().width() / 2.0, boundingRect().height() / 2.0);
+Triangle::Triangle(QPointF p1, QPointF p2, QPointF p3){
+    triangle << p1 << p2 << p3;
 
     const int sides = 3;
 
@@ -17,8 +14,24 @@ Triangle::Triangle(QPointF p1, QPointF p2, QPointF p3) {
 
     Perimetr += QLineF(p1, p2).length() + QLineF(p2, p3).length() + QLineF(p3, p1).length();
 
-    // Area = 2100;
-    // Perimetr = 212.31546;
+
+
+
+    qreal x = 0, y = 0;
+
+    for(int i = 0; i < sides; i++)
+    {
+        x += triangle[i].x();
+        y += triangle[i].y();
+    }
+
+    x /= sides * 1.0;
+    y /= sides * 1.0;
+
+
+    originPoint = QPointF(x, y);
+    setTransformOriginPoint(originPoint);
+
 }
 
 QRectF Triangle::boundingRect() const {
@@ -26,8 +39,10 @@ QRectF Triangle::boundingRect() const {
 }
 
 void Triangle::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) {
+
     painter->setBrush(Qt::blue);
     painter->drawPolygon(triangle);
+
 
     Q_UNUSED(option)
     Q_UNUSED(widget)

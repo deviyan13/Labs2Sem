@@ -1,10 +1,13 @@
 #include "circle.h"
 
-Circle::Circle(double new_radius) {
-    setTransformOriginPoint(boundingRect().width() / 2.0, boundingRect().height() / 2.0);
-    radius = new_radius;
+Circle::Circle(double newRadius) {
+    radius = newRadius;
+
     Area = radius * radius * M_PI;
     Perimetr = 2 * M_PI * radius;
+
+    originPoint = QPointF(radius, radius);
+    setTransformOriginPoint(originPoint);
 }
 
 QRectF Circle::boundingRect() const {

@@ -1,8 +1,6 @@
 #include "hexagon.h"
 
 Hexagon::Hexagon(double radius) {
-    setTransformOriginPoint(boundingRect().width() / 2.0, boundingRect().height() / 2.0);
-
     const int sides = 6;
 
     for (int i = 0; i < 6; ++i) {
@@ -14,6 +12,22 @@ Hexagon::Hexagon(double radius) {
 
     Area = 2.59808 * radius * radius;
     Perimetr = radius * 6;
+
+
+
+    qreal x = 0, y = 0; // get center
+
+    for(int i = 0; i < sides; i++)
+    {
+        x += hexagon[i].x();
+        y += hexagon[i].y();
+    }
+
+    x /= sides * 1.0;
+    y /= sides * 1.0;
+
+    originPoint = QPointF(x, y);
+    setTransformOriginPoint(originPoint);
 }
 
 QRectF Hexagon::boundingRect() const {

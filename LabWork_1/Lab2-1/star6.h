@@ -5,6 +5,7 @@
 
 class Star6 : public Polygon
 {
+
 public:
     Star6(double, double);
     QRectF boundingRect() const override;

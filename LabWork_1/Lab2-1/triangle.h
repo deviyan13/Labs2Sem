@@ -5,6 +5,7 @@
 
 class Triangle : public Polygon
 {
+
 public:
     Triangle(QPointF p1, QPointF p2, QPointF p3);
 

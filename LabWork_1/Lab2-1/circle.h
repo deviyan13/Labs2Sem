@@ -6,7 +6,7 @@
 class Circle : public Shape
 {
 public:
-    Circle(double);
+    Circle(double newRadius);
 
     QRectF boundingRect() const override;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;

@@ -4,7 +4,7 @@
 #include <QDebug>
 #include <mainwindow.h>
 
-Shape::Shape(QGraphicsItem *parent) : QGraphicsItem(parent) {
+Shape::Shape(QGraphicsItem *parent) : QGraphicsItem(parent){
     setFlag(QGraphicsItem::ItemIsSelectable);
     setFlag(QGraphicsItem::ItemIsMovable);
     setCursor(Qt::OpenHandCursor);
@@ -19,6 +19,7 @@ Shape::Shape(QGraphicsItem *parent) : QGraphicsItem(parent) {
     setRotateAct = contextMenu.addAction("Поворачивать по колесику мыши");
     showArea = contextMenu.addAction("Площадь фигуры");
     showPerimetr = contextMenu.addAction("Периметр фигуры");
+    showCenter = contextMenu.addAction("test");
 }
 
 void Shape::wheelEvent(QGraphicsSceneWheelEvent *event) {
@@ -34,7 +35,6 @@ void Shape::wheelEvent(QGraphicsSceneWheelEvent *event) {
         {
             originalSize += delt;
             setScale(originalSize);
-            //Area = (originalSize) * (originalSize);
             event->accept();
         }
     }
@@ -57,6 +57,7 @@ void Shape::mousePressEvent(QGraphicsSceneMouseEvent *event) {
         if (selectedAction == removeAct)
         {
             scene()->removeItem(this);
+            emit isDeleted();
         }
         else if(selectedAction == setScaleAct)
         {
@@ -75,6 +76,10 @@ void Shape::mousePressEvent(QGraphicsSceneMouseEvent *event) {
         else if(selectedAction == showPerimetr)
         {
             qDebug() << getPerimetr();
+        }
+        else if(selectedAction == showCenter)
+        {
+            qDebug() << getCenter();
         }
     }
 
@@ -101,6 +106,11 @@ double Shape::getArea()
 double Shape::getPerimetr()
 {
     return Perimetr * originalSize;
+}
+
+QPointF Shape::getCenter()
+{
+    return QPointF(mapToScene(originPoint));
 }
 
 

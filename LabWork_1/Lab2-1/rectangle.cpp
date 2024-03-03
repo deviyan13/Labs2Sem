@@ -2,8 +2,7 @@
 
 Rectangle::Rectangle(QPointF p1, QPointF p2, QPointF p3, QPointF p4)
 {
-    rectangle = (QPolygonF() << p1 << p2 << p3 << p4);
-    setTransformOriginPoint(boundingRect().width() / 2.0, boundingRect().height() / 2.0);
+    rectangle << p1 << p2 << p3 << p4;
 
     const int sides = 4;
 
@@ -15,6 +14,25 @@ Rectangle::Rectangle(QPointF p1, QPointF p2, QPointF p3, QPointF p4)
     Area = abs(Area) / 2;
 
     Perimetr += QLineF(p1, p2).length() * 2 + QLineF(p2, p3).length() * 2;
+
+
+
+
+
+    qreal x = 0, y = 0;
+
+    for(int i = 0; i < sides; i++)
+    {
+        x += rectangle[i].x();
+        y += rectangle[i].y();
+    }
+
+    x /= sides * 1.0;
+    y /= sides * 1.0;
+
+
+    originPoint = QPointF(x, y);
+    setTransformOriginPoint(originPoint);
 }
 
 QRectF Rectangle::boundingRect() const {

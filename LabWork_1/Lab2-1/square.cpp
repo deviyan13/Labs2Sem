@@ -2,8 +2,7 @@
 
 Square::Square(QPointF p1, QPointF p2, QPointF p3, QPointF p4)
 {
-    square = (QPolygonF() << p1 << p2 << p3 << p4);
-    setTransformOriginPoint(boundingRect().width() / 2.0, boundingRect().height() / 2.0);
+    square << p1 << p2 << p3 << p4;
 
     const int sides = 4;
 
@@ -16,8 +15,25 @@ Square::Square(QPointF p1, QPointF p2, QPointF p3, QPointF p4)
 
     Perimetr += QLineF(p1, p2).length() * 4;
 
-    // Area = 2500;
-    // Perimetr = 200;
+
+
+
+
+    qreal x = 0, y = 0;
+
+    for(int i = 0; i < sides; i++)
+    {
+        x += square[i].x();
+        y += square[i].y();
+    }
+
+    x /= sides * 1.0;
+    y /= sides * 1.0;
+
+
+    originPoint = QPointF(x, y);
+    setTransformOriginPoint(originPoint);
+
 }
 
 QRectF Square::boundingRect() const {

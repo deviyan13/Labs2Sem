@@ -11,10 +11,6 @@ public:
     QRectF boundingRect() const override;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
 
-    // double getArea() override;
-    // double getPerimetr() override;
-    //QPoint getCenter() ;
-
 private:
     QPolygonF rectangle;
 };

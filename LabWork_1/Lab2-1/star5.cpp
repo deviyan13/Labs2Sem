@@ -2,7 +2,7 @@
 
 Star5::Star5(double externalRadius, double internalRadius)
 {
-    setTransformOriginPoint(boundingRect().width() / 2.0, boundingRect().height() / 2.0);
+    //setTransformOriginPoint(boundingRect().width() / 2.0, boundingRect().height() / 2.0);
 
     const int sides = 10;
 
@@ -34,6 +34,22 @@ Star5::Star5(double externalRadius, double internalRadius)
     Area = abs(Area) / 2;
 
     Perimetr += QLineF(star5[0], star5[1]).length() * sides;
+
+
+    qreal x = 0, y = 0;
+
+    for(int i = 0; i < sides; i++)
+    {
+        x += star5[i].x();
+        y += star5[i].y();
+    }
+
+    x /= sides * 1.0;
+    y /= sides * 1.0;
+
+
+    originPoint = QPointF(x, y);
+    setTransformOriginPoint(originPoint);
 }
 
 QRectF Star5::boundingRect() const
