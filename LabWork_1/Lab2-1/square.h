@@ -7,7 +7,7 @@ class Square : public Polygon
 {
 
 public:
-    Square(QPointF p1, QPointF p2, QPointF p3, QPointF p4);
+    Square(qreal side);
     QRectF boundingRect() const override;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
 

@@ -2,7 +2,14 @@
 
 Rhomb::Rhomb(QPointF p1, QPointF p2, QPointF p3, QPointF p4)
 {
-    rhomb << p1 << p2 << p3 << p4;
+    qreal cx, cy;
+
+    cx = p2.x() - p1.x();
+    cy = - p2.y() + p1.y();
+
+    QPointF cpoint = QPointF(cx, cy);
+
+    rhomb << p1 - cpoint << p2 - cpoint << p3 - cpoint << p4 - cpoint;
 
     const int sides = 4;
 
@@ -34,17 +41,12 @@ Rhomb::Rhomb(QPointF p1, QPointF p2, QPointF p3, QPointF p4)
 }
 
 QRectF Rhomb::boundingRect() const {
+
     return rhomb.boundingRect();
 }
 
 void Rhomb::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) {
 
-    // if (isSelected()) {
-    //     // Отрисовываем элемент с особой стилистикой, если он выбран
-    //     painter->setBrush(Qt::white);
-    // } else {
-    //     painter->setBrush(Qt::blue);
-    // }
     painter->setBrush(Qt::yellow);
     painter->drawPolygon(rhomb);
 

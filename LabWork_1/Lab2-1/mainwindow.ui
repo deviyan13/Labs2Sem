@@ -148,7 +148,7 @@
     <item row="4" column="0">
      <layout class="QGridLayout" name="gridLayout_2">
       <item row="1" column="0">
-       <widget class="QLabel" name="label_2">
+       <widget class="QLabel" name="x_label">
         <property name="text">
          <string>Координата x центра тяжести</string>
         </property>
@@ -166,6 +166,9 @@
         <property name="readOnly">
          <bool>true</bool>
         </property>
+        <property name="clearButtonEnabled">
+         <bool>false</bool>
+        </property>
        </widget>
       </item>
       <item row="1" column="2">
@@ -176,20 +179,40 @@
        </widget>
       </item>
       <item row="0" column="2">
-       <widget class="QLabel" name="label_3">
+       <widget class="QLabel" name="perimetr_label">
         <property name="text">
          <string>Периметр</string>
         </property>
        </widget>
       </item>
       <item row="1" column="3">
-       <widget class="QLineEdit" name="yCenter"/>
+       <widget class="QLineEdit" name="y_line">
+        <property name="placeholderText">
+         <string/>
+        </property>
+       </widget>
       </item>
       <item row="1" column="1">
-       <widget class="QLineEdit" name="xCenter"/>
+       <widget class="QLineEdit" name="x_line">
+        <property name="autoFillBackground">
+         <bool>false</bool>
+        </property>
+        <property name="inputMethodHints">
+         <set>Qt::ImhNone</set>
+        </property>
+        <property name="inputMask">
+         <string/>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="placeholderText">
+         <string/>
+        </property>
+       </widget>
       </item>
       <item row="0" column="0">
-       <widget class="QLabel" name="label">
+       <widget class="QLabel" name="area_label">
         <property name="text">
          <string>Площадь</string>
         </property>

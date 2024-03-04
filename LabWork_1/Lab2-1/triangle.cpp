@@ -1,7 +1,15 @@
 #include "triangle.h"
 
 Triangle::Triangle(QPointF p1, QPointF p2, QPointF p3){
-    triangle << p1 << p2 << p3;
+
+    qreal cx, cy;
+
+    cx = (p3.x() - p1.x()) / 2;
+    cy = (p1.y() + p2.y() + p3.y()) / 3;
+
+    QPointF cpoint(cx, cy);
+
+    triangle << p1 - cpoint << p2 - cpoint << p3 - cpoint;
 
     const int sides = 3;
 

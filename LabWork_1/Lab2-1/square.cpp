@@ -1,10 +1,12 @@
 #include "square.h"
 
-Square::Square(QPointF p1, QPointF p2, QPointF p3, QPointF p4)
+Square::Square(qreal side)
 {
-    square << p1 << p2 << p3 << p4;
+    //square << p1 << p2 << p3 << p4;
 
     const int sides = 4;
+
+    square << QPointF(-side / 2, side / 2) << QPointF(side / 2, side / 2) << QPointF(side / 2, - side / 2) << QPointF(- side / 2, - side / 2);
 
     for(int i = 0; i < sides - 1; i++)
     {
@@ -13,7 +15,7 @@ Square::Square(QPointF p1, QPointF p2, QPointF p3, QPointF p4)
     Area += (square[sides - 1].x() * square[0].y() - square[sides - 1].y() * square[0].x());
     Area = abs(Area) / 2;
 
-    Perimetr += QLineF(p1, p2).length() * 4;
+    Perimetr += side * 4;
 
 
 

@@ -15,6 +15,7 @@ public:
 
 private:
     double radius;
+    QGraphicsEllipseItem circle;
 };
 
 #endif // CIRCLE_H

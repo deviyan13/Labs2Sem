@@ -15,6 +15,7 @@
 #include <QSlider>
 #include <QMenu>
 #include <QAction>
+#include <QEvent>
 
 class Shape : public QObject, public QGraphicsItem{
 
@@ -34,6 +35,8 @@ public:
     double getArea();
     double getPerimetr();
     QPointF getCenter();
+    bool getIsMoving();
+    bool getIsScaling();
 
 protected:
     double Area;
@@ -44,17 +47,16 @@ protected:
 private:
 
     qreal rotationAngle;
+    bool isScalingable;
     bool isScaling;
-    bool isRotating;
+    bool isRotatable;
     bool isDeleting;
+    bool isMoving;
     QMenu contextMenu;
 
     QAction *removeAct;
     QAction *setScaleAct;
     QAction *setRotateAct;
-    // QAction *showArea;
-    // QAction *showPerimetr;
-    // QAction *showCenter;
 
 signals:
     void isDeleted();

@@ -4,6 +4,8 @@
 #include <QMainWindow>
 #include <QTimer>
 #include <QVector>
+#include <QMessageBox>
+#include <QValidator>
 
 #include "polygon.h"
 #include "square.h"
@@ -57,6 +59,7 @@ private:
 
     QVector<Shape*> objects;
     QTimer *updatingScene;
+    QPointer<QDoubleValidator> validator;
 
 signals:
 

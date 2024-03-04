@@ -2,7 +2,14 @@
 
 Rectangle::Rectangle(QPointF p1, QPointF p2, QPointF p3, QPointF p4)
 {
-    rectangle << p1 << p2 << p3 << p4;
+    qreal cx, cy;
+
+    cx = (p2.x() - p1.x()) / 2;
+    cy = (- p2.y() + p3.y()) / 2;
+
+    QPointF cpoint(cx, cy);
+
+    rectangle << p1 - cpoint << p2  - cpoint << p3 - cpoint << p4 - cpoint;
 
     const int sides = 4;
 
