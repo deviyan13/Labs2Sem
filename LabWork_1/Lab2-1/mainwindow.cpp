@@ -16,11 +16,8 @@ MainWindow::MainWindow(QWidget *parent)
     ui->graphicsView->setScene(scene);
     ui->graphicsView->show();
 
-    validator = new QDoubleValidator(-1000, 100, 3);
-    validator->setLocale(QLocale::C);
-    validator->setNotation(QDoubleValidator::StandardNotation);
-    ui->x_line->setValidator(validator);
-    ui->y_line->setValidator(validator);
+    ui->x_spin->setRange(-770, 870);
+    ui->y_spin->setRange(-440, 440);
 
     updatingScene = new QTimer();
 
@@ -34,12 +31,12 @@ MainWindow::MainWindow(QWidget *parent)
             {
                 ui->area_line->clear();
                 ui->perimetr_line->clear();
-                ui->x_line->clear();
-                ui->y_line->clear();
+                ui->x_spin->clear();
+                ui->y_spin->clear();
             }
 
-            ui->x_line->setReadOnly(true);
-            ui->y_line->setReadOnly(true);
+            ui->x_spin->setReadOnly(true);
+            ui->y_spin->setReadOnly(true);
         }
     });
 
@@ -64,10 +61,10 @@ MainWindow::MainWindow(QWidget *parent)
                     {
                         if(obj->getIsMoving())
                         {
-                            ui->x_line->setReadOnly(false);
-                            ui->y_line->setReadOnly(false);
-                            ui->x_line->setText(QString::number(obj->getCenter().x()));
-                            ui->y_line->setText(QString::number(-obj->getCenter().y()));
+                            ui->x_spin->setReadOnly(false);
+                            ui->y_spin->setReadOnly(false);
+                            ui->x_spin->setValue(obj->getCenter().x());//ui->spinBox->setText(QString::number(obj->getCenter().x()));
+                            ui->y_spin->setValue(-obj->getCenter().y());
                         }
 
                         if(obj->getIsScaling())
@@ -79,23 +76,23 @@ MainWindow::MainWindow(QWidget *parent)
                 }
             });
 
-            connect(ui->x_line, &QLineEdit::textChanged, [=](){
+            connect(ui->x_spin, &QSpinBox::valueChanged, [=](){
                 if(obj != nullptr)
                 {
                     if(!obj->getIsMoving() && obj->isSelected())
                     {
-                        obj->setPos((ui->x_line->text()).toDouble(), obj->getCenter().y());
+                        obj->setPos((ui->x_spin->text()).toDouble(), obj->getCenter().y());
                     }
                 }
 
             });
 
-            connect(ui->y_line, &QLineEdit::textChanged, [=](){
+            connect(ui->y_spin, &QSpinBox::valueChanged, [=](){
                 if(obj != nullptr)
                 {
                     if(!obj->getIsMoving() && obj->isSelected())
                     {
-                        obj->setPos(obj->getCenter().x(), -(ui->y_line->text()).toDouble());
+                        obj->setPos(obj->getCenter().x(), -(ui->y_spin->text()).toDouble());
                     }
                 }
 

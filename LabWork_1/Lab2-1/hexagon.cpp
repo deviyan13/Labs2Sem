@@ -26,7 +26,7 @@ Hexagon::Hexagon(double radius) {
     x /= sides * 1.0;
     y /= sides * 1.0;
 
-    originPoint = QPointF(x, y);
+    originPoint = QPointF(0, 0); //this place is edited
     setTransformOriginPoint(originPoint);
 }
 

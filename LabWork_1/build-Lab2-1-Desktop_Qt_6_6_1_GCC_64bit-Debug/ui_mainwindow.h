@@ -19,6 +19,7 @@
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QSpinBox>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QWidget>
 
@@ -30,6 +31,15 @@ public:
     QWidget *centralwidget;
     QGridLayout *gridLayout;
     QGraphicsView *graphicsView;
+    QGridLayout *gridLayout_2;
+    QLabel *perimetr_label;
+    QLabel *area_label;
+    QLineEdit *perimetr_line;
+    QLineEdit *area_line;
+    QLabel *x_label;
+    QLabel *label_4;
+    QSpinBox *x_spin;
+    QSpinBox *y_spin;
     QHBoxLayout *horizontalLayout;
     QPushButton *square;
     QPushButton *rectangle;
@@ -40,15 +50,6 @@ public:
     QPushButton *star5;
     QPushButton *star6;
     QPushButton *star8;
-    QGridLayout *gridLayout_2;
-    QLabel *x_label;
-    QLineEdit *perimetr_line;
-    QLineEdit *area_line;
-    QLabel *label_4;
-    QLabel *perimetr_label;
-    QLineEdit *y_line;
-    QLineEdit *x_line;
-    QLabel *area_label;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -71,7 +72,55 @@ public:
         graphicsView = new QGraphicsView(centralwidget);
         graphicsView->setObjectName("graphicsView");
 
-        gridLayout->addWidget(graphicsView, 3, 0, 1, 1);
+        gridLayout->addWidget(graphicsView, 3, 1, 1, 1);
+
+        gridLayout_2 = new QGridLayout();
+        gridLayout_2->setObjectName("gridLayout_2");
+        perimetr_label = new QLabel(centralwidget);
+        perimetr_label->setObjectName("perimetr_label");
+
+        gridLayout_2->addWidget(perimetr_label, 0, 3, 1, 1);
+
+        area_label = new QLabel(centralwidget);
+        area_label->setObjectName("area_label");
+
+        gridLayout_2->addWidget(area_label, 0, 0, 1, 1);
+
+        perimetr_line = new QLineEdit(centralwidget);
+        perimetr_line->setObjectName("perimetr_line");
+        perimetr_line->setReadOnly(true);
+
+        gridLayout_2->addWidget(perimetr_line, 0, 5, 1, 1);
+
+        area_line = new QLineEdit(centralwidget);
+        area_line->setObjectName("area_line");
+        area_line->setReadOnly(true);
+        area_line->setClearButtonEnabled(false);
+
+        gridLayout_2->addWidget(area_line, 0, 1, 1, 1);
+
+        x_label = new QLabel(centralwidget);
+        x_label->setObjectName("x_label");
+
+        gridLayout_2->addWidget(x_label, 1, 0, 1, 1);
+
+        label_4 = new QLabel(centralwidget);
+        label_4->setObjectName("label_4");
+
+        gridLayout_2->addWidget(label_4, 1, 3, 1, 1);
+
+        x_spin = new QSpinBox(centralwidget);
+        x_spin->setObjectName("x_spin");
+
+        gridLayout_2->addWidget(x_spin, 1, 1, 1, 1);
+
+        y_spin = new QSpinBox(centralwidget);
+        y_spin->setObjectName("y_spin");
+
+        gridLayout_2->addWidget(y_spin, 1, 5, 1, 1);
+
+
+        gridLayout->addLayout(gridLayout_2, 4, 1, 1, 1);
 
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName("horizontalLayout");
@@ -135,57 +184,7 @@ public:
         horizontalLayout->addWidget(star8);
 
 
-        gridLayout->addLayout(horizontalLayout, 0, 0, 1, 1);
-
-        gridLayout_2 = new QGridLayout();
-        gridLayout_2->setObjectName("gridLayout_2");
-        x_label = new QLabel(centralwidget);
-        x_label->setObjectName("x_label");
-
-        gridLayout_2->addWidget(x_label, 1, 0, 1, 1);
-
-        perimetr_line = new QLineEdit(centralwidget);
-        perimetr_line->setObjectName("perimetr_line");
-        perimetr_line->setReadOnly(true);
-
-        gridLayout_2->addWidget(perimetr_line, 0, 3, 1, 1);
-
-        area_line = new QLineEdit(centralwidget);
-        area_line->setObjectName("area_line");
-        area_line->setReadOnly(true);
-        area_line->setClearButtonEnabled(false);
-
-        gridLayout_2->addWidget(area_line, 0, 1, 1, 1);
-
-        label_4 = new QLabel(centralwidget);
-        label_4->setObjectName("label_4");
-
-        gridLayout_2->addWidget(label_4, 1, 2, 1, 1);
-
-        perimetr_label = new QLabel(centralwidget);
-        perimetr_label->setObjectName("perimetr_label");
-
-        gridLayout_2->addWidget(perimetr_label, 0, 2, 1, 1);
-
-        y_line = new QLineEdit(centralwidget);
-        y_line->setObjectName("y_line");
-
-        gridLayout_2->addWidget(y_line, 1, 3, 1, 1);
-
-        x_line = new QLineEdit(centralwidget);
-        x_line->setObjectName("x_line");
-        x_line->setAutoFillBackground(false);
-        x_line->setInputMethodHints(Qt::ImhNone);
-
-        gridLayout_2->addWidget(x_line, 1, 1, 1, 1);
-
-        area_label = new QLabel(centralwidget);
-        area_label->setObjectName("area_label");
-
-        gridLayout_2->addWidget(area_label, 0, 0, 1, 1);
-
-
-        gridLayout->addLayout(gridLayout_2, 4, 0, 1, 1);
+        gridLayout->addLayout(horizontalLayout, 0, 1, 1, 1);
 
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
@@ -204,6 +203,10 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "Lab1-2", nullptr));
+        perimetr_label->setText(QCoreApplication::translate("MainWindow", "\320\237\320\265\321\200\320\270\320\274\320\265\321\202\321\200", nullptr));
+        area_label->setText(QCoreApplication::translate("MainWindow", "\320\237\320\273\320\276\321\211\320\260\320\264\321\214", nullptr));
+        x_label->setText(QCoreApplication::translate("MainWindow", "\320\232\320\276\320\276\321\200\320\264\320\270\320\275\320\260\321\202\320\260 x \321\206\320\265\320\275\321\202\321\200\320\260 \321\202\321\217\320\266\320\265\321\201\321\202\320\270", nullptr));
+        label_4->setText(QCoreApplication::translate("MainWindow", "\320\232\320\276\320\276\321\200\320\264\320\270\320\275\320\260\321\202\320\260 y \321\206\320\265\320\275\321\202\321\200\320\260 \321\202\321\217\320\266\320\265\321\201\321\202\320\270", nullptr));
         square->setText(QCoreApplication::translate("MainWindow", "\342\226\240", nullptr));
         rectangle->setText(QCoreApplication::translate("MainWindow", "\342\226\254", nullptr));
         triangle->setText(QCoreApplication::translate("MainWindow", "\342\226\262", nullptr));
@@ -213,14 +216,6 @@ public:
         star5->setText(QCoreApplication::translate("MainWindow", "\342\230\205", nullptr));
         star6->setText(QCoreApplication::translate("MainWindow", "\342\234\241", nullptr));
         star8->setText(QCoreApplication::translate("MainWindow", "\342\234\270", nullptr));
-        x_label->setText(QCoreApplication::translate("MainWindow", "\320\232\320\276\320\276\321\200\320\264\320\270\320\275\320\260\321\202\320\260 x \321\206\320\265\320\275\321\202\321\200\320\260 \321\202\321\217\320\266\320\265\321\201\321\202\320\270", nullptr));
-        label_4->setText(QCoreApplication::translate("MainWindow", "\320\232\320\276\320\276\321\200\320\264\320\270\320\275\320\260\321\202\320\260 y \321\206\320\265\320\275\321\202\321\200\320\260 \321\202\321\217\320\266\320\265\321\201\321\202\320\270", nullptr));
-        perimetr_label->setText(QCoreApplication::translate("MainWindow", "\320\237\320\265\321\200\320\270\320\274\320\265\321\202\321\200", nullptr));
-        y_line->setPlaceholderText(QString());
-        x_line->setInputMask(QString());
-        x_line->setText(QString());
-        x_line->setPlaceholderText(QString());
-        area_label->setText(QCoreApplication::translate("MainWindow", "\320\237\320\273\320\276\321\211\320\260\320\264\321\214", nullptr));
     } // retranslateUi
 
 };

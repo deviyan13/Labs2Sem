@@ -59,7 +59,6 @@ private:
 
     QVector<Shape*> objects;
     QTimer *updatingScene;
-    QPointer<QDoubleValidator> validator;
 
 signals:
 
