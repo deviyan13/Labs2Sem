@@ -2,6 +2,9 @@
 #define CIRCLE_H
 
 #include "shape.h"
+#include "dialogcircle.h"
+
+#include <QMessageBox>
 
 class Circle : public Shape
 {
@@ -13,9 +16,11 @@ public:
 
     QPainterPath shape() const override;
 
+    void mousePressEvent(QGraphicsSceneMouseEvent *event) override;
 private:
     double radius;
     QGraphicsEllipseItem circle;
+    QAction *setRadius;
 };
 
 #endif // CIRCLE_H

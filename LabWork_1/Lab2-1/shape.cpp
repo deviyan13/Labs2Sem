@@ -22,6 +22,9 @@ Shape::Shape(QGraphicsItem *parent) : QGraphicsItem(parent){
     removeAct = contextMenu.addAction("Удалить");
     setScaleAct = contextMenu.addAction("Масштибировать по колесику мыши");
     setRotateAct = contextMenu.addAction("Поворачивать по колесику мыши");
+    clearAct = contextMenu.addAction("Не использовать колесико мыши");
+
+    clearAct->setVisible(false);
 }
 
 void Shape::wheelEvent(QGraphicsSceneWheelEvent *event) {
@@ -58,31 +61,55 @@ void Shape::mousePressEvent(QGraphicsSceneMouseEvent *event) {
 
     if (event->button() == Qt::RightButton)
     {
-        QAction *selectedAction = contextMenu.exec(event->screenPos());
+        if (contains(event->pos()))
+        {
+            QAction *selectedAction = contextMenu.exec(event->screenPos());
 
-        if (selectedAction == removeAct)
-        {
-            scene()->removeItem(this);
-            emit isDeleted();
+            if (selectedAction == removeAct)
+            {
+                scene()->removeItem(this);
+                emit isDeleted();
+            }
+            else if(selectedAction == setScaleAct)
+            {
+                isScalingable = true;
+                isRotatable = false;
+
+                setScaleAct->setVisible(false);
+                setRotateAct->setVisible(true);
+
+                clearAct->setVisible(true);
+            }
+            else if(selectedAction == setRotateAct)
+            {
+                isScalingable = false;
+                isRotatable = true;
+
+                setScaleAct->setVisible(true);
+                setRotateAct->setVisible(false);
+
+                clearAct->setVisible(true);
+            }
+            else if(selectedAction == clearAct)
+            {
+                isScalingable = false;
+                isRotatable = false;
+
+                setScaleAct->setVisible(true);
+                setRotateAct->setVisible(true);
+
+                clearAct->setVisible(false);
+            }
         }
-        else if(selectedAction == setScaleAct)
+
+        else if(event->button() == Qt::LeftButton)
         {
-            isScalingable = true;
-            isRotatable = false;
-        }
-        else if(selectedAction == setRotateAct)
-        {
-            isScalingable = false;
-            isRotatable = true;
+            isMoving = true;
+            isScaling = true;
+            setCursor(Qt::ClosedHandCursor);
         }
     }
 
-    else if(event->button() == Qt::LeftButton)
-    {
-        isMoving = true;
-        isScaling = true;
-        setCursor(Qt::ClosedHandCursor);
-    }
 
     QGraphicsItem::mousePressEvent(event);
 }

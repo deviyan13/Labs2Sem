@@ -10,6 +10,9 @@ CONFIG += c++17
 
 SOURCES += \
     circle.cpp \
+    dialogcircle.cpp \
+    dialogsquare.cpp \
+    dialogstar5.cpp \
     hexagon.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -25,6 +28,9 @@ SOURCES += \
 
 HEADERS += \
     circle.h \
+    dialogcircle.h \
+    dialogsquare.h \
+    dialogstar5.h \
     hexagon.h \
     mainwindow.h \
     polygon.h \
@@ -38,6 +44,9 @@ HEADERS += \
     triangle.h
 
 FORMS += \
+    dialogcircle.ui \
+    dialogsquare.ui \
+    dialogstar5.ui \
     mainwindow.ui
 
 # Default rules for deployment.

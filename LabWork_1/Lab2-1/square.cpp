@@ -1,8 +1,10 @@
 #include "square.h"
+#include "qgraphicsscene.h"
+#include "qtimer.h"
 
-Square::Square(qreal side)
+Square::Square(qreal newside)
 {
-    //square << p1 << p2 << p3 << p4;
+    side = newside;
 
     const int sides = 4;
 
@@ -16,8 +18,6 @@ Square::Square(qreal side)
     Area = abs(Area) / 2;
 
     Perimetr += side * 4;
-
-
 
 
 
@@ -36,6 +36,89 @@ Square::Square(qreal side)
     originPoint = QPointF(x, y);
     setTransformOriginPoint(originPoint);
 
+    setSide = contextMenu.addAction("Задать новую длину стороны");
+
+}
+
+void Square::mousePressEvent(QGraphicsSceneMouseEvent *event) { // то что и в фигуре, но добавили контекстную кнопку
+
+    if (event->button() == Qt::RightButton)
+    {
+        if (contains(event->pos()))
+        {
+
+            QAction *selectedAction = contextMenu.exec(event->screenPos());
+
+            if (selectedAction == removeAct)
+            {
+                scene()->removeItem(this);
+                emit isDeleted();
+            }
+            else if(selectedAction == setScaleAct)
+            {
+                isScalingable = true;
+                isRotatable = false;
+
+                setScaleAct->setVisible(false);
+                setRotateAct->setVisible(true);
+
+                clearAct->setVisible(true);
+            }
+            else if(selectedAction == setRotateAct)
+            {
+                isScalingable = false;
+                isRotatable = true;
+
+                setScaleAct->setVisible(true);
+                setRotateAct->setVisible(false);
+
+                clearAct->setVisible(true);
+            }
+            else if(selectedAction == clearAct)
+            {
+                isScalingable = false;
+                isRotatable = false;
+
+                setScaleAct->setVisible(true);
+                setRotateAct->setVisible(true);
+
+                clearAct->setVisible(false);
+            }
+            else if (selectedAction == setSide)
+            {
+                DialogSquare* dialog = new DialogSquare();
+
+                connect(dialog, &DialogSquare::setNewSide, [this, dialog](){
+
+                    originalSize = dialog->getNewSide() / side;
+                    setScale(originalSize);
+
+                    isScaling = true;
+
+
+
+                    QTimer timer; // отключение бесконечного обновления
+
+                    timer.singleShot(20, this, [=](){//
+                        isScaling = false;//
+                    });//
+
+                });
+
+                dialog->setValue(side * originalSize);
+                dialog->exec();
+            }
+        }
+    }
+
+    else if(event->button() == Qt::LeftButton)
+    {
+        isMoving = true;
+        isScaling = true;
+        setCursor(Qt::ClosedHandCursor);
+    }
+
+    QGraphicsItem::mousePressEvent(event);
 }
 
 QRectF Square::boundingRect() const {

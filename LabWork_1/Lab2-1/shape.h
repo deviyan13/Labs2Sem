@@ -26,7 +26,7 @@ public:
 
     void wheelEvent(QGraphicsSceneWheelEvent *event) override;
     void rotateShape(qreal angle);
-    void mousePressEvent(QGraphicsSceneMouseEvent *event) override;
+    virtual void mousePressEvent(QGraphicsSceneMouseEvent *event) override;
     void mouseReleaseEvent(QGraphicsSceneMouseEvent *event) override;
 
     //virtual QRectF boundingRect() const override = 0;
@@ -43,8 +43,12 @@ protected:
     double Perimetr;
     qreal originalSize;
     QPointF originPoint;
+    QMenu contextMenu;
+    QAction *removeAct;
+    QAction *setScaleAct;
+    QAction *setRotateAct;
+    QAction *clearAct;
 
-private:
 
     qreal rotationAngle;
     bool isScalingable;
@@ -52,11 +56,10 @@ private:
     bool isRotatable;
     bool isDeleting;
     bool isMoving;
-    QMenu contextMenu;
 
-    QAction *removeAct;
-    QAction *setScaleAct;
-    QAction *setRotateAct;
+private:
+
+
 
 signals:
     void isDeleted();
