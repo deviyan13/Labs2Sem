@@ -19,6 +19,7 @@
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QRadioButton>
 #include <QtWidgets/QSpinBox>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QWidget>
@@ -50,6 +51,7 @@ public:
     QPushButton *star5;
     QPushButton *star6;
     QPushButton *star8;
+    QRadioButton *radioPencil;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -57,7 +59,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName("MainWindow");
-        MainWindow->resize(800, 605);
+        MainWindow->resize(890, 604);
         QSizePolicy sizePolicy(QSizePolicy::Maximum, QSizePolicy::Maximum);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -183,13 +185,18 @@ public:
 
         horizontalLayout->addWidget(star8);
 
+        radioPencil = new QRadioButton(centralwidget);
+        radioPencil->setObjectName("radioPencil");
+
+        horizontalLayout->addWidget(radioPencil);
+
 
         gridLayout->addLayout(horizontalLayout, 0, 1, 1, 1);
 
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 800, 22));
+        menubar->setGeometry(QRect(0, 0, 890, 22));
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName("statusbar");
@@ -216,6 +223,7 @@ public:
         star5->setText(QCoreApplication::translate("MainWindow", "\342\230\205", nullptr));
         star6->setText(QCoreApplication::translate("MainWindow", "\342\234\241", nullptr));
         star8->setText(QCoreApplication::translate("MainWindow", "\342\234\270", nullptr));
+        radioPencil->setText(QCoreApplication::translate("MainWindow", "\320\232\320\260\321\200\320\260\320\275\320\264\320\260\321\210", nullptr));
     } // retranslateUi
 
 };

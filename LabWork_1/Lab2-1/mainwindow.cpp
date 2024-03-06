@@ -8,7 +8,9 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    scene = new QGraphicsScene(this);
+
+    scene = new PaintScene(this);
+
     scene->setSceneRect(0, 0, ui->graphicsView->width(), ui->graphicsView->height());
     ui->graphicsView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     ui->graphicsView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -18,6 +20,17 @@ MainWindow::MainWindow(QWidget *parent)
 
     ui->x_spin->setRange(-770, 870);
     ui->y_spin->setRange(-440, 440);
+
+    connect(ui->radioPencil, &QRadioButton::toggled, [this](bool checked){
+
+        if (checked) {
+            scene->turnOnPencil();
+        }
+        else
+            {
+            scene->turnOffPencil();
+        }
+    });
 
     updatingScene = new QTimer();
 

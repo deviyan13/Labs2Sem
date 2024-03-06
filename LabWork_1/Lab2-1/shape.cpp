@@ -101,13 +101,13 @@ void Shape::mousePressEvent(QGraphicsSceneMouseEvent *event) {
                 clearAct->setVisible(false);
             }
         }
+    }
 
-        else if(event->button() == Qt::LeftButton)
-        {
-            isMoving = true;
-            isScaling = true;
-            setCursor(Qt::ClosedHandCursor);
-        }
+    else if(event->button() == Qt::LeftButton)
+    {
+        isMoving = true;
+        isScaling = true;
+        setCursor(Qt::ClosedHandCursor);
     }
 
 

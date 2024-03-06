@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>605</height>
+    <width>890</width>
+    <height>604</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -198,6 +198,13 @@
         </property>
        </widget>
       </item>
+      <item>
+       <widget class="QRadioButton" name="radioPencil">
+        <property name="text">
+         <string>Карандаш</string>
+        </property>
+       </widget>
+      </item>
      </layout>
     </item>
    </layout>
@@ -207,7 +214,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>890</width>
      <height>22</height>
     </rect>
    </property>

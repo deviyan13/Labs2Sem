@@ -9,7 +9,6 @@ Rectangle::Rectangle()
 
 QRectF Rectangle::boundingRect() const
 {
-    // прямоугольник, охватывающий фигуру
     return QRectF(0, 0, 200, 100);
 }
 

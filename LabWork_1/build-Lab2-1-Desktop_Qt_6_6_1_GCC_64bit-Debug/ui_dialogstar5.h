@@ -88,7 +88,7 @@ public:
 
     void retranslateUi(QDialog *DialogStar5)
     {
-        DialogStar5->setWindowTitle(QCoreApplication::translate("DialogStar5", "Dialog", nullptr));
+        DialogStar5->setWindowTitle(QCoreApplication::translate("DialogStar5", "\320\227\320\262\320\265\320\267\320\264\320\276\321\207\320\272\320\260 \320\277\321\217\321\202\320\270\320\272\320\276\320\275\320\265\321\207\320\275\320\260\321\217", nullptr));
         label_2->setText(QCoreApplication::translate("DialogStar5", "\320\222\320\262\320\265\320\264\320\270\321\202\320\265 \320\262\320\275\320\265\321\210\320\275\320\270\320\271  \321\200\320\260\320\264\320\270\321\203\321\201 (\320\276\321\202 50 \320\264\320\276 100) ", nullptr));
         label->setText(QCoreApplication::translate("DialogStar5", "\320\222\320\262\320\265\320\264\320\270\321\202\320\265 \320\262\320\275\321\203\321\202\321\200\320\265\320\275\320\275\320\270\320\271  \321\200\320\260\320\264\320\270\321\203\321\201 (\320\276\321\202 10 \320\264\320\276 50) ", nullptr));
     } // retranslateUi

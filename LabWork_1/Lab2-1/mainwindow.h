@@ -7,6 +7,7 @@
 #include <QMessageBox>
 #include <QValidator>
 
+#include "paintscene.h"
 #include "polygon.h"
 #include "square.h"
 #include "triangle.h"
@@ -17,6 +18,7 @@
 #include "star5.h"
 #include "star6.h"
 #include "star8.h"
+#include "pencil.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -55,7 +57,7 @@ private slots:
 private:
 
     Ui::MainWindow *ui;
-    QGraphicsScene *scene;
+    PaintScene *scene;
 
     QVector<Shape*> objects;
     QTimer *updatingScene;

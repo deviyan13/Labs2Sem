@@ -13,9 +13,12 @@ SOURCES += \
     dialogcircle.cpp \
     dialogsquare.cpp \
     dialogstar5.cpp \
+    figure.cpp \
     hexagon.cpp \
     main.cpp \
     mainwindow.cpp \
+    paintscene.cpp \
+    pencil.cpp \
     polygon.cpp \
     rectangle.cpp \
     rhomb.cpp \
@@ -31,8 +34,11 @@ HEADERS += \
     dialogcircle.h \
     dialogsquare.h \
     dialogstar5.h \
+    figure.h \
     hexagon.h \
     mainwindow.h \
+    paintscene.h \
+    pencil.h \
     polygon.h \
     rectangle.h \
     rhomb.h \
