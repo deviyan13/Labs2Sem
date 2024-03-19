@@ -43,3 +43,29 @@ double Student::getAvgMark() const
     return avgMark;
 }
 
+double Student::getMatan() const
+{
+    return matan;
+}
+
+double Student::getDm() const
+{
+    return dm;
+}
+
+double Student::getOaip() const
+{
+    return oaip;
+}
+
+double Student::getAgila() const
+{
+    return agila;
+}
+
+double Student::getHist() const
+{
+    return hist;
+}
+
+

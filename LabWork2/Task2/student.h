@@ -15,6 +15,16 @@ public:
     QString getGroup() const;
     double getAvgMark() const;
 
+    double getMatan() const;
+
+    double getDm() const;
+
+    double getOaip() const;
+
+    double getAgila() const;
+
+    double getHist() const;
+
 private:
     QString FIO, faculty, speciality, group;
     double matan, oaip, agila, hist, dm;

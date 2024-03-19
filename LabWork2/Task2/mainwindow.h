@@ -6,6 +6,9 @@
 #include <QFile>
 #include "student.h"
 #include <QTimer>
+#include "dialoginputstudent.h"
+#include "dialogfindstudent.h"
+#include <QMessageBox>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -21,9 +24,6 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-    void changeSpecialityCombo();
-    void changeGroupCombo();
-
 private slots:
     void on_exitButton_clicked();
 
@@ -33,18 +33,26 @@ private slots:
 
     void on_addButton_clicked();
 
-    void on_acceptAdding_clicked();
+    void on_editButton_clicked();
+
+    void printStudentsInListWidget();
+
+    void on_deleteButton_clicked();
+
+    void on_findButton_clicked();
+
+    void comboFilterUpdate();
+
+    void on_sortButton_clicked();
 
 private:
     Ui::MainWindow *ui;
-
-    QList<QString> FACULTIES, FKSIS, IEF, FRE;
-    QList<QString> GROUPS_KI, GROUPS_PI, GROUPS_IITP, GROUPS_IPD, GROUPS_IIUSFU, GROUPS_MIN, GROUPS_NIN, GROUPS_RIR;
-    QList<QString> GROUPS_EE, GROUPS_ISIT;
 
     QFile *openedFile;
     QString openedFileName;
 
     QVector <Student> studentsList;
+
+    QList<QString> GROUPS;
 };
 #endif // MAINWINDOW_H
