@@ -116,7 +116,7 @@ public:
         label->setFont(font);
         label->setAutoFillBackground(false);
         label->setStyleSheet(QString::fromUtf8(""));
-        label->setFrameShape(QFrame::WinPanel);
+        label->setFrameShape(QFrame::NoFrame);
         label->setLineWidth(2);
         label->setMidLineWidth(0);
         label->setAlignment(Qt::AlignCenter);
@@ -207,7 +207,7 @@ public:
         label_2->setFont(font4);
         label_2->setAutoFillBackground(false);
         label_2->setStyleSheet(QString::fromUtf8(""));
-        label_2->setFrameShape(QFrame::WinPanel);
+        label_2->setFrameShape(QFrame::NoFrame);
         label_2->setFrameShadow(QFrame::Plain);
         label_2->setLineWidth(2);
         label_2->setAlignment(Qt::AlignCenter);
