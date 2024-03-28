@@ -55,7 +55,7 @@ public:
         spinRings->setValue(1);
         listWidget = new QListWidget(centralwidget);
         listWidget->setObjectName("listWidget");
-        listWidget->setEnabled(false);
+        listWidget->setEnabled(true);
         listWidget->setGeometry(QRect(20, 100, 181, 321));
         listWidget->setSelectionMode(QAbstractItemView::SingleSelection);
         buttonAnimate = new QPushButton(centralwidget);
