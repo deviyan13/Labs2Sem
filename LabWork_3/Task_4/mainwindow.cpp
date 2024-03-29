@@ -5,6 +5,8 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
+
+
     ui->setupUi(this);
     ui->graphicsView->setBackgroundBrush(QColor(225, 137, 137, 100));
     this->setStyleSheet(R"(
@@ -108,6 +110,7 @@ void MainWindow::hanoiTowerAnimation(int time)
         QGraphicsItemAnimation *animation = new QGraphicsItemAnimation;
         animation->setItem(TowerFrom->top());
         QTimeLine *timeLine = new QTimeLine(time);
+        timeLine->setUpdateInterval(10);
         timeLine->setFrameRange(0, 120);
 
         animation->setTimeLine(timeLine);
@@ -123,7 +126,7 @@ void MainWindow::hanoiTowerAnimation(int time)
         TowerFrom->popRing();
 
         QEventLoop loop;
-        QTimer::singleShot(time + 20, &loop, &QEventLoop::quit);
+        QTimer::singleShot(time, &loop, &QEventLoop::quit);
         loop.exec();
     }
 }
@@ -138,7 +141,7 @@ void MainWindow::on_buttonAnimate_clicked()
     ui->buttonAnimate->setEnabled(false);
     ui->spinRings->setEnabled(false);
 
-    hanoiTowerAnimation(1000);
+    hanoiTowerAnimation(650);
 
     QMessageBox::information(this, "Ура!", "Вот так вот, короче :)");
 

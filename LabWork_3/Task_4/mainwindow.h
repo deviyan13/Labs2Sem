@@ -9,6 +9,8 @@
 #include <QGraphicsItemAnimation>
 #include <QTimeLine>
 #include <QMessageBox>
+#include <QMovie>
+#include <QPixmap>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
