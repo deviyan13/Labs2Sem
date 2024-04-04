@@ -22,25 +22,31 @@ public:
     int size();
     void swap(int first, int second);
     void clear();
-
     void resetColors();
 
     void Merge(int low, int mid, int high);
     void mergesort(int low, int high);
-
     void QuickSort(int left, int right);
+    void heapify(int n, int i);
+    void heapSort(int n);
 
     int BinSearch(int digit);
 
+    void mergeSortForTime(int low, int high);
+    void mergeForTime(int low, int mid, int high);
+    long long timeMergeSort();
+
+    void quickSortForTime(int left, int right);
+    long long timeQuickSort();
+    long long timeHeapSort(int n);
 
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
     QRectF boundingRect() const override;
 
-    void heapify(int n, int i);
-    void heapSort(int n);
+
 private:
 
-    QVector <std::pair<int, QColor>> array, aux;
+    QVector <std::pair<int, QColor>> array, aux, copyOfArray, copyOfAux;
     QVector <IndexOfArray*> indexesOfArray;
 
     QGraphicsScene* graphicsScene;

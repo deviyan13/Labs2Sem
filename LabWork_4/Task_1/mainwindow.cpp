@@ -63,6 +63,8 @@ void MainWindow::on_buttonGenerate_clicked()
 
 void MainWindow::on_buttonSort_clicked()
 {
+    long long time = 0;
+
     ui->buttonSort->setEnabled(false);
     ui->comboSorts->setEnabled(false);
 
@@ -71,10 +73,12 @@ void MainWindow::on_buttonSort_clicked()
 
     if(ui->comboSorts->currentIndex() == 0)
     {
+        time = array->timeMergeSort();
         array->mergesort(0, array->size() - 1);
     }
     else if(ui->comboSorts->currentIndex() == 1)
     {
+        time = array->timeQuickSort();
         array->QuickSort(0, array->size() - 1);
     }
     else if(ui->comboSorts->currentIndex() == 2)
@@ -82,7 +86,7 @@ void MainWindow::on_buttonSort_clicked()
         array->heapSort(array->size());
     }
 
-    QMessageBox::information(this, "Сортировка завершена", "Сортировка прошла успешно!");
+    QMessageBox::information(this, "Сортировка завершена", "Сортировка прошла успешно!\nВремя сортировки: " + QString::number(time) + " мкс");
 
     ui->buttonGenerate->setEnabled(true);
     ui->spinCountIndexes->setEnabled(true);

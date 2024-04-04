@@ -214,10 +214,9 @@ void PicturedArray::heapSort(int n)
     }
 }
 
-
 int PicturedArray::BinSearch(int digit)
 {
-    int left = 0,right = array.size() - 1, mid = 0;
+    int left = 0, right = array.size() - 1, mid = 0;
 
     while(left <= right)
     {
@@ -230,13 +229,13 @@ int PicturedArray::BinSearch(int digit)
         updateArray();
 
         QEventLoop loop;
-        QTimer::singleShot(200, &loop, &QEventLoop::quit);
+        QTimer::singleShot(500, &loop, &QEventLoop::quit);
         loop.exec();
 
         if(array[mid].first == digit)
         {
-            array[left].second = QColor(0, 179, 134, array[left].first + 130);
-            array[right].second = QColor(0, 179, 134, array[right].first + 130);
+            if(left != mid) array[left].second = QColor(0, 179, 134, array[left].first + 130);
+            if(right != mid) array[right].second = QColor(0, 179, 134, array[right].first + 130);
             updateArray();
 
             return mid;
@@ -267,6 +266,119 @@ int PicturedArray::BinSearch(int digit)
     return -1;
 
     //QColor(0, 179, 134, index + 130)
+}
+
+void PicturedArray::mergeSortForTime(int low, int high)
+{
+    if (high <= low) {
+        return;
+    }
+
+    int mid = (low + ((high - low) >> 1));
+
+    mergeSortForTime(low, mid);
+
+    mergeSortForTime(mid + 1, high);
+
+    mergeForTime(low, mid, high);
+}
+
+long long PicturedArray::timeMergeSort()
+{
+    copyOfArray.resize(array.size());
+    copyOfAux.resize(array.size());
+
+    for(int i = 0; i < array.size(); i++)
+    {
+        copyOfArray[i] = array[i];
+        copyOfAux[i] = array[i];
+    }
+
+    clock_t t0 = clock();
+
+    mergeSortForTime(0, copyOfArray.size() - 1);
+
+    clock_t result = clock() - t0;
+
+    long long time_of_sort = (double)result / CLOCKS_PER_SEC * 1000000.0;
+
+    return time_of_sort;
+}
+
+void PicturedArray::quickSortForTime(int left, int right)
+{
+    int l = left, r = right;
+    int piv = copyOfArray[(l + r) / 2].first; // Опорным элементом для примера возьмём средний
+
+    while (l <= r)
+    {
+        while (copyOfArray[l].first < piv)
+            l++;
+        while (copyOfArray[r].first > piv)
+            r--;
+        if (l <= r)
+        {
+            std::pair<int, QColor> temp = copyOfArray[l];
+
+            copyOfArray[l] = copyOfArray[r];
+            copyOfArray[r] = temp;
+
+            l++;
+            r--;
+        }
+    }
+    if (left < r)
+        quickSortForTime(left, r);
+    if (right > l)
+        quickSortForTime(l, right);
+}
+
+void PicturedArray::mergeForTime(int low, int mid, int high)
+{
+    int k = low, i = low, j = mid + 1;
+
+    while (i <= mid && j <= high)
+    {
+        if (copyOfArray[i].first <= copyOfArray[j].first) {
+            copyOfAux[k++] = copyOfArray[i++];
+        }
+        else {
+            copyOfAux[k++] = copyOfArray[j++];
+        }
+    }
+
+    while (i <= mid) {
+        copyOfAux[k++] = copyOfArray[i++];
+    }
+
+    for (int i = low; i <= high; i++) {
+        copyOfArray[i] = copyOfAux[i];
+    }
+}
+
+long long PicturedArray::timeQuickSort()
+{
+    copyOfArray.resize(array.size());
+
+    for(int i = 0; i < array.size(); i++)
+    {
+        copyOfArray[i] = array[i];
+    }
+
+    clock_t t0 = clock();
+
+    quickSortForTime(0, size() - 1);
+
+    clock_t result = clock() - t0;
+
+    long long time_of_sort = (double)result / CLOCKS_PER_SEC * 1000000.0;
+
+    return time_of_sort;
+}
+
+long long PicturedArray::timeHeapSort(int n)
+{
+
 }
 
 
