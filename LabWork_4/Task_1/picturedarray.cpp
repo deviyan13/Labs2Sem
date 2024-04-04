@@ -59,6 +59,14 @@ void PicturedArray::swap(int first, int second)
     array[second] = temp;
 }
 
+void PicturedArray::swapCopy(int first, int second)
+{
+    std::pair<int, QColor> temp = copyOfArray[first];
+
+    copyOfArray[first] = copyOfArray[second];
+    copyOfArray[second] = temp;
+}
+
 void PicturedArray::clear()
 {
     indexesOfArray.clear();
@@ -376,9 +384,68 @@ long long PicturedArray::timeQuickSort()
     return time_of_sort;
 }
 
-long long PicturedArray::timeHeapSort(int n)
+void PicturedArray::heapSortForTime(int n)
 {
+    // Построение кучи (перегруппируем массив)
+    for (int i = n / 2 - 1; i >= 0; i--)
+        heapifyForTime(n, i);
 
+    // Один за другим извлекаем элементы из кучи
+    for (int i=n-1; i>=0; i--)
+    {
+        // Перемещаем текущий корень в конец
+
+        copyOfArray[0];
+        swapCopy(0, i);
+
+        // вызываем процедуру heapify на уменьшенной куче
+        heapifyForTime(i, 0);
+    }
+}
+
+void PicturedArray::heapifyForTime(int n, int i)
+{
+    int largest = i;
+    // Инициализируем наибольший элемент как корень
+    int l = 2*i + 1; // левый = 2*i + 1
+    int r = 2*i + 2; // правый = 2*i + 2
+
+    // Если левый дочерний элемент больше корня
+    if (l < n && copyOfArray[l].first > copyOfArray[largest].first)
+        largest = l;
+
+    // Если правый дочерний элемент больше, чем самый большой элемент на данный момент
+    if (r < n && copyOfArray[r].first > copyOfArray[largest].first)
+        largest = r;
+
+    // Если самый большой элемент не корень
+    if (largest != i)
+    {
+        swapCopy(i, largest);
+
+        // Рекурсивно преобразуем в двоичную кучу затронутое поддерево
+        heapifyForTime(n, largest);
+    }
+}
+
+long long PicturedArray::timeHeapSort()
+{
+    copyOfArray.resize(array.size());
+
+    for(int i = 0; i < array.size(); i++)
+    {
+        copyOfArray[i] = array[i];
+    }
+
+    clock_t t0 = clock();
+
+    heapSortForTime(size() - 1);
+
+    clock_t result = clock() - t0;
+
+    long long time_of_sort = (double)result / CLOCKS_PER_SEC * 1000000.0;
+
+    return time_of_sort;
 }
 
 

@@ -83,6 +83,7 @@ void MainWindow::on_buttonSort_clicked()
     }
     else if(ui->comboSorts->currentIndex() == 2)
     {
+        time = array->timeHeapSort();
         array->heapSort(array->size());
     }
 

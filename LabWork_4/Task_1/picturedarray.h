@@ -21,6 +21,7 @@ public:
     void setScene(QGraphicsScene* scene);
     int size();
     void swap(int first, int second);
+    void swapCopy(int first, int second);
     void clear();
     void resetColors();
 
@@ -38,7 +39,10 @@ public:
 
     void quickSortForTime(int left, int right);
     long long timeQuickSort();
-    long long timeHeapSort(int n);
+
+    void heapSortForTime(int n);
+    void heapifyForTime(int n, int i);
+    long long timeHeapSort();
 
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
     QRectF boundingRect() const override;
