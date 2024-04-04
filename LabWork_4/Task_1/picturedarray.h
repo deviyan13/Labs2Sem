@@ -25,6 +25,9 @@ public:
     void clear();
     void resetColors();
 
+    QVector<std::pair<int, QColor>> &getArray();
+    QVector<std::pair<int, QColor>> &getAux();
+
     void Merge(int low, int mid, int high);
     void mergesort(int low, int high);
     void QuickSort(int left, int right);

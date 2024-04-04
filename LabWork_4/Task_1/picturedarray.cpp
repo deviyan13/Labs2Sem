@@ -84,6 +84,16 @@ void PicturedArray::resetColors()
     updateArray();
 }
 
+QVector<std::pair<int, QColor>>& PicturedArray::getArray()
+{
+    return array;
+}
+
+QVector<std::pair<int, QColor>>& PicturedArray::getAux()
+{
+    return aux;
+}
+
 
 void PicturedArray::Merge(int low, int mid, int high)
 {

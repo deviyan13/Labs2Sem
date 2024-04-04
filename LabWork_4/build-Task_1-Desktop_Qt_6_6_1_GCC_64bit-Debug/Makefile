@@ -788,7 +788,16 @@ moc_mainwindow.cpp: ../Task_1/mainwindow.h \
 		../../../Qt/6.6.1/gcc_64/include/QtCore/QVector \
 		../../../Qt/6.6.1/gcc_64/include/QtCore/qvector.h \
 		../../../Qt/6.6.1/gcc_64/include/QtCore/QPointer \
+		../../../Qt/6.6.1/gcc_64/include/QtCore/QEventLoop \
+		../../../Qt/6.6.1/gcc_64/include/QtCore/qeventloop.h \
+		../../../Qt/6.6.1/gcc_64/include/QtCore/QTimer \
+		../../../Qt/6.6.1/gcc_64/include/QtCore/qtimer.h \
+		../../../Qt/6.6.1/gcc_64/include/QtCore/qbasictimer.h \
+		../Task_1/mergesort.h \
 		../../../Qt/6.6.1/gcc_64/include/QtGui/QColor \
+		../../../Qt/6.6.1/gcc_64/include/QtWidgets/QMessageBox \
+		../../../Qt/6.6.1/gcc_64/include/QtWidgets/qmessagebox.h \
+		../../../Qt/6.6.1/gcc_64/include/QtWidgets/qdialog.h \
 		moc_predefs.h \
 		../../../Qt/6.6.1/gcc_64/libexec/moc
 	/home/deviyan/Qt/6.6.1/gcc_64/libexec/moc $(DEFINES) --include /home/deviyan/Labs2Sem/LabWork_4/build-Task_1-Desktop_Qt_6_6_1_GCC_64bit-Debug/moc_predefs.h -I/home/deviyan/Qt/6.6.1/gcc_64/mkspecs/linux-clang -I/home/deviyan/Labs2Sem/LabWork_4/Task_1 -I/home/deviyan/Qt/6.6.1/gcc_64/include -I/home/deviyan/Qt/6.6.1/gcc_64/include/QtWidgets -I/home/deviyan/Qt/6.6.1/gcc_64/include/QtGui -I/home/deviyan/Qt/6.6.1/gcc_64/include/QtCore -I. -I/usr/include/c++/13 -I/usr/include/x86_64-linux-gnu/c++/13 -I/usr/include/c++/13/backward -I/usr/lib/llvm-16/lib/clang/16/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../Task_1/mainwindow.h -o moc_mainwindow.cpp
@@ -1144,11 +1153,19 @@ main.o: ../Task_1/main.cpp ../Task_1/mainwindow.h \
 		../../../Qt/6.6.1/gcc_64/include/QtCore/QVector \
 		../../../Qt/6.6.1/gcc_64/include/QtCore/qvector.h \
 		../../../Qt/6.6.1/gcc_64/include/QtCore/QPointer \
+		../../../Qt/6.6.1/gcc_64/include/QtCore/QEventLoop \
+		../../../Qt/6.6.1/gcc_64/include/QtCore/qeventloop.h \
+		../../../Qt/6.6.1/gcc_64/include/QtCore/QTimer \
+		../../../Qt/6.6.1/gcc_64/include/QtCore/qtimer.h \
+		../../../Qt/6.6.1/gcc_64/include/QtCore/qbasictimer.h \
+		../Task_1/mergesort.h \
 		../../../Qt/6.6.1/gcc_64/include/QtGui/QColor \
+		../../../Qt/6.6.1/gcc_64/include/QtWidgets/QMessageBox \
+		../../../Qt/6.6.1/gcc_64/include/QtWidgets/qmessagebox.h \
+		../../../Qt/6.6.1/gcc_64/include/QtWidgets/qdialog.h \
 		../../../Qt/6.6.1/gcc_64/include/QtWidgets/QApplication \
 		../../../Qt/6.6.1/gcc_64/include/QtWidgets/qapplication.h \
 		../../../Qt/6.6.1/gcc_64/include/QtCore/qcoreapplication.h \
-		../../../Qt/6.6.1/gcc_64/include/QtCore/qeventloop.h \
 		../../../Qt/6.6.1/gcc_64/include/QtCore/qcoreapplication_platform.h \
 		../../../Qt/6.6.1/gcc_64/include/QtCore/qfuture.h \
 		../../../Qt/6.6.1/gcc_64/include/QtCore/qfutureinterface.h \
@@ -1353,13 +1370,22 @@ mainwindow.o: ../Task_1/mainwindow.cpp ../Task_1/mainwindow.h \
 		../../../Qt/6.6.1/gcc_64/include/QtCore/QVector \
 		../../../Qt/6.6.1/gcc_64/include/QtCore/qvector.h \
 		../../../Qt/6.6.1/gcc_64/include/QtCore/QPointer \
+		../../../Qt/6.6.1/gcc_64/include/QtCore/QEventLoop \
+		../../../Qt/6.6.1/gcc_64/include/QtCore/qeventloop.h \
+		../../../Qt/6.6.1/gcc_64/include/QtCore/QTimer \
+		../../../Qt/6.6.1/gcc_64/include/QtCore/qtimer.h \
+		../../../Qt/6.6.1/gcc_64/include/QtCore/qbasictimer.h \
+		../Task_1/mergesort.h \
 		../../../Qt/6.6.1/gcc_64/include/QtGui/QColor \
+		../../../Qt/6.6.1/gcc_64/include/QtWidgets/QMessageBox \
+		../../../Qt/6.6.1/gcc_64/include/QtWidgets/qmessagebox.h \
+		../../../Qt/6.6.1/gcc_64/include/QtWidgets/qdialog.h \
 		ui_mainwindow.h \
 		../../../Qt/6.6.1/gcc_64/include/QtCore/QVariant \
+		../../../Qt/6.6.1/gcc_64/include/QtGui/QIcon \
 		../../../Qt/6.6.1/gcc_64/include/QtWidgets/QApplication \
 		../../../Qt/6.6.1/gcc_64/include/QtWidgets/qapplication.h \
 		../../../Qt/6.6.1/gcc_64/include/QtCore/qcoreapplication.h \
-		../../../Qt/6.6.1/gcc_64/include/QtCore/qeventloop.h \
 		../../../Qt/6.6.1/gcc_64/include/QtCore/qcoreapplication_platform.h \
 		../../../Qt/6.6.1/gcc_64/include/QtCore/qfuture.h \
 		../../../Qt/6.6.1/gcc_64/include/QtCore/qfutureinterface.h \
@@ -1378,14 +1404,43 @@ mainwindow.o: ../Task_1/mainwindow.cpp ../Task_1/mainwindow.h \
 		../../../Qt/6.6.1/gcc_64/include/QtGui/qinputmethod.h \
 		../../../Qt/6.6.1/gcc_64/include/QtCore/qlocale.h \
 		../../../Qt/6.6.1/gcc_64/include/QtGui/qguiapplication_platform.h \
+		../../../Qt/6.6.1/gcc_64/include/QtWidgets/QComboBox \
+		../../../Qt/6.6.1/gcc_64/include/QtWidgets/qcombobox.h \
+		../../../Qt/6.6.1/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
+		../../../Qt/6.6.1/gcc_64/include/QtWidgets/qstyleoption.h \
+		../../../Qt/6.6.1/gcc_64/include/QtWidgets/qabstractspinbox.h \
+		../../../Qt/6.6.1/gcc_64/include/QtGui/qvalidator.h \
+		../../../Qt/6.6.1/gcc_64/include/QtCore/qregularexpression.h \
+		../../../Qt/6.6.1/gcc_64/include/QtWidgets/qslider.h \
+		../../../Qt/6.6.1/gcc_64/include/QtWidgets/qabstractslider.h \
+		../../../Qt/6.6.1/gcc_64/include/QtWidgets/qstyle.h \
+		../../../Qt/6.6.1/gcc_64/include/QtWidgets/qtabbar.h \
+		../../../Qt/6.6.1/gcc_64/include/QtWidgets/qrubberband.h \
+		../../../Qt/6.6.1/gcc_64/include/QtCore/qabstractitemmodel.h \
+		../../../Qt/6.6.1/gcc_64/include/QtWidgets/QGridLayout \
+		../../../Qt/6.6.1/gcc_64/include/QtWidgets/qgridlayout.h \
+		../../../Qt/6.6.1/gcc_64/include/QtWidgets/qlayout.h \
+		../../../Qt/6.6.1/gcc_64/include/QtWidgets/qlayoutitem.h \
+		../../../Qt/6.6.1/gcc_64/include/QtWidgets/qboxlayout.h \
+		../../../Qt/6.6.1/gcc_64/include/QtWidgets/QHBoxLayout \
+		../../../Qt/6.6.1/gcc_64/include/QtWidgets/QLabel \
+		../../../Qt/6.6.1/gcc_64/include/QtWidgets/qlabel.h \
+		../../../Qt/6.6.1/gcc_64/include/QtGui/qpicture.h \
+		../../../Qt/6.6.1/gcc_64/include/QtGui/qtextdocument.h \
+		../../../Qt/6.6.1/gcc_64/include/QtWidgets/QLineEdit \
+		../../../Qt/6.6.1/gcc_64/include/QtWidgets/qlineedit.h \
+		../../../Qt/6.6.1/gcc_64/include/QtGui/qtextcursor.h \
+		../../../Qt/6.6.1/gcc_64/include/QtGui/qtextformat.h \
 		../../../Qt/6.6.1/gcc_64/include/QtWidgets/QMenuBar \
 		../../../Qt/6.6.1/gcc_64/include/QtWidgets/qmenubar.h \
 		../../../Qt/6.6.1/gcc_64/include/QtWidgets/qmenu.h \
 		../../../Qt/6.6.1/gcc_64/include/QtWidgets/QPushButton \
 		../../../Qt/6.6.1/gcc_64/include/QtWidgets/qpushbutton.h \
 		../../../Qt/6.6.1/gcc_64/include/QtWidgets/qabstractbutton.h \
-		../../../Qt/6.6.1/gcc_64/include/QtWidgets/QStatusBar \
-		../../../Qt/6.6.1/gcc_64/include/QtWidgets/qstatusbar.h \
+		../../../Qt/6.6.1/gcc_64/include/QtWidgets/QSpacerItem \
+		../../../Qt/6.6.1/gcc_64/include/QtWidgets/QSpinBox \
+		../../../Qt/6.6.1/gcc_64/include/QtWidgets/qspinbox.h \
+		../../../Qt/6.6.1/gcc_64/include/QtWidgets/QVBoxLayout \
 		../../../Qt/6.6.1/gcc_64/include/QtWidgets/QWidget
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../Task_1/mainwindow.cpp
 
@@ -1568,7 +1623,12 @@ picturedarray.o: ../Task_1/picturedarray.cpp ../Task_1/picturedarray.h \
 		../../../Qt/6.6.1/gcc_64/include/QtCore/QSizeF \
 		../../../Qt/6.6.1/gcc_64/include/QtGui/QTransform \
 		../../../Qt/6.6.1/gcc_64/include/QtCore/qnativeinterface.h \
-		../../../Qt/6.6.1/gcc_64/include/QtCore/QPointer
+		../../../Qt/6.6.1/gcc_64/include/QtCore/QPointer \
+		../../../Qt/6.6.1/gcc_64/include/QtCore/QEventLoop \
+		../../../Qt/6.6.1/gcc_64/include/QtCore/qeventloop.h \
+		../../../Qt/6.6.1/gcc_64/include/QtCore/QTimer \
+		../../../Qt/6.6.1/gcc_64/include/QtCore/qtimer.h \
+		../../../Qt/6.6.1/gcc_64/include/QtCore/qbasictimer.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o picturedarray.o ../Task_1/picturedarray.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 

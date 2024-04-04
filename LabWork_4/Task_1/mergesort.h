@@ -1,21 +1,23 @@
 #ifndef MERGESORT_H
 #define MERGESORT_H
 
-#include<QVector>
+#include <QColor>
 
-#include <time.h>
+#include "picturedarray.h"
 
 class MergeSort
 {
 public:
     MergeSort();
 
-    static void Merge(QVector<int> arr, QVector<int> aux, int low, int mid, int high);
-    static void mergesort(QVector<int> arr, QVector<int> aux, int low, int high);
+    static void Merge(PicturedArray &PictureArray, int low, int mid, int high);
+    static void mergesort(PicturedArray &PictureArray, int low, int high);
 
-    static void run(QVector <int> array, QVector<int> aux);
+    static void mergeSortForTime(PicturedArray &PictureArray, int low, int high);
+    static void mergeForTime(PicturedArray &PictureArray, int low, int mid, int high);
+    static long long timeMergeSort(PicturedArray &PictureArray);
+
+private:
 };
 
 #endif // MERGESORT_H
-
-

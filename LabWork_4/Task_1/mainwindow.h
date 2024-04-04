@@ -7,6 +7,8 @@
 
 #include "indexofarray.h"
 #include "picturedarray.h"
+#include "mergesort.h"
+
 #include <QColor>
 #include <QMessageBox>
 

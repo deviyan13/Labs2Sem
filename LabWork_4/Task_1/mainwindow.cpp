@@ -1,6 +1,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -17,6 +19,7 @@ MainWindow::MainWindow(QWidget *parent)
         ui->buttonBinSearch->setEnabled(true);
         ui->lineIndex->setText("");
         array->resetColors();
+        ui->lineIndex->setStyleSheet("QLineEdit:disabled { background-color: white; }");
     });
 
     scene = new QGraphicsScene(this);
@@ -109,6 +112,17 @@ void MainWindow::on_buttonBinSearch_clicked()
 
     int index = array->BinSearch(ui->spinSearch->value());
 
-    ui->lineIndex->setText((index != -1) ? (QString::number(index)) : "Элемента нет!");
+    if(index != -1)
+    {
+        ui->lineIndex->setText(QString::number(index));
+        ui->lineIndex->setStyleSheet("QLineEdit:disabled { background-color: rgb(32, 223, 32); }");
+
+    }
+    else
+    {
+        ui->lineIndex->setText("Элемента нет!");
+        ui->lineIndex->setStyleSheet("QLineEdit:disabled { background-color: rgb(223, 32, 32); }");
+    }
+
 }
 
