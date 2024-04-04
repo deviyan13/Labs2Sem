@@ -45,6 +45,7 @@ public:
     QVBoxLayout *verticalLayout_2;
     QLabel *label;
     QSpinBox *spinCountIndexes;
+    QSpacerItem *verticalSpacer_2;
     QPushButton *buttonGenerate;
     QSpacerItem *verticalSpacer;
     QHBoxLayout *horizontalLayout_3;
@@ -138,6 +139,10 @@ public:
 
         verticalLayout_2->addWidget(spinCountIndexes);
 
+        verticalSpacer_2 = new QSpacerItem(20, 20, QSizePolicy::Minimum, QSizePolicy::Fixed);
+
+        verticalLayout_2->addItem(verticalSpacer_2);
+
 
         horizontalLayout->addLayout(verticalLayout_2);
 
@@ -150,13 +155,16 @@ public:
         sizePolicy.setHeightForWidth(buttonGenerate->sizePolicy().hasHeightForWidth());
         buttonGenerate->setSizePolicy(sizePolicy);
         buttonGenerate->setFont(font1);
+        QIcon icon1(QIcon::fromTheme(QString::fromUtf8("view-refresh")));
+        buttonGenerate->setIcon(icon1);
+        buttonGenerate->setIconSize(QSize(35, 35));
 
         horizontalLayout->addWidget(buttonGenerate);
 
 
         verticalLayout_6->addLayout(horizontalLayout);
 
-        verticalSpacer = new QSpacerItem(20, 13, QSizePolicy::Minimum, QSizePolicy::Fixed);
+        verticalSpacer = new QSpacerItem(20, 15, QSizePolicy::Minimum, QSizePolicy::Fixed);
 
         verticalLayout_6->addItem(verticalSpacer);
 
@@ -210,12 +218,15 @@ public:
         buttonBinSearch = new QPushButton(centralwidget);
         buttonBinSearch->setObjectName("buttonBinSearch");
         buttonBinSearch->setEnabled(false);
-        QSizePolicy sizePolicy1(QSizePolicy::Minimum, QSizePolicy::Preferred);
+        QSizePolicy sizePolicy1(QSizePolicy::Expanding, QSizePolicy::Preferred);
         sizePolicy1.setHorizontalStretch(0);
         sizePolicy1.setVerticalStretch(0);
         sizePolicy1.setHeightForWidth(buttonBinSearch->sizePolicy().hasHeightForWidth());
         buttonBinSearch->setSizePolicy(sizePolicy1);
-        buttonBinSearch->setFont(font3);
+        buttonBinSearch->setFont(font1);
+        QIcon icon2(QIcon::fromTheme(QString::fromUtf8("system-search")));
+        buttonBinSearch->setIcon(icon2);
+        buttonBinSearch->setIconSize(QSize(35, 35));
 
         horizontalLayout_5->addWidget(buttonBinSearch);
 
@@ -238,8 +249,8 @@ public:
         QFont font4;
         font4.setPointSize(22);
         buttonSort->setFont(font4);
-        QIcon icon1(QIcon::fromTheme(QString::fromUtf8("emblem-symbolic-link")));
-        buttonSort->setIcon(icon1);
+        QIcon icon3(QIcon::fromTheme(QString::fromUtf8("emblem-symbolic-link")));
+        buttonSort->setIcon(icon3);
         buttonSort->setIconSize(QSize(30, 30));
 
         verticalLayout_3->addWidget(buttonSort);
@@ -271,8 +282,7 @@ public:
 "\321\201\320\273\321\203\321\207\320\260\320\271\320\275\321\213\321\205 \321\207\320\270\321\201\320\265\320\273 (\320\276\321\202 -125 \320\264\320\276 125)", nullptr));
         label_2->setText(QCoreApplication::translate("MainWindow", "\320\227\320\275\320\260\321\207\320\265\320\275\320\270\320\265 \321\215\320\273\320\265\320\274\320\265\320\275\321\202\320\260 \320\264\320\273\321\217 \320\277\320\276\320\270\321\201\320\272\320\260 (\320\276\321\202 -125 \320\264\320\276 125)", nullptr));
         label_3->setText(QCoreApplication::translate("MainWindow", "\320\230\320\275\320\264\320\265\320\272\321\201 \320\275\320\260\320\271\320\264\320\265\320\275\320\275\320\276\320\263\320\276 \321\215\320\273\320\265\320\274\320\265\320\275\321\202\320\260:", nullptr));
-        buttonBinSearch->setText(QCoreApplication::translate("MainWindow", "\320\235\320\260\320\271\321\202\320\270 \321\215\320\273\320\265\320\274\320\265\320\275\321\202\n"
-"\320\261\320\270\320\275\320\260\321\200\320\275\321\213\320\274 \320\277\320\276\320\270\321\201\320\272\320\276\320\274", nullptr));
+        buttonBinSearch->setText(QCoreApplication::translate("MainWindow", "\320\235\320\260\320\271\321\202\320\270 \321\215\320\273\320\265\320\274\320\265\320\275\321\202 \320\261\320\270\320\275\320\260\321\200\320\275\321\213\320\274 \320\277\320\276\320\270\321\201\320\272\320\276\320\274", nullptr));
         buttonSort->setText(QCoreApplication::translate("MainWindow", "\320\236\321\202\321\201\320\276\321\200\321\202\320\270\321\200\320\276\320\262\320\260\321\202\321\214 \320\274\320\260\321\201\321\201\320\270\320\262", nullptr));
     } // retranslateUi
 

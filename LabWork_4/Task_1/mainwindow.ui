@@ -135,6 +135,22 @@
             </property>
            </widget>
           </item>
+          <item>
+           <spacer name="verticalSpacer_2">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Fixed</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
          </layout>
         </item>
         <item>
@@ -157,6 +173,15 @@
            <string>Сгенерировать массив
 случайных чисел (от -125 до 125)</string>
           </property>
+          <property name="icon">
+           <iconset theme="view-refresh"/>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>35</width>
+            <height>35</height>
+           </size>
+          </property>
          </widget>
         </item>
        </layout>
@@ -172,7 +197,7 @@
         <property name="sizeHint" stdset="0">
          <size>
           <width>20</width>
-          <height>13</height>
+          <height>15</height>
          </size>
         </property>
        </spacer>
@@ -260,19 +285,27 @@
              <bool>false</bool>
             </property>
             <property name="sizePolicy">
-             <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+             <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
             </property>
             <property name="font">
              <font>
-              <pointsize>14</pointsize>
+              <pointsize>15</pointsize>
              </font>
             </property>
             <property name="text">
-             <string>Найти элемент
-бинарным поиском</string>
+             <string>Найти элемент бинарным поиском</string>
+            </property>
+            <property name="icon">
+             <iconset theme="system-search"/>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>35</width>
+              <height>35</height>
+             </size>
             </property>
            </widget>
           </item>

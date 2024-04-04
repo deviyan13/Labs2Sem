@@ -46,10 +46,16 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_buttonGenerate_clicked()
 {
+    ui->spinSearch->setValue(0);
+    ui->spinSearch->setEnabled(false);
+
     ui->buttonSort->setEnabled(true);
     ui->comboSorts->setEnabled(true);
     ui->buttonBinSearch->setEnabled(false);
-    ui->spinSearch->setEnabled(false);
+
+    ui->lineIndex->setText("");
+    ui->lineIndex->setStyleSheet("QLineEdit:disabled { background-color: white; }");
+
 
     int count = ui->spinCountIndexes->value();
     scene->setSceneRect(ui->graphicsView->rect());
