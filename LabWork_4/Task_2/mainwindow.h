@@ -8,6 +8,7 @@
 #include "indexofarray.h"
 #include "picturedarray.h"
 #include "mergesort.h"
+#include "dialogmoduleinput.h"
 
 #include <QColor>
 #include <QMessageBox>

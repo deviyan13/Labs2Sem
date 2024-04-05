@@ -312,16 +312,16 @@ int PicturedArray::BinSearch(int digit)
 
 long long PicturedArray::binpow(int digit, int powder, int mod)
 {
-    if(powder == 0) return 1 % mod;
+    if(powder == 0) return 1;
 
-    if(powder % 2)
+    else if(powder % 2 == 0)
     {
         return (binpow(digit % mod, powder / 2, mod) * binpow(digit % mod, powder / 2, mod)) % mod;
     }
 
     else
     {
-        return ((digit % mod) * (binpow(digit % mod, (powder - 1) / 2, mod))) % mod;
+        return ((digit % mod) * (binpow(digit % mod, (powder - 1), mod))) % mod;
     }
 }
 

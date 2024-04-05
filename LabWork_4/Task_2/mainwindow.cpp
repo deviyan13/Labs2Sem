@@ -124,19 +124,31 @@ void MainWindow::on_buttonBinSearch_clicked()
     ui->buttonGenerate->setEnabled(false);
     ui->spinCountIndexes->setEnabled(false);
 
+    long long mod = 1000;
+
+    DialogModuleInput* dialog = new DialogModuleInput();
+
+    connect(dialog, &DialogModuleInput::accepted, [&mod, dialog, this](){
+
+        mod = dialog->getValue();
+    });
+
+    dialog->exec();
+
     int index = array->BinSearch(ui->spinSearch->value());
 
     if(index != -1)
     {
-        ui->lineIndex->setText(QString::number(index));
+        ui->lineIndex->setText(QString::number(array->binpow(index, array->size(), mod)));
         ui->lineIndex->setStyleSheet("QLineEdit:disabled { background-color: rgb(32, 223, 32); }");
-
     }
     else
     {
         ui->lineIndex->setText("Элемента нет!");
         ui->lineIndex->setStyleSheet("QLineEdit:disabled { background-color: rgb(223, 32, 32); }");
     }
+
+
 
     ui->buttonGenerate->setEnabled(true);
     ui->spinCountIndexes->setEnabled(true);

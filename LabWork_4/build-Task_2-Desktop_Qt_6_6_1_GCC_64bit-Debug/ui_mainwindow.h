@@ -33,13 +33,6 @@ class Ui_MainWindow
 public:
     QWidget *centralwidget;
     QGridLayout *gridLayout;
-    QVBoxLayout *verticalLayout_4;
-    QGraphicsView *graphicsView;
-    QComboBox *comboSorts;
-    QSpacerItem *horizontalSpacer_2;
-    QHBoxLayout *horizontalLayout_2;
-    QSpacerItem *horizontalSpacer;
-    QPushButton *buttonClose;
     QVBoxLayout *verticalLayout_6;
     QHBoxLayout *horizontalLayout;
     QVBoxLayout *verticalLayout_2;
@@ -57,8 +50,15 @@ public:
     QLabel *label_3;
     QLineEdit *lineIndex;
     QPushButton *buttonBinSearch;
+    QComboBox *comboSorts;
     QVBoxLayout *verticalLayout_3;
     QPushButton *buttonSort;
+    QVBoxLayout *verticalLayout_4;
+    QGraphicsView *graphicsView;
+    QHBoxLayout *horizontalLayout_2;
+    QSpacerItem *horizontalSpacer;
+    QPushButton *buttonClose;
+    QSpacerItem *horizontalSpacer_2;
     QMenuBar *menubar;
 
     void setupUi(QMainWindow *MainWindow)
@@ -70,51 +70,6 @@ public:
         centralwidget->setObjectName("centralwidget");
         gridLayout = new QGridLayout(centralwidget);
         gridLayout->setObjectName("gridLayout");
-        verticalLayout_4 = new QVBoxLayout();
-        verticalLayout_4->setObjectName("verticalLayout_4");
-        graphicsView = new QGraphicsView(centralwidget);
-        graphicsView->setObjectName("graphicsView");
-
-        verticalLayout_4->addWidget(graphicsView);
-
-
-        gridLayout->addLayout(verticalLayout_4, 3, 0, 1, 3);
-
-        comboSorts = new QComboBox(centralwidget);
-        comboSorts->addItem(QString());
-        comboSorts->addItem(QString());
-        comboSorts->addItem(QString());
-        comboSorts->addItem(QString());
-        comboSorts->setObjectName("comboSorts");
-        comboSorts->setEnabled(false);
-
-        gridLayout->addWidget(comboSorts, 1, 2, 1, 1);
-
-        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
-
-        gridLayout->addItem(horizontalSpacer_2, 2, 1, 1, 1);
-
-        horizontalLayout_2 = new QHBoxLayout();
-        horizontalLayout_2->setObjectName("horizontalLayout_2");
-        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        horizontalLayout_2->addItem(horizontalSpacer);
-
-        buttonClose = new QPushButton(centralwidget);
-        buttonClose->setObjectName("buttonClose");
-        QFont font;
-        font.setFamilies({QString::fromUtf8("Ubuntu")});
-        font.setPointSize(17);
-        buttonClose->setFont(font);
-        QIcon icon(QIcon::fromTheme(QString::fromUtf8("application-exit")));
-        buttonClose->setIcon(icon);
-        buttonClose->setIconSize(QSize(20, 20));
-
-        horizontalLayout_2->addWidget(buttonClose);
-
-
-        gridLayout->addLayout(horizontalLayout_2, 0, 0, 1, 3);
-
         verticalLayout_6 = new QVBoxLayout();
         verticalLayout_6->setObjectName("verticalLayout_6");
         horizontalLayout = new QHBoxLayout();
@@ -124,17 +79,17 @@ public:
         verticalLayout_2->setObjectName("verticalLayout_2");
         label = new QLabel(centralwidget);
         label->setObjectName("label");
-        QFont font1;
-        font1.setPointSize(15);
-        label->setFont(font1);
+        QFont font;
+        font.setPointSize(15);
+        label->setFont(font);
 
         verticalLayout_2->addWidget(label);
 
         spinCountIndexes = new QSpinBox(centralwidget);
         spinCountIndexes->setObjectName("spinCountIndexes");
-        QFont font2;
-        font2.setPointSize(18);
-        spinCountIndexes->setFont(font2);
+        QFont font1;
+        font1.setPointSize(18);
+        spinCountIndexes->setFont(font1);
         spinCountIndexes->setMinimum(1);
         spinCountIndexes->setMaximum(1000);
 
@@ -155,9 +110,9 @@ public:
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(buttonGenerate->sizePolicy().hasHeightForWidth());
         buttonGenerate->setSizePolicy(sizePolicy);
-        buttonGenerate->setFont(font1);
-        QIcon icon1(QIcon::fromTheme(QString::fromUtf8("view-refresh")));
-        buttonGenerate->setIcon(icon1);
+        buttonGenerate->setFont(font);
+        QIcon icon(QIcon::fromTheme(QString::fromUtf8("view-refresh")));
+        buttonGenerate->setIcon(icon);
         buttonGenerate->setIconSize(QSize(35, 35));
 
         horizontalLayout->addWidget(buttonGenerate);
@@ -182,16 +137,16 @@ public:
         verticalLayout_5->setContentsMargins(-1, -1, 19, -1);
         label_2 = new QLabel(centralwidget);
         label_2->setObjectName("label_2");
-        QFont font3;
-        font3.setPointSize(14);
-        label_2->setFont(font3);
+        QFont font2;
+        font2.setPointSize(14);
+        label_2->setFont(font2);
 
         verticalLayout_5->addWidget(label_2);
 
         spinSearch = new QSpinBox(centralwidget);
         spinSearch->setObjectName("spinSearch");
         spinSearch->setEnabled(false);
-        spinSearch->setFont(font2);
+        spinSearch->setFont(font1);
         spinSearch->setMinimum(-125);
         spinSearch->setMaximum(125);
 
@@ -224,9 +179,9 @@ public:
         sizePolicy1.setVerticalStretch(0);
         sizePolicy1.setHeightForWidth(buttonBinSearch->sizePolicy().hasHeightForWidth());
         buttonBinSearch->setSizePolicy(sizePolicy1);
-        buttonBinSearch->setFont(font1);
-        QIcon icon2(QIcon::fromTheme(QString::fromUtf8("system-search")));
-        buttonBinSearch->setIcon(icon2);
+        buttonBinSearch->setFont(font);
+        QIcon icon1(QIcon::fromTheme(QString::fromUtf8("system-search")));
+        buttonBinSearch->setIcon(icon1);
         buttonBinSearch->setIconSize(QSize(35, 35));
 
         horizontalLayout_5->addWidget(buttonBinSearch);
@@ -240,6 +195,16 @@ public:
 
         gridLayout->addLayout(verticalLayout_6, 1, 0, 2, 1);
 
+        comboSorts = new QComboBox(centralwidget);
+        comboSorts->addItem(QString());
+        comboSorts->addItem(QString());
+        comboSorts->addItem(QString());
+        comboSorts->addItem(QString());
+        comboSorts->setObjectName("comboSorts");
+        comboSorts->setEnabled(false);
+
+        gridLayout->addWidget(comboSorts, 1, 2, 1, 1);
+
         verticalLayout_3 = new QVBoxLayout();
         verticalLayout_3->setObjectName("verticalLayout_3");
         buttonSort = new QPushButton(centralwidget);
@@ -247,17 +212,52 @@ public:
         buttonSort->setEnabled(false);
         sizePolicy.setHeightForWidth(buttonSort->sizePolicy().hasHeightForWidth());
         buttonSort->setSizePolicy(sizePolicy);
-        QFont font4;
-        font4.setPointSize(22);
-        buttonSort->setFont(font4);
-        QIcon icon3(QIcon::fromTheme(QString::fromUtf8("emblem-symbolic-link")));
-        buttonSort->setIcon(icon3);
+        QFont font3;
+        font3.setPointSize(22);
+        buttonSort->setFont(font3);
+        QIcon icon2(QIcon::fromTheme(QString::fromUtf8("emblem-symbolic-link")));
+        buttonSort->setIcon(icon2);
         buttonSort->setIconSize(QSize(30, 30));
 
         verticalLayout_3->addWidget(buttonSort);
 
 
         gridLayout->addLayout(verticalLayout_3, 2, 2, 1, 1);
+
+        verticalLayout_4 = new QVBoxLayout();
+        verticalLayout_4->setObjectName("verticalLayout_4");
+        graphicsView = new QGraphicsView(centralwidget);
+        graphicsView->setObjectName("graphicsView");
+
+        verticalLayout_4->addWidget(graphicsView);
+
+
+        gridLayout->addLayout(verticalLayout_4, 3, 0, 1, 3);
+
+        horizontalLayout_2 = new QHBoxLayout();
+        horizontalLayout_2->setObjectName("horizontalLayout_2");
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_2->addItem(horizontalSpacer);
+
+        buttonClose = new QPushButton(centralwidget);
+        buttonClose->setObjectName("buttonClose");
+        QFont font4;
+        font4.setFamilies({QString::fromUtf8("Ubuntu")});
+        font4.setPointSize(17);
+        buttonClose->setFont(font4);
+        QIcon icon3(QIcon::fromTheme(QString::fromUtf8("application-exit")));
+        buttonClose->setIcon(icon3);
+        buttonClose->setIconSize(QSize(20, 20));
+
+        horizontalLayout_2->addWidget(buttonClose);
+
+
+        gridLayout->addLayout(horizontalLayout_2, 0, 0, 1, 3);
+
+        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
+
+        gridLayout->addItem(horizontalSpacer_2, 2, 1, 1, 1);
 
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
@@ -273,19 +273,19 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
+        label->setText(QCoreApplication::translate("MainWindow", "\320\232\320\276\320\273\320\270\321\207\320\265\321\201\321\202\320\262\320\276 \321\215\320\273\320\265\320\274\320\265\320\275\321\202\320\276\320\262 \320\274\320\260\321\201\321\201\320\270\320\262\320\260(\320\276\321\202 1 \320\264\320\276 500)", nullptr));
+        buttonGenerate->setText(QCoreApplication::translate("MainWindow", "\320\241\320\263\320\265\320\275\320\265\321\200\320\270\321\200\320\276\320\262\320\260\321\202\321\214 \320\274\320\260\321\201\321\201\320\270\320\262\n"
+"\321\201\320\273\321\203\321\207\320\260\320\271\320\275\321\213\321\205 \321\207\320\270\321\201\320\265\320\273 (\320\276\321\202 -125 \320\264\320\276 125)", nullptr));
+        label_2->setText(QCoreApplication::translate("MainWindow", "\320\227\320\275\320\260\321\207\320\265\320\275\320\270\320\265 \321\215\320\273\320\265\320\274\320\265\320\275\321\202\320\260 \320\264\320\273\321\217 \320\277\320\276\320\270\321\201\320\272\320\260 (\320\276\321\202 -125 \320\264\320\276 125)", nullptr));
+        label_3->setText(QCoreApplication::translate("MainWindow", "\320\230\320\275\320\264\320\265\320\272\321\201 \320\275\320\260\320\271\320\264\320\265\320\275\320\275\320\276\320\263\320\276 \321\215\320\273\320\265\320\274\320\265\320\275\321\202\320\260 \320\262 \321\201\321\202\320\265\320\277\320\265\320\275\320\270 \320\264\320\273\320\270\320\275\321\213 \320\274\320\260\321\201\321\201\320\270\320\262\320\260 \320\277\320\276 \320\274\320\276\320\264\321\203\320\273\321\216 mod:", nullptr));
+        buttonBinSearch->setText(QCoreApplication::translate("MainWindow", "\320\235\320\260\320\271\321\202\320\270 \321\215\320\273\320\265\320\274\320\265\320\275\321\202 \320\261\320\270\320\275\320\260\321\200\320\275\321\213\320\274 \320\277\320\276\320\270\321\201\320\272\320\276\320\274", nullptr));
         comboSorts->setItemText(0, QCoreApplication::translate("MainWindow", "Merge Sort (\321\201\320\276\321\200\321\202\320\270\321\200\320\276\320\262\320\272\320\260 \321\201\320\273\320\270\321\217\320\275\320\270\320\265\320\274)", nullptr));
         comboSorts->setItemText(1, QCoreApplication::translate("MainWindow", "Quick Sort (\320\261\321\213\321\201\321\202\321\200\320\260\321\217 \321\201\320\276\321\200\321\202\320\270\321\200\320\276\320\262\320\272\320\260)", nullptr));
         comboSorts->setItemText(2, QCoreApplication::translate("MainWindow", "Heap Sort (\321\201\320\276\321\200\321\202\320\270\321\200\320\276\320\262\320\272\320\260 \320\272\321\203\321\207\320\265\320\271)", nullptr));
         comboSorts->setItemText(3, QCoreApplication::translate("MainWindow", "Interpolation Sort (\320\270\320\275\321\202\320\265\321\200\320\277\320\276\320\273\321\217\321\206\320\270\320\276\320\275\320\275\320\260\321\217 \321\201\320\276\321\200\321\202\320\270\321\200\320\276\320\262\320\272\320\260)", nullptr));
 
-        buttonClose->setText(QCoreApplication::translate("MainWindow", "Close", nullptr));
-        label->setText(QCoreApplication::translate("MainWindow", "\320\232\320\276\320\273\320\270\321\207\320\265\321\201\321\202\320\262\320\276 \321\215\320\273\320\265\320\274\320\265\320\275\321\202\320\276\320\262 \320\274\320\260\321\201\321\201\320\270\320\262\320\260(\320\276\321\202 1 \320\264\320\276 500)", nullptr));
-        buttonGenerate->setText(QCoreApplication::translate("MainWindow", "\320\241\320\263\320\265\320\275\320\265\321\200\320\270\321\200\320\276\320\262\320\260\321\202\321\214 \320\274\320\260\321\201\321\201\320\270\320\262\n"
-"\321\201\320\273\321\203\321\207\320\260\320\271\320\275\321\213\321\205 \321\207\320\270\321\201\320\265\320\273 (\320\276\321\202 -125 \320\264\320\276 125)", nullptr));
-        label_2->setText(QCoreApplication::translate("MainWindow", "\320\227\320\275\320\260\321\207\320\265\320\275\320\270\320\265 \321\215\320\273\320\265\320\274\320\265\320\275\321\202\320\260 \320\264\320\273\321\217 \320\277\320\276\320\270\321\201\320\272\320\260 (\320\276\321\202 -125 \320\264\320\276 125)", nullptr));
-        label_3->setText(QCoreApplication::translate("MainWindow", "\320\230\320\275\320\264\320\265\320\272\321\201 \320\275\320\260\320\271\320\264\320\265\320\275\320\275\320\276\320\263\320\276 \321\215\320\273\320\265\320\274\320\265\320\275\321\202\320\260 \320\262 \321\201\321\202\320\265\320\277\320\265\320\275\320\270 \320\264\320\273\320\270\320\275\321\213 \320\274\320\260\321\201\321\201\320\270\320\262\320\260 \320\277\320\276 \320\274\320\276\320\264\321\203\320\273\321\216 n:", nullptr));
-        buttonBinSearch->setText(QCoreApplication::translate("MainWindow", "\320\235\320\260\320\271\321\202\320\270 \321\215\320\273\320\265\320\274\320\265\320\275\321\202 \320\261\320\270\320\275\320\260\321\200\320\275\321\213\320\274 \320\277\320\276\320\270\321\201\320\272\320\276\320\274", nullptr));
         buttonSort->setText(QCoreApplication::translate("MainWindow", "\320\236\321\202\321\201\320\276\321\200\321\202\320\270\321\200\320\276\320\262\320\260\321\202\321\214 \320\274\320\260\321\201\321\201\320\270\320\262", nullptr));
+        buttonClose->setText(QCoreApplication::translate("MainWindow", "Close", nullptr));
     } // retranslateUi
 
 };

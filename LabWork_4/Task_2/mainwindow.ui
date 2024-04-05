@@ -15,95 +15,6 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="3" column="0" colspan="3">
-     <layout class="QVBoxLayout" name="verticalLayout_4">
-      <item>
-       <widget class="QGraphicsView" name="graphicsView"/>
-      </item>
-     </layout>
-    </item>
-    <item row="1" column="2">
-     <widget class="QComboBox" name="comboSorts">
-      <property name="enabled">
-       <bool>false</bool>
-      </property>
-      <item>
-       <property name="text">
-        <string>Merge Sort (сортировка слиянием)</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Quick Sort (быстрая сортировка)</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Heap Sort (сортировка кучей)</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Interpolation Sort (интерполяционная сортировка)</string>
-       </property>
-      </item>
-     </widget>
-    </item>
-    <item row="2" column="1">
-     <spacer name="horizontalSpacer_2">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-      <property name="sizeType">
-       <enum>QSizePolicy::Fixed</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>40</width>
-        <height>20</height>
-       </size>
-      </property>
-     </spacer>
-    </item>
-    <item row="0" column="0" colspan="3">
-     <layout class="QHBoxLayout" name="horizontalLayout_2">
-      <item>
-       <spacer name="horizontalSpacer">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item>
-       <widget class="QPushButton" name="buttonClose">
-        <property name="font">
-         <font>
-          <family>Ubuntu</family>
-          <pointsize>17</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>Close</string>
-        </property>
-        <property name="icon">
-         <iconset theme="application-exit"/>
-        </property>
-        <property name="iconSize">
-         <size>
-          <width>20</width>
-          <height>20</height>
-         </size>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </item>
     <item row="1" column="0" rowspan="2">
      <layout class="QVBoxLayout" name="verticalLayout_6">
       <item>
@@ -269,7 +180,7 @@
               <item>
                <widget class="QLabel" name="label_3">
                 <property name="text">
-                 <string>Индекс найденного элемента в степени длины массива по модулю n:</string>
+                 <string>Индекс найденного элемента в степени длины массива по модулю mod:</string>
                 </property>
                </widget>
               </item>
@@ -320,6 +231,33 @@
       </item>
      </layout>
     </item>
+    <item row="1" column="2">
+     <widget class="QComboBox" name="comboSorts">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <item>
+       <property name="text">
+        <string>Merge Sort (сортировка слиянием)</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Quick Sort (быстрая сортировка)</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Heap Sort (сортировка кучей)</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Interpolation Sort (интерполяционная сортировка)</string>
+       </property>
+      </item>
+     </widget>
+    </item>
     <item row="2" column="2">
      <layout class="QVBoxLayout" name="verticalLayout_3">
       <item>
@@ -353,6 +291,68 @@
        </widget>
       </item>
      </layout>
+    </item>
+    <item row="3" column="0" colspan="3">
+     <layout class="QVBoxLayout" name="verticalLayout_4">
+      <item>
+       <widget class="QGraphicsView" name="graphicsView"/>
+      </item>
+     </layout>
+    </item>
+    <item row="0" column="0" colspan="3">
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QPushButton" name="buttonClose">
+        <property name="font">
+         <font>
+          <family>Ubuntu</family>
+          <pointsize>17</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Close</string>
+        </property>
+        <property name="icon">
+         <iconset theme="application-exit"/>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>20</width>
+          <height>20</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="2" column="1">
+     <spacer name="horizontalSpacer_2">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeType">
+       <enum>QSizePolicy::Fixed</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>40</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
     </item>
    </layout>
   </widget>
