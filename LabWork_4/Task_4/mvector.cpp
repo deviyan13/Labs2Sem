@@ -59,7 +59,7 @@ T &Mvector<T>::operator[](size_t n_) const {
 
 template<typename T>
 template<typename... Args>
-void Mvector<T>::emplace(Mvector::cnonstIterator pos, Args &&... args) {
+void Mvector<T>::emplace(Mvector::constIterator pos, Args &&... args) {
     T tmp(args...);
     insert(pos, tmp);
 }
@@ -72,7 +72,7 @@ void Mvector<T>::emplace_back(Args &&... args) {
 }
 
 template<typename T>
-void Mvector<T>::insert(Mvector::cnonstIterator pos_, T const &tmp_) {
+void Mvector<T>::insert(Mvector::constIterator pos_, T const &tmp_) {
     size_t pos = (pos_).base() - arr_;
     reserve(size_ + 1);
     for (size_t i = size_; i > pos; i--) {
@@ -84,7 +84,7 @@ void Mvector<T>::insert(Mvector::cnonstIterator pos_, T const &tmp_) {
 }
 
 template<typename T>
-void Mvector<T>::insert(Mvector::cnonstIterator pos_, T &&tmp_) {
+void Mvector<T>::insert(Mvector::constIterator pos_, T &&tmp_) {
     size_t pos = pos_.base() - arr_;
     reserve(size_ + 1);
     for (size_t i = size_; i > pos; i--) {
@@ -110,7 +110,7 @@ void Mvector<T>::assign(size_t n, T tmp_) {
 }
 
 template<typename T>
-void Mvector<T>::assign(Mvector::cnonstIterator beg, Mvector::cnonstIterator end) {
+void Mvector<T>::assign(Mvector::constIterator beg, Mvector::constIterator end) {
     clear();
     int sz = end.base() - beg.base();
     resize(sz);
@@ -234,13 +234,13 @@ Mvector<T>::bIterator Mvector<T>::end() {
 }
 
 template<typename T>
-Mvector<T>::cnonstIterator Mvector<T>::cbegin() const {
-    return cnonstIterator(arr_);
+Mvector<T>::constIterator Mvector<T>::cbegin() const {
+    return constIterator(arr_);
 }
 
 template<typename T>
-Mvector<T>::cnonstIterator Mvector<T>::cend() const {
-    return cnonstIterator(arr_ + size_);
+Mvector<T>::constIterator Mvector<T>::cend() const {
+    return constIterator(arr_ + size_);
 }
 
 template<typename T>

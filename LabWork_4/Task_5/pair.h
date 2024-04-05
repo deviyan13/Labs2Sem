@@ -22,7 +22,6 @@ struct pair {
     void operator=(pair const &pair_) {
         first = pair_.first;
         second = pair_.second;
-
     }
 
 };

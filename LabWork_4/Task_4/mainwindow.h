@@ -2,7 +2,11 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "iterator.h"
 #include "mvector.h"
+#include "dialoginputpushback.h"
+
+#include <QMessageBox>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -17,6 +21,23 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+
+    Mvector<int> vector;
+
+    void updateListWidget();
+
+private slots:
+    void on_buttonClear_clicked();
+
+    void on_buttonPopBack_clicked();
+
+    void on_buttonPushBack_clicked();
+
+    void on_buttonAt_clicked();
+
+    void on_buttonReserve_clicked();
+
+    void on_buttonResize_clicked();
 
 private:
     Ui::MainWindow *ui;

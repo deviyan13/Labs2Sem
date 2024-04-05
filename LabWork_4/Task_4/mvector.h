@@ -8,9 +8,9 @@
 
 template<typename T>
 class Mvector {
-    using b_iterator = Iterator<T>;
-    using r_iterator = RIterator<T>;
-    using c_iterator = Iterator<const T>;
+    using bIterator = Iterator<T>;
+    using rIterator = RIterator<T>;
+    using constIterator = Iterator<const T>;
 private:
     T *arr_ = nullptr;
     size_t size_ = 0;
@@ -36,14 +36,14 @@ public:
     // Add something
 
     template<typename ... Args>
-    void emplace(c_iterator pos, Args &&... args);
+    void emplace(constIterator pos, Args &&... args);
 
     template<typename ... Args>
     void emplace_back(Args &&... args);
 
-    void insert(c_iterator pos_, T const &tmp_);
+    void insert(constIterator pos_, T const &tmp_);
 
-    void insert(c_iterator pos_, T &&tmp_);
+    void insert(constIterator pos_, T &&tmp_);
 
     void push_back(T tmp_);
 
@@ -51,13 +51,13 @@ public:
 
     void assign(size_t n, T tmp_);
 
-    void assign(c_iterator beg, c_iterator end);
+    void assign(constIterator beg, constIterator end);
 
     void clear();
 
-    void erase(Mvector<T>::b_iterator tmp);
+    void erase(Mvector<T>::bIterator tmp);
 
-    void erase(Mvector<T>::b_iterator beg, Mvector<T>::b_iterator end);
+    void erase(Mvector<T>::bIterator beg, Mvector<T>::bIterator end);
 
     void pop_back();
 
@@ -89,17 +89,17 @@ public:
     void swap(Mvector<T> &toSwap);
 
     // Iterators
-    b_iterator begin();
+    bIterator begin();
 
-    b_iterator end();
+    bIterator end();
 
-    r_iterator rbegin();
+    rIterator rbegin();
 
-    r_iterator rend();
+    rIterator rend();
 
-    c_iterator cbegin() const;
+    constIterator cbegin() const;
 
-    c_iterator cend() const;
+    constIterator cend() const;
 
 
 };
