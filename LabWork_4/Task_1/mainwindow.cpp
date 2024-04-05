@@ -116,6 +116,9 @@ void MainWindow::on_buttonBinSearch_clicked()
 {
     ui->buttonBinSearch->setEnabled(false);
 
+    ui->buttonGenerate->setEnabled(false);
+    ui->spinCountIndexes->setEnabled(false);
+
     int index = array->BinSearch(ui->spinSearch->value());
 
     if(index != -1)
@@ -129,6 +132,9 @@ void MainWindow::on_buttonBinSearch_clicked()
         ui->lineIndex->setText("Элемента нет!");
         ui->lineIndex->setStyleSheet("QLineEdit:disabled { background-color: rgb(223, 32, 32); }");
     }
+
+    ui->buttonGenerate->setEnabled(true);
+    ui->spinCountIndexes->setEnabled(true);
 
 }
 

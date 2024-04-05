@@ -121,11 +121,14 @@ void PicturedArray::Merge(int low, int mid, int high)
     // копируем обратно в исходный массив, чтобы отразить порядок сортировки
     for (int i = low; i <= high; i++) {
         array[i] = aux[i];
+        array[i].second = QColor(255,127,80);
 
         updateArray();
         QEventLoop loop;
         QTimer::singleShot(30, &loop, &QEventLoop::quit);
         loop.exec();
+
+        resetColors();
     }
 
 }
@@ -163,11 +166,17 @@ void PicturedArray::QuickSort(int left, int right)
             r--;
         if (l <= r)
         {
+            array[l].second = QColor(255,127,80);
+            array[r].second = QColor(255,127,80);
+            updateArray();
+
             swap (l++, r--);
             updateArray();
             QEventLoop loop;
             QTimer::singleShot(30, &loop, &QEventLoop::quit);
             loop.exec();
+
+            resetColors();
         }
     }
     if (left < r)
@@ -175,7 +184,6 @@ void PicturedArray::QuickSort(int left, int right)
     if (right > l)
         QuickSort(l, right);
 }
-
 // Процедура для преобразования в двоичную кучу поддерева с корневым узлом i, что является
 // индексом в arr[]. n - размер кучи
 
@@ -197,12 +205,19 @@ void PicturedArray::heapify(int n, int i)
     // Если самый большой элемент не корень
     if (largest != i)
     {
+        array[i].second = QColor(255,127,80);
+        array[largest].second = QColor(255,127,80);
+
+        updateArray();
+
         swap(i, largest);
 
         updateArray();
         QEventLoop loop;
         QTimer::singleShot(30, &loop, &QEventLoop::quit);
         loop.exec();
+
+        resetColors();
 
         // Рекурсивно преобразуем в двоичную кучу затронутое поддерево
         heapify(n, largest);
@@ -217,8 +232,13 @@ void PicturedArray::heapSort(int n)
         heapify(n, i);
 
     // Один за другим извлекаем элементы из кучи
-    for (int i=n-1; i>=0; i--)
+    for (int i = n - 1; i >= 0; i--)
     {
+
+        array[i].second = QColor(255,127,80);
+        array[0].second = QColor(255,127,80);
+
+        updateArray();
         // Перемещаем текущий корень в конец
         swap(0, i);
 
@@ -227,6 +247,8 @@ void PicturedArray::heapSort(int n)
         QTimer::singleShot(30, &loop, &QEventLoop::quit);
         loop.exec();
 
+
+        resetColors();
         // вызываем процедуру heapify на уменьшенной куче
         heapify(i, 0);
     }
