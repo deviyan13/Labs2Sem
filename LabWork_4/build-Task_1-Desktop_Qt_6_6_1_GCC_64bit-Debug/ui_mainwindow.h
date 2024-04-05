@@ -11,6 +11,7 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QFrame>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
@@ -33,7 +34,7 @@ public:
     QListWidget *listWidget;
     QTableWidget *tableIter;
     QLabel *label_4;
-    QWidget *widget;
+    QWidget *layoutWidget;
     QVBoxLayout *verticalLayout;
     QLabel *label;
     QLineEdit *lineCapacity;
@@ -41,7 +42,7 @@ public:
     QLineEdit *lineMaxSize;
     QLabel *label_3;
     QLineEdit *lineSize;
-    QWidget *widget1;
+    QWidget *layoutWidget1;
     QGridLayout *gridLayout;
     QPushButton *buttonClear;
     QPushButton *buttonAt;
@@ -49,6 +50,9 @@ public:
     QPushButton *buttonReserve;
     QPushButton *buttonPushBack;
     QPushButton *buttonResize;
+    QFrame *line;
+    QTableWidget *matrix;
+    QLabel *label_5;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -56,7 +60,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName("MainWindow");
-        MainWindow->resize(743, 400);
+        MainWindow->resize(743, 684);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName("centralwidget");
         listWidget = new QListWidget(centralwidget);
@@ -94,82 +98,100 @@ public:
         tableIter->setGeometry(QRect(510, 10, 211, 321));
         label_4 = new QLabel(centralwidget);
         label_4->setObjectName("label_4");
-        label_4->setGeometry(QRect(10, 0, 161, 17));
-        widget = new QWidget(centralwidget);
-        widget->setObjectName("widget");
-        widget->setGeometry(QRect(290, 20, 211, 161));
-        verticalLayout = new QVBoxLayout(widget);
+        label_4->setGeometry(QRect(10, 0, 251, 17));
+        layoutWidget = new QWidget(centralwidget);
+        layoutWidget->setObjectName("layoutWidget");
+        layoutWidget->setGeometry(QRect(290, 20, 211, 161));
+        verticalLayout = new QVBoxLayout(layoutWidget);
         verticalLayout->setObjectName("verticalLayout");
         verticalLayout->setContentsMargins(0, 0, 0, 0);
-        label = new QLabel(widget);
+        label = new QLabel(layoutWidget);
         label->setObjectName("label");
 
         verticalLayout->addWidget(label);
 
-        lineCapacity = new QLineEdit(widget);
+        lineCapacity = new QLineEdit(layoutWidget);
         lineCapacity->setObjectName("lineCapacity");
         lineCapacity->setReadOnly(true);
 
         verticalLayout->addWidget(lineCapacity);
 
-        label_2 = new QLabel(widget);
+        label_2 = new QLabel(layoutWidget);
         label_2->setObjectName("label_2");
 
         verticalLayout->addWidget(label_2);
 
-        lineMaxSize = new QLineEdit(widget);
+        lineMaxSize = new QLineEdit(layoutWidget);
         lineMaxSize->setObjectName("lineMaxSize");
         lineMaxSize->setReadOnly(true);
 
         verticalLayout->addWidget(lineMaxSize);
 
-        label_3 = new QLabel(widget);
+        label_3 = new QLabel(layoutWidget);
         label_3->setObjectName("label_3");
 
         verticalLayout->addWidget(label_3);
 
-        lineSize = new QLineEdit(widget);
+        lineSize = new QLineEdit(layoutWidget);
         lineSize->setObjectName("lineSize");
         lineSize->setReadOnly(true);
 
         verticalLayout->addWidget(lineSize);
 
-        widget1 = new QWidget(centralwidget);
-        widget1->setObjectName("widget1");
-        widget1->setGeometry(QRect(300, 240, 177, 89));
-        gridLayout = new QGridLayout(widget1);
+        layoutWidget1 = new QWidget(centralwidget);
+        layoutWidget1->setObjectName("layoutWidget1");
+        layoutWidget1->setGeometry(QRect(300, 240, 177, 89));
+        gridLayout = new QGridLayout(layoutWidget1);
         gridLayout->setObjectName("gridLayout");
         gridLayout->setContentsMargins(0, 0, 0, 0);
-        buttonClear = new QPushButton(widget1);
+        buttonClear = new QPushButton(layoutWidget1);
         buttonClear->setObjectName("buttonClear");
 
         gridLayout->addWidget(buttonClear, 0, 0, 1, 1);
 
-        buttonAt = new QPushButton(widget1);
+        buttonAt = new QPushButton(layoutWidget1);
         buttonAt->setObjectName("buttonAt");
 
         gridLayout->addWidget(buttonAt, 0, 1, 1, 1);
 
-        buttonPopBack = new QPushButton(widget1);
+        buttonPopBack = new QPushButton(layoutWidget1);
         buttonPopBack->setObjectName("buttonPopBack");
 
         gridLayout->addWidget(buttonPopBack, 1, 0, 1, 1);
 
-        buttonReserve = new QPushButton(widget1);
+        buttonReserve = new QPushButton(layoutWidget1);
         buttonReserve->setObjectName("buttonReserve");
 
         gridLayout->addWidget(buttonReserve, 1, 1, 1, 1);
 
-        buttonPushBack = new QPushButton(widget1);
+        buttonPushBack = new QPushButton(layoutWidget1);
         buttonPushBack->setObjectName("buttonPushBack");
 
         gridLayout->addWidget(buttonPushBack, 2, 0, 1, 1);
 
-        buttonResize = new QPushButton(widget1);
+        buttonResize = new QPushButton(layoutWidget1);
         buttonResize->setObjectName("buttonResize");
 
         gridLayout->addWidget(buttonResize, 2, 1, 1, 1);
 
+        line = new QFrame(centralwidget);
+        line->setObjectName("line");
+        line->setGeometry(QRect(-30, 350, 811, 45));
+        line->setLineWidth(5);
+        line->setFrameShape(QFrame::HLine);
+        line->setFrameShadow(QFrame::Sunken);
+        matrix = new QTableWidget(centralwidget);
+        if (matrix->columnCount() < 2)
+            matrix->setColumnCount(2);
+        QTableWidgetItem *__qtablewidgetitem11 = new QTableWidgetItem();
+        matrix->setHorizontalHeaderItem(0, __qtablewidgetitem11);
+        QTableWidgetItem *__qtablewidgetitem12 = new QTableWidgetItem();
+        matrix->setHorizontalHeaderItem(1, __qtablewidgetitem12);
+        matrix->setObjectName("matrix");
+        matrix->setGeometry(QRect(30, 420, 681, 192));
+        label_5 = new QLabel(centralwidget);
+        label_5->setObjectName("label_5");
+        label_5->setGeometry(QRect(210, 400, 331, 17));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
@@ -209,7 +231,7 @@ public:
         ___qtablewidgetitem9->setText(QCoreApplication::translate("MainWindow", "back()", nullptr));
         QTableWidgetItem *___qtablewidgetitem10 = tableIter->verticalHeaderItem(9);
         ___qtablewidgetitem10->setText(QCoreApplication::translate("MainWindow", "data()", nullptr));
-        label_4->setText(QCoreApplication::translate("MainWindow", "\320\241\320\276\320\264\320\265\321\200\320\266\320\270\320\274\320\276\320\265 \320\262\320\265\321\202\320\272\320\276\321\200\320\260", nullptr));
+        label_4->setText(QCoreApplication::translate("MainWindow", "\320\237\320\265\321\200\320\262\321\213\320\271 \320\260\321\200\320\263\321\203\320\274\320\265\320\275\321\202 pair (vector<int>)", nullptr));
         label->setText(QCoreApplication::translate("MainWindow", "capacity:", nullptr));
         label_2->setText(QCoreApplication::translate("MainWindow", "max_size:", nullptr));
         label_3->setText(QCoreApplication::translate("MainWindow", "size", nullptr));
@@ -219,6 +241,11 @@ public:
         buttonReserve->setText(QCoreApplication::translate("MainWindow", "reserve()", nullptr));
         buttonPushBack->setText(QCoreApplication::translate("MainWindow", "push_back()", nullptr));
         buttonResize->setText(QCoreApplication::translate("MainWindow", "resize()", nullptr));
+        QTableWidgetItem *___qtablewidgetitem11 = matrix->horizontalHeaderItem(0);
+        ___qtablewidgetitem11->setText(QCoreApplication::translate("MainWindow", "int", nullptr));
+        QTableWidgetItem *___qtablewidgetitem12 = matrix->horizontalHeaderItem(1);
+        ___qtablewidgetitem12->setText(QCoreApplication::translate("MainWindow", "double", nullptr));
+        label_5->setText(QCoreApplication::translate("MainWindow", "\320\222\321\202\320\276\321\200\320\276\320\271 \320\260\321\200\320\263\321\203\320\274\320\265\320\275\321\202 pair (vector <pair<int,double>>)", nullptr));
     } // retranslateUi
 
 };

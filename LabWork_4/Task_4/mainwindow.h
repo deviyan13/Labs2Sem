@@ -22,8 +22,6 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-    Mvector<int> vector;
-
     void updateListWidget();
 
 private slots:
@@ -41,5 +39,6 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+    Mvector<int> vector;
 };
 #endif // MAINWINDOW_H

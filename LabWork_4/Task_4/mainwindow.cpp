@@ -5,15 +5,15 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
+    srand(time(NULL));
+
     ui->setupUi(this);
     ui->tableIter->resizeColumnsToContents();
 
-    vector.resize(3);
-
-    vector[0] = 1;
-    vector[1] = 2;
-    vector[2] = 3;
-
+    for(int i = 0; i < rand() % 190 + 10; i++)
+    {
+        vector.push_back(rand() % 1000 - 500);
+    }
 
     updateListWidget();
 
