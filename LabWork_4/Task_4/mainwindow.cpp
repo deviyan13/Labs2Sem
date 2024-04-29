@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <iostream>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -9,6 +10,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     ui->setupUi(this);
     ui->tableIter->resizeColumnsToContents();
+
 
     for(int i = 0; i < rand() % 190 + 10; i++)
     {
@@ -37,15 +39,15 @@ void MainWindow::updateListWidget()
     ui->lineMaxSize->setText(QString::number(vector.max_size()));
     ui->lineSize->setText(QString::number(vector.size()));
 
-    ui->tableIter->setItem(0, 0, new QTableWidgetItem(!vector.empty() ? QString::number(*vector.begin()) : "Error"));
-    ui->tableIter->setItem(1, 0, new QTableWidgetItem(!vector.empty() ? QString::number(*vector.end()) : "Error"));
-    ui->tableIter->setItem(2, 0, new QTableWidgetItem(!vector.empty() ? QString::number(*vector.cbegin()) : "Error"));
-    ui->tableIter->setItem(3, 0, new QTableWidgetItem(!vector.empty() ? QString::number(*vector.cend()) : "Error"));
-    ui->tableIter->setItem(4, 0, new QTableWidgetItem(!vector.empty() ? QString::number(*vector.rbegin()) : "Error"));
-    ui->tableIter->setItem(5, 0, new QTableWidgetItem(!vector.empty() ? QString::number(*vector.rend()) : "Error"));
+    ui->tableIter->setItem(0, 0, new QTableWidgetItem(QString::number(*vector.begin())));
+    ui->tableIter->setItem(1, 0, new QTableWidgetItem(QString::number(*vector.end())));
+    ui->tableIter->setItem(2, 0, new QTableWidgetItem(QString::number(*vector.cbegin())));
+    ui->tableIter->setItem(3, 0, new QTableWidgetItem(QString::number(*vector.cend())));
+    ui->tableIter->setItem(4, 0, new QTableWidgetItem(QString::number(*vector.rbegin())));
+    ui->tableIter->setItem(5, 0, new QTableWidgetItem(QString::number(*vector.rend())));
     ui->tableIter->setItem(6, 0, new QTableWidgetItem(vector.empty() ? "True" : "False"));
-    ui->tableIter->setItem(7, 0, new QTableWidgetItem(!vector.empty() ? QString::number(vector.front()) : "Error"));
-    ui->tableIter->setItem(8, 0, new QTableWidgetItem(!vector.empty() ? QString::number(vector.back()) : "Error"));
+    ui->tableIter->setItem(7, 0, new QTableWidgetItem(QString::number(vector.front())));
+    ui->tableIter->setItem(8, 0, new QTableWidgetItem(QString::number(vector.back())));
     ui->tableIter->setItem(9, 0, new QTableWidgetItem(QString("0x%1").arg(reinterpret_cast<quintptr>(vector.data()), 0, 16)));
 
     ui->tableIter->resizeColumnsToContents();

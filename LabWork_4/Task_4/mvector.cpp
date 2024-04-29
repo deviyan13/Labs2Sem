@@ -224,32 +224,32 @@ void Mvector<T>::swap(Mvector<T> &toSwap) {
 }
 
 template<typename T>
-Mvector<T>::bIterator Mvector<T>::begin() {
+typename Mvector<T>::bIterator Mvector<T>::begin() {
     return bIterator(arr_);
 }
 
 template<typename T>
-Mvector<T>::bIterator Mvector<T>::end() {
+typename Mvector<T>::bIterator Mvector<T>::end() {
     return bIterator(arr_ + size_);
 }
 
 template<typename T>
-Mvector<T>::constIterator Mvector<T>::cbegin() const {
+typename Mvector<T>::constIterator Mvector<T>::cbegin() const {
     return constIterator(arr_);
 }
 
 template<typename T>
-Mvector<T>::constIterator Mvector<T>::cend() const {
+typename Mvector<T>::constIterator Mvector<T>::cend() const {
     return constIterator(arr_ + size_);
 }
 
 template<typename T>
-Mvector<T>::rIterator Mvector<T>::rbegin() {
+typename Mvector<T>::rIterator Mvector<T>::rbegin() {
     return rIterator(arr_ + size_);
 }
 
 template<typename T>
-Mvector<T>::rIterator Mvector<T>::rend() {
+typename Mvector<T>::rIterator Mvector<T>::rend() {
     return rIterator(arr_);
 }
 

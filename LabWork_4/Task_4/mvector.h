@@ -12,7 +12,7 @@ class Mvector {
     using rIterator = RIterator<T>;
     using constIterator = Iterator<const T>;
 private:
-    T *arr_ = nullptr;
+    T *arr_;
     size_t size_ = 0;
     size_t capacity_ = 0;
 
@@ -26,8 +26,6 @@ public:
     Mvector(std::initializer_list<T> list_);
 
     ~Mvector();
-
-    /*Mvector<T> &operator=(Mvector<T> &tmp_);*/
 
 
 
@@ -100,8 +98,6 @@ public:
     constIterator cbegin() const;
 
     constIterator cend() const;
-
-
 };
 
 

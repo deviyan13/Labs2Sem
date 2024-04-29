@@ -56,6 +56,7 @@ void MainWindow::on_buttonGenerate_clicked()
     ui->lineIndex->setText("");
     ui->lineIndex->setStyleSheet("QLineEdit:disabled { background-color: white; }");
 
+    ui->buttonGenerate->setEnabled(false);
 
     int count = ui->spinCountIndexes->value();
     scene->setSceneRect(ui->graphicsView->rect());
@@ -63,11 +64,25 @@ void MainWindow::on_buttonGenerate_clicked()
     array->clear();
 
 
+    if(count > 200)
+    {
+        QMessageBox::information(this, "Info", "Массив генерируется, подождите, пожалуйста)");
+    }
+
     for(int i = 0; i < count; i++)
     {
         int index = rand() % 250 - 125;
         array->push_back(index, QColor(0, 179, 134, index + 130));
     }
+
+    if(count > 200)
+    {
+        QEventLoop loop;
+        QTimer::singleShot(1000, &loop, &QEventLoop::quit);
+        loop.exec();
+    }
+
+    ui->buttonGenerate->setEnabled(true);
 }
 
 void MainWindow::on_buttonSort_clicked()
