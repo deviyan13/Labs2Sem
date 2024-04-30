@@ -13,9 +13,13 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QGridLayout>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
+#include <QtWidgets/QTextEdit>
+#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -28,6 +32,13 @@ public:
     QWidget *widgetForKeyboard;
     QWidget *widget;
     QComboBox *comboBox;
+    QWidget *verticalLayoutWidget;
+    QVBoxLayout *verticalLayout;
+    QTextEdit *textEdit;
+    QPushButton *openFileButton;
+    QPushButton *beginButton;
+    QLabel *labelTimer;
+    QLabel *labelWords;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -52,7 +63,37 @@ public:
         widget->setAutoFillBackground(false);
         comboBox = new QComboBox(widget);
         comboBox->setObjectName("comboBox");
-        comboBox->setGeometry(QRect(50, 90, 171, 31));
+        comboBox->setGeometry(QRect(450, 220, 171, 31));
+        verticalLayoutWidget = new QWidget(widget);
+        verticalLayoutWidget->setObjectName("verticalLayoutWidget");
+        verticalLayoutWidget->setGeometry(QRect(0, 90, 781, 111));
+        verticalLayout = new QVBoxLayout(verticalLayoutWidget);
+        verticalLayout->setObjectName("verticalLayout");
+        verticalLayout->setContentsMargins(0, 0, 0, 0);
+        textEdit = new QTextEdit(verticalLayoutWidget);
+        textEdit->setObjectName("textEdit");
+        QFont font;
+        font.setPointSize(16);
+        textEdit->setFont(font);
+
+        verticalLayout->addWidget(textEdit);
+
+        openFileButton = new QPushButton(widget);
+        openFileButton->setObjectName("openFileButton");
+        openFileButton->setGeometry(QRect(640, 220, 121, 31));
+        beginButton = new QPushButton(widget);
+        beginButton->setObjectName("beginButton");
+        beginButton->setGeometry(QRect(600, 30, 88, 25));
+        labelTimer = new QLabel(widget);
+        labelTimer->setObjectName("labelTimer");
+        labelTimer->setGeometry(QRect(50, 30, 121, 31));
+        labelTimer->setFrameShape(QFrame::Box);
+        labelTimer->setAlignment(Qt::AlignCenter);
+        labelWords = new QLabel(widget);
+        labelWords->setObjectName("labelWords");
+        labelWords->setGeometry(QRect(220, 30, 121, 31));
+        labelWords->setFrameShape(QFrame::Box);
+        labelWords->setAlignment(Qt::AlignCenter);
 
         gridLayout->addWidget(widget, 0, 0, 1, 1);
 
@@ -73,6 +114,10 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "Task_1", nullptr));
+        openFileButton->setText(QCoreApplication::translate("MainWindow", "\320\236\321\202\320\272\321\200\321\213\321\202\321\214 \321\204\320\260\320\271\320\273", nullptr));
+        beginButton->setText(QCoreApplication::translate("MainWindow", "PushButton", nullptr));
+        labelTimer->setText(QCoreApplication::translate("MainWindow", "00:00.000", nullptr));
+        labelWords->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
     } // retranslateUi
 
 };

@@ -1,5 +1,6 @@
 #ifndef KEYBOARD_H
 #define KEYBOARD_H
+#include <QTextEdit>
 #include <QPushButton>
 #include <QKeyEvent>
 #include <QButtonGroup>
@@ -8,13 +9,13 @@
 
 class Keyboard : public QVBoxLayout
 {
+    Q_OBJECT
 public:
     Keyboard();
 
     void keyPressEvent(QKeyEvent* event);
 
     void initializeKeyButtonVector();
-    void initializeKeyButtonMap();
 
 
     void setBelaruisan();
@@ -22,11 +23,19 @@ public:
     void setFrench();
     void setArabic();
     void setHebrew();
+    void setChinese();
+    void clear();
+
+    void setTextEdit(QTextEdit* textEdit);
 
 private:
-    //QMap<QString, QPushButton*> buttons;
+
+    QTextEdit* textEdit;
+    bool isCorrectWord;
+
     QVector <QPushButton*> buttons;
     QMap<QString, QPushButton*> keyButtonMap;
+    QMap<int, QPushButton*> idsOfButtons;
 
     QHBoxLayout* firstRow;
     QHBoxLayout* secondRow;
@@ -47,7 +56,6 @@ private:
     QPushButton* num0Button;
     QPushButton* minusButton;
     QPushButton* equalButton;
-    QPushButton* backspaceButton;
 
     QPushButton* tabButton;
     QPushButton* qButton;
@@ -99,6 +107,10 @@ private:
     QPushButton* rightAltButton;
     QPushButton* rightFnButton;
     QPushButton* rightCtrlButton;
+
+signals:
+    void oneWordWasInputed();
+    void endOfInput();
 
 };
 

@@ -1,7 +1,8 @@
 #include "keyboard.h"
-
 Keyboard::Keyboard()
 {
+    isCorrectWord = true;
+
     this->setSpacing(3);
     this->setContentsMargins(0,0,0,0);
     this->setAlignment(Qt::AlignCenter);
@@ -14,29 +15,28 @@ Keyboard::Keyboard()
     fourthRow = new QHBoxLayout();
     fifthRow = new QHBoxLayout();
 
-    for(int i = 0; i < 14; i++)
+    for(int i = 0; i < 13; i++)
     {
-        if(buttons[i] == backspaceButton) buttons[i]->setFixedSize(75, 50);
         firstRow->addWidget(buttons[i]);
     }
-    for(int i = 14; i < 14 + 14; i++)
+    for(int i = 13; i < 13 + 14; i++)
     {
         if(buttons[i] == tabButton) buttons[i]->setFixedSize(75, 50);
         secondRow->addWidget(buttons[i]);
     }
-    for(int i = 28; i < 28 + 13; i++)
+    for(int i = 27; i < 27 + 13; i++)
     {
         if(buttons[i] == capsLockButton) buttons[i]->setFixedSize(88, 50);
         if(buttons[i] == enterButton) buttons[i]->setFixedSize(88, 50);
         thirdRow->addWidget(buttons[i]);
     }
-    for(int i = 41; i < 41 + 12; i++)
+    for(int i = 40; i < 40 + 12; i++)
     {
         if(buttons[i] == leftShiftButton) buttons[i]->setFixedSize(113, 50);
         if(buttons[i] == rightShiftButton) buttons[i]->setFixedSize(113, 50);
         fourthRow->addWidget(buttons[i]);
     }
-    for(int i = 53; i < 53 + 8; i++)
+    for(int i = 52; i < 52 + 8; i++)
     {
         if(buttons[i] == spaceButton) buttons[i]->setFixedSize(375, 50);
         fifthRow->addWidget(buttons[i]);
@@ -47,10 +47,6 @@ Keyboard::Keyboard()
     this->addLayout(thirdRow);
     this->addLayout(fourthRow);
     this->addLayout(fifthRow);
-
-
-    initializeKeyButtonMap();
-
 }
 
 
@@ -69,25 +65,20 @@ void Keyboard::initializeKeyButtonVector()
     num0Button = new QPushButton("0");
     minusButton = new QPushButton("-");
     equalButton = new QPushButton("=");
-    backspaceButton = new QPushButton("Backspace");
 
-    buttons.push_back(graveButton);
-    buttons.push_back(num1Button);
-    buttons.push_back(num2Button);
-    buttons.push_back(num3Button);
-    buttons.push_back(num4Button);
-    buttons.push_back(num5Button);
-    buttons.push_back(num6Button);
-    buttons.push_back(num7Button);
-    buttons.push_back(num8Button);
-    buttons.push_back(num9Button);
-    buttons.push_back(num0Button);
-    buttons.push_back(minusButton);
-    buttons.push_back(equalButton);
-    buttons.push_back(backspaceButton);
-
-
-
+    idsOfButtons[49] = graveButton;
+    idsOfButtons[10] = num1Button;
+    idsOfButtons[11] = num2Button;
+    idsOfButtons[12] = num3Button;
+    idsOfButtons[13] = num4Button;
+    idsOfButtons[14] = num5Button;
+    idsOfButtons[15] = num6Button;
+    idsOfButtons[16] = num7Button;
+    idsOfButtons[17] = num8Button;
+    idsOfButtons[18] = num9Button;
+    idsOfButtons[19] = num0Button;
+    idsOfButtons[20] = minusButton;
+    idsOfButtons[21] = equalButton;
 
 
     tabButton = new QPushButton("Tab");
@@ -105,20 +96,37 @@ void Keyboard::initializeKeyButtonVector()
     rightSquareScopeButton = new QPushButton("]");
     backSlashButton = new QPushButton("\\");
 
-    buttons.push_back(tabButton);
-    buttons.push_back(qButton);
-    buttons.push_back(wButton);
-    buttons.push_back(eButton);
-    buttons.push_back(rButton);
-    buttons.push_back(tButton);
-    buttons.push_back(yButton);
-    buttons.push_back(uButton);
-    buttons.push_back(iButton);
-    buttons.push_back(oButton);
-    buttons.push_back(pButton);
-    buttons.push_back(leftSquareScopeButton);
-    buttons.push_back(rightSquareScopeButton);
-    buttons.push_back(backSlashButton);
+    idsOfButtons[23] = tabButton;
+    idsOfButtons[24] = qButton;
+    idsOfButtons[25] = wButton;
+    idsOfButtons[26] = eButton;
+    idsOfButtons[27] = rButton;
+    idsOfButtons[28] = tButton;
+    idsOfButtons[29] = yButton;
+    idsOfButtons[30] = uButton;
+    idsOfButtons[31] = iButton;
+    idsOfButtons[32] = oButton;
+    idsOfButtons[33] = pButton;
+    idsOfButtons[34] = leftSquareScopeButton;
+    idsOfButtons[35] = rightSquareScopeButton;
+    idsOfButtons[51] = backSlashButton;
+
+
+    idsOfButtons[23] = tabButton;
+    idsOfButtons[24] = qButton;
+    idsOfButtons[25] = wButton;
+    idsOfButtons[26] = eButton;
+    idsOfButtons[27] = rButton;
+    idsOfButtons[28] = tButton;
+    idsOfButtons[29] = yButton;
+    idsOfButtons[30] = uButton;
+    idsOfButtons[31] = iButton;
+    idsOfButtons[32] = oButton;
+    idsOfButtons[33] = pButton;
+    idsOfButtons[34] = leftSquareScopeButton;
+    idsOfButtons[35] = rightSquareScopeButton;
+    idsOfButtons[51] = backSlashButton;
+
 
 
     capsLockButton = new QPushButton("Caps Lock");
@@ -134,6 +142,95 @@ void Keyboard::initializeKeyButtonVector()
     semicolonButton = new QPushButton(";");
     apostropheButton = new QPushButton("'");
     enterButton = new QPushButton("Enter");
+
+    idsOfButtons[66] = capsLockButton;
+    idsOfButtons[38] = aButton;
+    idsOfButtons[39] = sButton;
+    idsOfButtons[40] = dButton;
+    idsOfButtons[41] = fButton;
+    idsOfButtons[42] = gButton;
+    idsOfButtons[43] = hButton;
+    idsOfButtons[44] = jButton;
+    idsOfButtons[45] = kButton;
+    idsOfButtons[46] = lButton;
+    idsOfButtons[47] = semicolonButton;
+    idsOfButtons[48] = apostropheButton;
+    idsOfButtons[36] = enterButton;
+
+
+    leftShiftButton = new QPushButton("Shift");
+    zButton = new QPushButton("z");
+    xButton = new QPushButton("x");
+    cButton = new QPushButton("c");
+    vButton = new QPushButton("v");
+    bButton = new QPushButton("b");
+    nButton = new QPushButton("n");
+    mButton = new QPushButton("m");
+    commaButton = new QPushButton(",");
+    dotButton = new QPushButton(".");
+    slashButton = new QPushButton("/");
+    rightShiftButton = new QPushButton("Shift");
+
+    idsOfButtons[50] = leftShiftButton;
+    idsOfButtons[52] = zButton;
+    idsOfButtons[53] = xButton;
+    idsOfButtons[54] = cButton;
+    idsOfButtons[55] = vButton;
+    idsOfButtons[56] = bButton;
+    idsOfButtons[57] = nButton;
+    idsOfButtons[58] = mButton;
+    idsOfButtons[59] = commaButton;
+    idsOfButtons[60] = dotButton;
+    idsOfButtons[61] = slashButton;
+    idsOfButtons[62] = rightShiftButton;
+
+
+    leftCtrlButton = new QPushButton("Ctrl");
+    leftFnButton = new QPushButton("Fn");
+    winButton = new QPushButton("⊞");
+    leftAltButton = new QPushButton("Alt");
+    spaceButton = new QPushButton("");
+    rightAltButton = new QPushButton("Alt");
+    rightFnButton = new QPushButton("Fn");
+    rightCtrlButton  = new QPushButton("Ctrl");
+
+    idsOfButtons[37] = leftCtrlButton;
+    idsOfButtons[64] = leftAltButton;
+    idsOfButtons[65] = spaceButton;
+    idsOfButtons[108] = rightAltButton;
+    idsOfButtons[105] = rightCtrlButton;
+
+
+    buttons.push_back(graveButton);
+    buttons.push_back(num1Button);
+    buttons.push_back(num2Button);
+    buttons.push_back(num3Button);
+    buttons.push_back(num4Button);
+    buttons.push_back(num5Button);
+    buttons.push_back(num6Button);
+    buttons.push_back(num7Button);
+    buttons.push_back(num8Button);
+    buttons.push_back(num9Button);
+    buttons.push_back(num0Button);
+    buttons.push_back(minusButton);
+    buttons.push_back(equalButton);
+
+
+    buttons.push_back(tabButton);
+    buttons.push_back(qButton);
+    buttons.push_back(wButton);
+    buttons.push_back(eButton);
+    buttons.push_back(rButton);
+    buttons.push_back(tButton);
+    buttons.push_back(yButton);
+    buttons.push_back(uButton);
+    buttons.push_back(iButton);
+    buttons.push_back(oButton);
+    buttons.push_back(pButton);
+    buttons.push_back(leftSquareScopeButton);
+    buttons.push_back(rightSquareScopeButton);
+    buttons.push_back(backSlashButton);
+
 
     buttons.push_back(capsLockButton);
     buttons.push_back(aButton);
@@ -151,19 +248,6 @@ void Keyboard::initializeKeyButtonVector()
 
 
 
-    leftShiftButton = new QPushButton("Shift");
-    zButton = new QPushButton("z");
-    xButton = new QPushButton("x");
-    cButton = new QPushButton("c");
-    vButton = new QPushButton("v");
-    bButton = new QPushButton("b");
-    nButton = new QPushButton("n");
-    mButton = new QPushButton("m");
-    commaButton = new QPushButton(",");
-    dotButton = new QPushButton(".");
-    slashButton = new QPushButton("/");
-    rightShiftButton = new QPushButton("Shift");
-
     buttons.push_back(leftShiftButton);
     buttons.push_back(zButton);
     buttons.push_back(xButton);
@@ -176,19 +260,6 @@ void Keyboard::initializeKeyButtonVector()
     buttons.push_back(dotButton);
     buttons.push_back(slashButton);
     buttons.push_back(rightShiftButton);
-
-
-
-
-
-    leftCtrlButton = new QPushButton("Ctrl");
-    leftFnButton = new QPushButton("Fn");
-    winButton = new QPushButton("⊞");
-    leftAltButton = new QPushButton("Alt");
-    spaceButton = new QPushButton("");
-    rightAltButton = new QPushButton("Alt");
-    rightFnButton = new QPushButton("Fn");
-    rightCtrlButton  = new QPushButton("Ctrl");
 
 
     buttons.push_back(leftCtrlButton);
@@ -207,75 +278,6 @@ void Keyboard::initializeKeyButtonVector()
     }
 
 
-}
-
-void Keyboard::initializeKeyButtonMap()
-{
-    keyButtonMap["`"] = graveButton;
-    keyButtonMap["1"] = num1Button;
-    keyButtonMap["2"] = num2Button;
-    keyButtonMap["3"] = num3Button;
-    keyButtonMap["4"] = num4Button;
-    keyButtonMap["5"] = num5Button;
-    keyButtonMap["6"] = num6Button;
-    keyButtonMap["7"] = num7Button;
-    keyButtonMap["8"] = num8Button;
-    keyButtonMap["9"] = num9Button;
-    keyButtonMap["0"] = num0Button;
-    keyButtonMap["-"] = minusButton;
-    keyButtonMap["="] = equalButton;
-    keyButtonMap["\b"] = backspaceButton;
-
-    keyButtonMap["Tab"] = tabButton;
-    keyButtonMap["q"] = qButton;
-    keyButtonMap["w"] = wButton;
-    keyButtonMap["e"] = eButton;
-    keyButtonMap["r"] = rButton;
-    keyButtonMap["t"] = tButton;
-    keyButtonMap["y"] = yButton;
-    keyButtonMap["u"] = uButton;
-    keyButtonMap["i"] = iButton;
-    keyButtonMap["o"] = oButton;
-    keyButtonMap["p"] = pButton;
-    keyButtonMap["["] = leftSquareScopeButton;
-    keyButtonMap["]"] = rightSquareScopeButton;
-    keyButtonMap["\\"] = backSlashButton;
-
-    keyButtonMap["Caps Lock"] = capsLockButton;
-    keyButtonMap["a"] = aButton;
-    keyButtonMap["s"] = sButton;
-    keyButtonMap["d"] = dButton;
-    keyButtonMap["f"] = fButton;
-    keyButtonMap["g"] = gButton;
-    keyButtonMap["h"] = hButton;
-    keyButtonMap["j"] = jButton;
-    keyButtonMap["k"] = kButton;
-    keyButtonMap["l"] = lButton;
-    keyButtonMap[";"] = semicolonButton;
-    keyButtonMap["'"] = apostropheButton;
-    keyButtonMap["Enter"] = enterButton;
-
-    keyButtonMap["Left Shift"] = leftShiftButton;
-    keyButtonMap["z"] = zButton;
-    keyButtonMap["x"] = xButton;
-    keyButtonMap["c"] = cButton;
-    keyButtonMap["v"] = vButton;
-    keyButtonMap["b"] = bButton;
-    keyButtonMap["n"] = nButton;
-    keyButtonMap["m"] = mButton;
-    keyButtonMap[","] = commaButton;
-    keyButtonMap["."] = dotButton;
-    keyButtonMap["/"] = slashButton;
-    keyButtonMap["Right Shift"] = rightShiftButton;
-
-    keyButtonMap["Left Ctrl"] = leftCtrlButton;
-    keyButtonMap["Fn"] = leftFnButton;
-    keyButtonMap["⊞"] = winButton;
-    keyButtonMap["Left Alt"] = leftAltButton;
-    keyButtonMap[" "] = spaceButton;
-    keyButtonMap["Right Alt"] = rightAltButton;
-    keyButtonMap["Fn"] = rightFnButton;
-    keyButtonMap["Right Ctrl"] = rightCtrlButton;
 }
 
 void Keyboard::setBelaruisan()
@@ -332,74 +334,6 @@ void Keyboard::setBelaruisan()
     commaButton->setText("б");
     dotButton->setText("ю");
     slashButton->setText(".");
-
-    keyButtonMap.clear();
-    keyButtonMap["\b"] = backspaceButton;
-    keyButtonMap["Tab"] = tabButton;
-    keyButtonMap["Caps Lock"] = capsLockButton;
-    keyButtonMap["Enter"] = enterButton;
-    keyButtonMap["Left Shift"] = leftShiftButton;
-    keyButtonMap["Right Shift"] = rightShiftButton;
-    keyButtonMap["Left Ctrl"] = leftCtrlButton;
-    keyButtonMap["Fn"] = leftFnButton;
-    keyButtonMap["⊞"] = winButton;
-    keyButtonMap["Left Alt"] = leftAltButton;
-    keyButtonMap[" "] = spaceButton;
-    keyButtonMap["Right Alt"] = rightAltButton;
-    keyButtonMap["Fn"] = rightFnButton;
-    keyButtonMap["Right Ctrl"] = rightCtrlButton;
-
-
-    keyButtonMap["ё"] = graveButton;
-    keyButtonMap["1"] = num1Button;
-    keyButtonMap["2"] = num2Button;
-    keyButtonMap["3"] = num3Button;
-    keyButtonMap["4"] = num4Button;
-    keyButtonMap["5"] = num5Button;
-    keyButtonMap["6"] = num6Button;
-    keyButtonMap["7"] = num7Button;
-    keyButtonMap["8"] = num8Button;
-    keyButtonMap["9"] = num9Button;
-    keyButtonMap["0"] = num0Button;
-    keyButtonMap["-"] = minusButton;
-    keyButtonMap["="] = equalButton;
-
-    keyButtonMap["й"] = qButton;
-    keyButtonMap["ц"] = wButton;
-    keyButtonMap["у"] = eButton;
-    keyButtonMap["к"] = rButton;
-    keyButtonMap["е"] = tButton;
-    keyButtonMap["н"] = yButton;
-    keyButtonMap["г"] = uButton;
-    keyButtonMap["ш"] = iButton;
-    keyButtonMap["ў"] = oButton;
-    keyButtonMap["з"] = pButton;
-    keyButtonMap["х"] = leftSquareScopeButton;
-    keyButtonMap["'"] = rightSquareScopeButton;
-    keyButtonMap["\\"] = backSlashButton;
-
-    keyButtonMap["ф"] = aButton;
-    keyButtonMap["ы"] = sButton;
-    keyButtonMap["в"] = dButton;
-    keyButtonMap["а"] = fButton;
-    keyButtonMap["п"] = gButton;
-    keyButtonMap["р"] = hButton;
-    keyButtonMap["о"] = jButton;
-    keyButtonMap["л"] = kButton;
-    keyButtonMap["д"] = lButton;
-    keyButtonMap["ж"] = semicolonButton;
-    keyButtonMap["э"] = apostropheButton;
-
-    keyButtonMap["я"] = zButton;
-    keyButtonMap["ч"] = xButton;
-    keyButtonMap["с"] = cButton;
-    keyButtonMap["м"] = vButton;
-    keyButtonMap["і"] = bButton;
-    keyButtonMap["т"] = nButton;
-    keyButtonMap["ь"] = mButton;
-    keyButtonMap["б"] = commaButton;
-    keyButtonMap["ю"] = dotButton;
-    keyButtonMap["."] = slashButton;
 }
 
 void Keyboard::setGerman()
@@ -454,76 +388,6 @@ void Keyboard::setGerman()
     commaButton->setText(",");
     dotButton->setText(".");
     slashButton->setText("-");
-
-    keyButtonMap.clear();
-    keyButtonMap["\b"] = backspaceButton;
-    keyButtonMap["Tab"] = tabButton;
-    keyButtonMap["Caps Lock"] = capsLockButton;
-    keyButtonMap["Enter"] = enterButton;
-    keyButtonMap["Left Shift"] = leftShiftButton;
-    keyButtonMap["Right Shift"] = rightShiftButton;
-    keyButtonMap["Left Ctrl"] = leftCtrlButton;
-    keyButtonMap["Fn"] = leftFnButton;
-    keyButtonMap["⊞"] = winButton;
-    keyButtonMap["Left Alt"] = leftAltButton;
-    keyButtonMap[" "] = spaceButton;
-    keyButtonMap["Right Alt"] = rightAltButton;
-    keyButtonMap["Fn"] = rightFnButton;
-    keyButtonMap["Right Ctrl"] = rightCtrlButton;
-
-
-
-    keyButtonMap["^"] = graveButton;
-    keyButtonMap["1"] = num1Button;
-    keyButtonMap["2"] = num2Button;
-    keyButtonMap["3"] = num3Button;
-    keyButtonMap["4"] = num4Button;
-    keyButtonMap["5"] = num5Button;
-    keyButtonMap["6"] = num6Button;
-    keyButtonMap["7"] = num7Button;
-    keyButtonMap["8"] = num8Button;
-    keyButtonMap["9"] = num9Button;
-    keyButtonMap["0"] = num0Button;
-    keyButtonMap["ß"] = minusButton;
-    keyButtonMap["´"] = equalButton;
-
-    keyButtonMap["q"] = qButton;
-    keyButtonMap["w"] = wButton;
-    keyButtonMap["e"] = eButton;
-    keyButtonMap["r"] = rButton;
-    keyButtonMap["t"] = tButton;
-    keyButtonMap["z"] = yButton;
-    keyButtonMap["u"] = uButton;
-    keyButtonMap["i"] = iButton;
-    keyButtonMap["o"] = oButton;
-    keyButtonMap["p"] = pButton;
-    keyButtonMap["ü"] = leftSquareScopeButton;
-    keyButtonMap["+"] = rightSquareScopeButton;
-    keyButtonMap["#"] = backSlashButton;
-
-    keyButtonMap["a"] = aButton;
-    keyButtonMap["s"] = sButton;
-    keyButtonMap["d"] = dButton;
-    keyButtonMap["f"] = fButton;
-    keyButtonMap["g"] = gButton;
-    keyButtonMap["h"] = hButton;
-    keyButtonMap["j"] = jButton;
-    keyButtonMap["k"] = kButton;
-    keyButtonMap["l"] = lButton;
-    keyButtonMap["ö"] = semicolonButton;
-    keyButtonMap["ä"] = apostropheButton;
-
-
-    keyButtonMap["y"] = zButton;
-    keyButtonMap["x"] = xButton;
-    keyButtonMap["c"] = cButton;
-    keyButtonMap["v"] = vButton;
-    keyButtonMap["b"] = bButton;
-    keyButtonMap["n"] = nButton;
-    keyButtonMap["m"] = mButton;
-    keyButtonMap[","] = commaButton;
-    keyButtonMap["."] = dotButton;
-    keyButtonMap["-"] = slashButton;
 }
 
 void Keyboard::setFrench()
@@ -578,73 +442,6 @@ void Keyboard::setFrench()
     commaButton->setText(";");
     dotButton->setText(":");
     slashButton->setText("!");
-
-    keyButtonMap.clear();
-    keyButtonMap["\b"] = backspaceButton;
-    keyButtonMap["Tab"] = tabButton;
-    keyButtonMap["Caps Lock"] = capsLockButton;
-    keyButtonMap["Enter"] = enterButton;
-    keyButtonMap["Left Shift"] = leftShiftButton;
-    keyButtonMap["Right Shift"] = rightShiftButton;
-    keyButtonMap["Left Ctrl"] = leftCtrlButton;
-    keyButtonMap["Fn"] = leftFnButton;
-    keyButtonMap["⊞"] = winButton;
-    keyButtonMap["Left Alt"] = leftAltButton;
-    keyButtonMap[" "] = spaceButton;
-    keyButtonMap["Right Alt"] = rightAltButton;
-    keyButtonMap["Fn"] = rightFnButton;
-    keyButtonMap["Right Ctrl"] = rightCtrlButton;
-
-    keyButtonMap["²"] = graveButton;
-    keyButtonMap["&"] = num1Button;
-    keyButtonMap["é"] = num2Button;
-    keyButtonMap["\""] = num3Button;
-    keyButtonMap["'"] = num4Button;
-    keyButtonMap["("] = num5Button;
-    keyButtonMap["-"] = num6Button;
-    keyButtonMap["è"] = num7Button;
-    keyButtonMap["_"] = num8Button;
-    keyButtonMap["ç"] = num9Button;
-    keyButtonMap["à"] = num0Button;
-    keyButtonMap[")"] = minusButton;
-    keyButtonMap["="] = equalButton;
-
-    keyButtonMap["a"] = qButton;
-    keyButtonMap["z"] = wButton;
-    keyButtonMap["e"] = eButton;
-    keyButtonMap["r"] = rButton;
-    keyButtonMap["t"] = tButton;
-    keyButtonMap["y"] = yButton;
-    keyButtonMap["u"] = uButton;
-    keyButtonMap["i"] = iButton;
-    keyButtonMap["o"] = oButton;
-    keyButtonMap["p"] = pButton;
-    keyButtonMap["^"] = leftSquareScopeButton;
-    keyButtonMap["$"] = rightSquareScopeButton;
-    keyButtonMap["*"] = backSlashButton;
-
-    keyButtonMap["q"] = aButton;
-    keyButtonMap["s"] = sButton;
-    keyButtonMap["d"] = dButton;
-    keyButtonMap["f"] = fButton;
-    keyButtonMap["g"] = gButton;
-    keyButtonMap["h"] = hButton;
-    keyButtonMap["j"] = jButton;
-    keyButtonMap["k"] = kButton;
-    keyButtonMap["l"] = lButton;
-    keyButtonMap["m"] = semicolonButton;
-    keyButtonMap["ù"] = apostropheButton;
-
-    keyButtonMap["w"] = zButton;
-    keyButtonMap["x"] = xButton;
-    keyButtonMap["c"] = cButton;
-    keyButtonMap["v"] = vButton;
-    keyButtonMap["b"] = bButton;
-    keyButtonMap["n"] = nButton;
-    keyButtonMap[","] = mButton;
-    keyButtonMap[";"] = commaButton;
-    keyButtonMap[":"] = dotButton;
-    keyButtonMap["!"] = slashButton;
 }
 
 void Keyboard::setArabic()
@@ -699,73 +496,6 @@ void Keyboard::setArabic()
     commaButton->setText("و");
     dotButton->setText("ز");
     slashButton->setText("ظ");
-
-    keyButtonMap.clear();
-    keyButtonMap["\b"] = backspaceButton;
-    keyButtonMap["Tab"] = tabButton;
-    keyButtonMap["Caps Lock"] = capsLockButton;
-    keyButtonMap["Enter"] = enterButton;
-    keyButtonMap["Left Shift"] = leftShiftButton;
-    keyButtonMap["Right Shift"] = rightShiftButton;
-    keyButtonMap["Left Ctrl"] = leftCtrlButton;
-    keyButtonMap["Fn"] = leftFnButton;
-    keyButtonMap["⊞"] = winButton;
-    keyButtonMap["Left Alt"] = leftAltButton;
-    keyButtonMap[" "] = spaceButton;
-    keyButtonMap["Right Alt"] = rightAltButton;
-    keyButtonMap["Fn"] = rightFnButton;
-    keyButtonMap["Right Ctrl"] = rightCtrlButton;
-
-    keyButtonMap["ذ"] = graveButton;
-    keyButtonMap["1"] = num1Button;
-    keyButtonMap["2"] = num2Button;
-    keyButtonMap["3"] = num3Button;
-    keyButtonMap["4"] = num4Button;
-    keyButtonMap["5"] = num5Button;
-    keyButtonMap["6"] = num6Button;
-    keyButtonMap["7"] = num7Button;
-    keyButtonMap["8"] = num8Button;
-    keyButtonMap["9"] = num9Button;
-    keyButtonMap["0"] = num0Button;
-    keyButtonMap["-"] = minusButton;
-    keyButtonMap["="] = equalButton;
-
-    keyButtonMap["ض"] = qButton;
-    keyButtonMap["ص"] = wButton;
-    keyButtonMap["ث"] = eButton;
-    keyButtonMap["ق"] = rButton;
-    keyButtonMap["ف"] = tButton;
-    keyButtonMap["غ"] = yButton;
-    keyButtonMap["ع"] = uButton;
-    keyButtonMap["ه"] = iButton;
-    keyButtonMap["خ"] = oButton;
-    keyButtonMap["ح"] = pButton;
-    keyButtonMap["ج"] = leftSquareScopeButton;
-    keyButtonMap["د"] = rightSquareScopeButton;
-    keyButtonMap["\\"] = backSlashButton;
-
-    keyButtonMap["ش"] = aButton;
-    keyButtonMap["س"] = sButton;
-    keyButtonMap["ي"] = dButton;
-    keyButtonMap["ب"] = fButton;
-    keyButtonMap["ل"] = gButton;
-    keyButtonMap["ا"] = hButton;
-    keyButtonMap["ت"] = jButton;
-    keyButtonMap["ن"] = kButton;
-    keyButtonMap["م"] = lButton;
-    keyButtonMap["ك"] = semicolonButton;
-    keyButtonMap["ط"] = apostropheButton;
-
-    keyButtonMap["ئ"] = zButton;
-    keyButtonMap["ء"] = xButton;
-    keyButtonMap["ؤ"] = cButton;
-    keyButtonMap["ر"] = vButton;
-    keyButtonMap["ﻻ"] = bButton;
-    keyButtonMap["ى"] = nButton;
-    keyButtonMap["ة"] = mButton;
-    keyButtonMap["و"] = commaButton;
-    keyButtonMap["ز"] = dotButton;
-    keyButtonMap["ظ"] = slashButton;
 }
 
 void Keyboard::setHebrew()
@@ -820,136 +550,207 @@ void Keyboard::setHebrew()
     commaButton->setText("ת");
     dotButton->setText("ץ");
     slashButton->setText(".");
-
-
-    keyButtonMap.clear();
-    keyButtonMap["\b"] = backspaceButton;
-    keyButtonMap["Tab"] = tabButton;
-    keyButtonMap["Caps Lock"] = capsLockButton;
-    keyButtonMap["Enter"] = enterButton;
-    keyButtonMap["Left Shift"] = leftShiftButton;
-    keyButtonMap["Right Shift"] = rightShiftButton;
-    keyButtonMap["Left Ctrl"] = leftCtrlButton;
-    keyButtonMap["Fn"] = leftFnButton;
-    keyButtonMap["⊞"] = winButton;
-    keyButtonMap["Left Alt"] = leftAltButton;
-    keyButtonMap[" "] = spaceButton;
-    keyButtonMap["Right Alt"] = rightAltButton;
-    keyButtonMap["Fn"] = rightFnButton;
-    keyButtonMap["Right Ctrl"] = rightCtrlButton;
-
-
-
-    keyButtonMap[";"] = graveButton;
-    keyButtonMap["1"] = num1Button;
-    keyButtonMap["2"] = num2Button;
-    keyButtonMap["3"] = num3Button;
-    keyButtonMap["4"] = num4Button;
-    keyButtonMap["5"] = num5Button;
-    keyButtonMap["6"] = num6Button;
-    keyButtonMap["7"] = num7Button;
-    keyButtonMap["8"] = num8Button;
-    keyButtonMap["9"] = num9Button;
-    keyButtonMap["0"] = num0Button;
-    keyButtonMap["-"] = minusButton;
-    keyButtonMap["="] = equalButton;
-
-    keyButtonMap["/"] = qButton;
-    keyButtonMap["'"] = wButton;
-    keyButtonMap["ק"] = eButton;
-    keyButtonMap["ר"] = rButton;
-    keyButtonMap["א"] = tButton;
-    keyButtonMap["ט"] = yButton;
-    keyButtonMap["ו"] = uButton;
-    keyButtonMap["ן"] = iButton;
-    keyButtonMap["ם"] = oButton;
-    keyButtonMap["פ"] = pButton;
-    keyButtonMap["]"] = leftSquareScopeButton;
-    keyButtonMap["["] = rightSquareScopeButton;
-    keyButtonMap["\\"] = backSlashButton;
-
-    keyButtonMap["ש"] = aButton;
-    keyButtonMap["ד"] = sButton;
-    keyButtonMap["ג"] = dButton;
-    keyButtonMap["כ"] = fButton;
-    keyButtonMap["ע"] = gButton;
-    keyButtonMap["י"] = hButton;
-    keyButtonMap["ח"] = jButton;
-    keyButtonMap["ל"] = kButton;
-    keyButtonMap["ך"] = lButton;
-    keyButtonMap["ף"] = semicolonButton;
-    keyButtonMap[","] = apostropheButton;
-
-    keyButtonMap["ז"] = zButton;
-    keyButtonMap["ס"] = xButton;
-    keyButtonMap["ב"] = cButton;
-    keyButtonMap["ה"] = vButton;
-    keyButtonMap["נ"] = bButton;
-    keyButtonMap["מ"] = nButton;
-    keyButtonMap["צ"] = mButton;
-    keyButtonMap["ת"] = commaButton;
-    keyButtonMap["ץ"] = dotButton;
-    keyButtonMap["."] = slashButton;
 }
 
+void Keyboard::setChinese()
+{
+    graveButton->setText("`");
+    num1Button->setText("1");
+    num2Button->setText("2");
+    num3Button->setText("3");
+    num4Button->setText("4");
+    num5Button->setText("5");
+    num6Button->setText("6");
+    num7Button->setText("7");
+    num8Button->setText("8");
+    num9Button->setText("9");
+    num0Button->setText("0");
+    minusButton->setText("-");
+    equalButton->setText("=");
+
+    tabButton->setText("Tab");
+    qButton->setText("q");
+    wButton->setText("w");
+    eButton->setText("e");
+    rButton->setText("r");
+    tButton->setText("t");
+    yButton->setText("y");
+    uButton->setText("u");
+    iButton->setText("i");
+    oButton->setText("o");
+    pButton->setText("p");
+    leftSquareScopeButton->setText("[");
+    rightSquareScopeButton->setText("]");
+    backSlashButton->setText("\\");
+
+    capsLockButton->setText("Caps Lock");
+    aButton->setText("a");
+    sButton->setText("s");
+    dButton->setText("d");
+    fButton->setText("f");
+    gButton->setText("g");
+    hButton->setText("h");
+    jButton->setText("j");
+    kButton->setText("k");
+    lButton->setText("l");
+    semicolonButton->setText(";");
+    apostropheButton->setText("'");
+    enterButton->setText("Enter");
+
+    leftShiftButton->setText("Shift");
+    zButton->setText("z");
+    xButton->setText("x");
+    cButton->setText("c");
+    vButton->setText("v");
+    bButton->setText("b");
+    nButton->setText("n");
+    mButton->setText("m");
+    commaButton->setText(",");
+    dotButton->setText(".");
+    slashButton->setText("/");
+    rightShiftButton->setText("Shift");
+
+    leftCtrlButton->setText("Ctrl");
+    leftFnButton->setText("Fn");
+    winButton->setText("⊞");
+    leftAltButton->setText("Alt");
+    spaceButton->setText("");
+    rightAltButton->setText("Alt");
+    rightFnButton->setText("Fn");
+    rightCtrlButton->setText("Ctrl");
+}
+
+void Keyboard::clear()
+{
+    graveButton->setText("");
+    num1Button->setText("");
+    num2Button->setText("");
+    num3Button->setText("");
+    num4Button->setText("");
+    num5Button->setText("");
+    num6Button->setText("");
+    num7Button->setText("");
+    num8Button->setText("");
+    num9Button->setText("");
+    num0Button->setText("");
+    minusButton->setText("");
+    equalButton->setText("");
+
+    qButton->setText("");
+    wButton->setText("");
+    eButton->setText("");
+    rButton->setText("");
+    tButton->setText("");
+    yButton->setText("");
+    uButton->setText("");
+    iButton->setText("");
+    oButton->setText("");
+    pButton->setText("");
+    leftSquareScopeButton->setText("");
+    rightSquareScopeButton->setText("");
+    backSlashButton->setText("");
+
+    aButton->setText("");
+    sButton->setText("");
+    dButton->setText("");
+    fButton->setText("");
+    gButton->setText("");
+    hButton->setText("");
+    jButton->setText("");
+    kButton->setText("");
+    lButton->setText("");
+    semicolonButton->setText("");
+    apostropheButton->setText("");
+
+    zButton->setText("");
+    xButton->setText("");
+    cButton->setText("");
+    vButton->setText("");
+    bButton->setText("");
+    nButton->setText("");
+    mButton->setText("");
+    commaButton->setText("");
+    dotButton->setText("");
+    slashButton->setText("");
+}
+
+void Keyboard::setTextEdit(QTextEdit *textEdit)
+{
+    this->textEdit = textEdit;
+}
 
 void Keyboard::keyPressEvent(QKeyEvent *event)
 {
-    if(keyButtonMap.contains(event->text()))
+    if(idsOfButtons.contains(event->nativeScanCode()))
     {
-        keyButtonMap[event->text()]->animateClick();
-    }
-    if(event->key() == Qt::Key_CapsLock)
-    {
-        keyButtonMap["Caps Lock"]->animateClick();
-    }
-    if(event->key() == Qt::Key_Tab)
-    {
-        keyButtonMap["Tab"]->animateClick();
-    }
-    if(event->text() == "\r")
-    {
-        keyButtonMap["Enter"]->animateClick();
-    }
-    if (event->key() == Qt::Key_Meta) {
-        keyButtonMap["winButton"]->animateClick();
-    }
+        idsOfButtons[event->nativeScanCode()]->animateClick();
+
+        if(event->key() != Qt::Key_CapsLock && event->key() != Qt::Key_Shift && event->key() != Qt::Key_Backspace && event->key() != Qt::Key_Tab
+            && event->key() != Qt::Key_Enter && event->key() != Qt::Key_Control && event->key() != Qt::Key_Alt && event->modifiers() != Qt::GroupSwitchModifier
+            && !(event->modifiers() == (Qt::AltModifier | Qt::GroupSwitchModifier))
+            && !(event->modifiers() == (Qt::ShiftModifier | Qt::MetaModifier))
+            && !(event->modifiers() == (Qt::ShiftModifier | Qt::GroupSwitchModifier)))
+        {
+            QTextCharFormat format;
+            QTextCursor cursor = textEdit->textCursor();
+            QString text = textEdit->toPlainText();
 
 
+            if(cursor.position() < textEdit->toPlainText().size() - 1)
+            {
+                cursor.setPosition(cursor.position() + 1, QTextCursor::KeepAnchor);
 
-    //left anf right shift
-    if(event->key() == Qt::Key_Shift)
-    {
-        if(event->nativeVirtualKey() == 65505) keyButtonMap["Left Shift"]->animateClick();
+                if(QChar(textEdit->toPlainText()[cursor.position() - 1]) == event->text())
+                {
+                    format.setForeground(QColor(Qt::green)); // Устанавливаем красный цвет
+                    cursor.setCharFormat(format);
+                }
+                else
+                {
+                    isCorrectWord = false;
 
-        else keyButtonMap["Right Shift"]->animateClick();
-    }
-    //left and right control
-    if(event->key() == Qt::Key_Control)
-    {
-        if(event->nativeVirtualKey() == 65507) keyButtonMap["Left Ctrl"]->animateClick();
+                    format.setForeground(QColor(Qt::red)); // Устанавливаем красный цвет
+                    cursor.setCharFormat(format);
+                }
 
-        else keyButtonMap["Right Ctrl"]->animateClick();
-    }
-    //left alt
-    if(event->key() == 16777251)
-    {
-        keyButtonMap["Left Alt"]->animateClick();
-    }
-    //right alt
-    if(event->key() == 16781571)
-    {
-        keyButtonMap["Right Alt"]->animateClick();
-    }
-    if(event->key() == 16781906)
-    {
-        keyButtonMap["^"]->animateClick();
-    }
-    if(event->key() == 16781905)
-    {
-        keyButtonMap["´"]->animateClick();
-    }
+                cursor.setPosition(cursor.position());
+                textEdit->setTextCursor(cursor);
+            }
+
+            if(cursor.position() == text.size() - 2 && text[text.size() - 1] != '.')
+            {
+                if(isCorrectWord) emit oneWordWasInputed();
+                emit endOfInput();
+            }
+
+            qDebug() << cursor.position() << QChar(textEdit->toPlainText()[cursor.position()]) << event->text();
 
 
-    qDebug() << event->text() << event->nativeVirtualKey() << event->modifiers() << event->key();
+            if(cursor.position() < text.size() &&
+                !QString(" ,.;:()[]{}").contains(text[cursor.position() - 1]) &&
+                QString(" ,.;:()[]{}").contains(text[cursor.position()]))
+            {
+                if(isCorrectWord) emit oneWordWasInputed();
+
+                isCorrectWord = true;
+            }
+        }
+
+        else if(event->key() == Qt::Key_CapsLock)
+        {
+            for(int i = 0; i < buttons.size(); i++)
+            {
+                if(buttons[i] != tabButton && buttons[i] != capsLockButton && buttons[i] != enterButton
+                    && buttons[i] != tabButton && buttons[i] != leftShiftButton && buttons[i] != rightShiftButton
+                    && buttons[i] != leftCtrlButton && buttons[i] != rightCtrlButton
+                    && buttons[i] != leftAltButton && buttons[i] != rightAltButton && buttons[i] != leftFnButton && buttons[i] != rightFnButton
+                    && buttons[i] != minusButton)
+                {
+                    if(buttons[i]->text().isLower()) buttons[i]->setText((buttons[i]->text()).toUpper());
+                    else buttons[i]->setText((buttons[i]->text()).toLower());
+                }
+            }
+        }
+
+    }
 }
