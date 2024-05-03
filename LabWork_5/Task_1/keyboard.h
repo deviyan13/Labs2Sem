@@ -109,8 +109,10 @@ private:
     QPushButton* rightCtrlButton;
 
 signals:
-    void oneWordWasInputed();
-    void endOfInput();
+    // void oneWordWasInputed();
+    // void endOfInput();
+    // void inputIncorrectChar();
+    // void inputCorrectChar();
 
 };
 

@@ -52,13 +52,17 @@ OBJECTS_DIR   = ./
 
 ####### Files
 
-SOURCES       = ../../keyboard.cpp \
+SOURCES       = ../../customtextedit.cpp \
+		../../keyboard.cpp \
 		../../main.cpp \
-		../../mainwindow.cpp moc_keyboard.cpp \
+		../../mainwindow.cpp moc_customtextedit.cpp \
+		moc_keyboard.cpp \
 		moc_mainwindow.cpp
-OBJECTS       = keyboard.o \
+OBJECTS       = customtextedit.o \
+		keyboard.o \
 		main.o \
 		mainwindow.o \
+		moc_customtextedit.o \
 		moc_keyboard.o \
 		moc_mainwindow.o
 DIST          = /media/deviyan/NewPartForQT/6.7.0/gcc_64/mkspecs/features/spec_pre.prf \
@@ -402,8 +406,10 @@ DIST          = /media/deviyan/NewPartForQT/6.7.0/gcc_64/mkspecs/features/spec_p
 		/media/deviyan/NewPartForQT/6.7.0/gcc_64/mkspecs/features/exceptions.prf \
 		/media/deviyan/NewPartForQT/6.7.0/gcc_64/mkspecs/features/yacc.prf \
 		/media/deviyan/NewPartForQT/6.7.0/gcc_64/mkspecs/features/lex.prf \
-		../../../../Task_1.pro ../../keyboard.h \
-		../../mainwindow.h ../../keyboard.cpp \
+		../../../../Task_1.pro ../../customtextedit.h \
+		../../keyboard.h \
+		../../mainwindow.h ../../customtextedit.cpp \
+		../../keyboard.cpp \
 		../../main.cpp \
 		../../mainwindow.cpp
 QMAKE_TARGET  = Task_1
@@ -1123,8 +1129,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /media/deviyan/NewPartForQT/6.7.0/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../../keyboard.h ../../mainwindow.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../../keyboard.cpp ../../main.cpp ../../mainwindow.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../../customtextedit.h ../../keyboard.h ../../mainwindow.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../../customtextedit.cpp ../../keyboard.cpp ../../main.cpp ../../mainwindow.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../../mainwindow.ui $(DISTDIR)/
 
 
@@ -1157,9 +1163,207 @@ compiler_moc_predefs_clean:
 moc_predefs.h: /media/deviyan/NewPartForQT/6.7.0/gcc_64/mkspecs/features/data/dummy.cpp
 	clang++ -pipe -g -std=gnu++1z -Wall -Wextra -fPIC -dM -E -o moc_predefs.h /media/deviyan/NewPartForQT/6.7.0/gcc_64/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_keyboard.cpp moc_mainwindow.cpp
+compiler_moc_header_make_all: moc_customtextedit.cpp moc_keyboard.cpp moc_mainwindow.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_keyboard.cpp moc_mainwindow.cpp
+	-$(DEL_FILE) moc_customtextedit.cpp moc_keyboard.cpp moc_mainwindow.cpp
+moc_customtextedit.cpp: ../../customtextedit.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qevent.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qtguiglobal.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qglobal.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qtversionchecks.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qtconfiginclude.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qconfig.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qtcore-config.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qtconfigmacros.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qtcoreexports.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qcompilerdetection.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qsystemdetection.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qprocessordetection.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qtdeprecationmarkers.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qtpreprocessorsupport.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qassert.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qtnoop.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qtypes.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qtversion.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qtclasshelpermacros.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qtypeinfo.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qcontainerfwd.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qsysinfo.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qlogging.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qflags.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qcompare_impl.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qatomic.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qbasicatomic.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qgenericatomic.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qyieldcpu.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qconstructormacros.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qdarwinhelpers.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qexceptionhandling.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qforeach.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qttypetraits.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qfunctionpointer.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qglobalstatic.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qmalloc.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qminmax.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qnumeric.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qoverload.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qswap.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qtenvironmentvariables.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qtresource.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qttranslation.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qversiontagging.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qtgui-config.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qtguiexports.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qcoreevent.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qnamespace.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qtmetamacros.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qbytearray.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qrefcount.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qarraydata.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qpair.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qarraydatapointer.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qarraydataops.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qcontainertools_impl.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qxptype_traits.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/q20functional.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/q20memory.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qbytearrayalgorithms.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qbytearrayview.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qstringfwd.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/q20type_traits.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qobjectdefs.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qfunctionaltools_impl.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qiodevice.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qiodevicebase.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qobject.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qstring.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qchar.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qstringview.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qstringliteral.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qstringalgorithms.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qlatin1stringview.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qanystringview.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qutf8stringview.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qstringtokenizer.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qstringbuilder.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qstringconverter.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qstringconverter_base.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qlist.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qhashfunctions.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qiterator.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qbytearraylist.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qstringlist.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qalgorithms.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qstringmatcher.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qscopedpointer.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qmetatype.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qcompare.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qcomparehelpers.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qdatastream.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qfloat16.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qmath.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qiterable.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qmetacontainer.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qcontainerinfo.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qtaggedpointer.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qscopeguard.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qobject_impl.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qbindingstorage.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qurl.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qvariant.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qdebug.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qtextstream.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qcontiguouscache.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qsharedpointer.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qshareddata.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qmap.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qshareddata_impl.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qset.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qhash.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qvarlengtharray.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/q23utility.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qeventpoint.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qvector2d.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qvectornd.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qpoint.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qrect.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qmargins.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qsize.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qpointingdevice.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qinputdevice.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qscreen.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/QList \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/QObject \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/QRect \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/QSize \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/QSizeF \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/QTransform \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qtransform.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qpolygon.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qregion.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qwindowdefs.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qline.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qnativeinterface.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qscreen_platform.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qguiapplication.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qcoreapplication.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qdeadlinetimer.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qelapsedtimer.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qeventloop.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qcoreapplication_platform.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qfuture.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qfutureinterface.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qmutex.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qtsan_impl.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qresultstore.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qfuture_impl.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qthreadpool.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qthread.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qrunnable.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qexception.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qpromise.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qinputmethod.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qlocale.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qguiapplication_platform.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qkeysequence.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/QTextEdit \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/qtextedit.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/qtwidgets-config.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/qtwidgetsexports.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/qframe.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/qwidget.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qaction.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qicon.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qpixmap.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qpaintdevice.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qcolor.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qrgb.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qrgba64.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qimage.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qpixelformat.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qpalette.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qbrush.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qfont.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qendian.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qfontmetrics.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qfontinfo.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/qsizepolicy.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qcursor.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qbitmap.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qtextdocument.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qtextoption.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qtextcursor.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qtextformat.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qpen.h \
+		moc_predefs.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/libexec/moc
+	/media/deviyan/NewPartForQT/6.7.0/gcc_64/libexec/moc $(DEFINES) --include /home/deviyan/QTprojects/LabWork_5/Task_1/build/Desktop_Qt_6_7_0-Debug/moc_predefs.h -I/media/deviyan/NewPartForQT/6.7.0/gcc_64/mkspecs/linux-clang -I/home/deviyan/QTprojects/LabWork_5/Task_1 -I/media/deviyan/NewPartForQT/6.7.0/gcc_64/include -I/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets -I/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui -I/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore -I. -I/usr/include/c++/13 -I/usr/include/x86_64-linux-gnu/c++/13 -I/usr/include/c++/13/backward -I/usr/lib/llvm-16/lib/clang/16/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../../customtextedit.h -o moc_customtextedit.cpp
+
 moc_keyboard.cpp: ../../keyboard.h \
 		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/QTextEdit \
 		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/qtextedit.h \
@@ -1581,16 +1785,18 @@ moc_mainwindow.cpp: ../../mainwindow.h \
 		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/QMessageBox \
 		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/qmessagebox.h \
 		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/qdialogbuttonbox.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/QTextCursor \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qtextcursor.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qtextdocument.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qtextformat.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qpen.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qtextoption.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/QCursor \
 		../../keyboard.h \
 		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/QTextEdit \
 		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/qtextedit.h \
 		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/qabstractscrollarea.h \
 		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/qframe.h \
-		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qtextdocument.h \
-		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qtextoption.h \
-		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qtextcursor.h \
-		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qtextformat.h \
-		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qpen.h \
 		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/QPushButton \
 		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/qpushbutton.h \
 		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/qabstractbutton.h \
@@ -1598,6 +1804,7 @@ moc_mainwindow.cpp: ../../mainwindow.h \
 		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/qbuttongroup.h \
 		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/QLayout \
 		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/QInputMethod \
+		../../customtextedit.h \
 		moc_predefs.h \
 		/media/deviyan/NewPartForQT/6.7.0/gcc_64/libexec/moc
 	/media/deviyan/NewPartForQT/6.7.0/gcc_64/libexec/moc $(DEFINES) --include /home/deviyan/QTprojects/LabWork_5/Task_1/build/Desktop_Qt_6_7_0-Debug/moc_predefs.h -I/media/deviyan/NewPartForQT/6.7.0/gcc_64/mkspecs/linux-clang -I/home/deviyan/QTprojects/LabWork_5/Task_1 -I/media/deviyan/NewPartForQT/6.7.0/gcc_64/include -I/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets -I/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui -I/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore -I. -I/usr/include/c++/13 -I/usr/include/x86_64-linux-gnu/c++/13 -I/usr/include/c++/13/backward -I/usr/lib/llvm-16/lib/clang/16/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../../mainwindow.h -o moc_mainwindow.cpp
@@ -1622,6 +1829,202 @@ compiler_lex_clean:
 compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_uic_clean 
 
 ####### Compile
+
+customtextedit.o: ../../customtextedit.cpp ../../customtextedit.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qevent.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qtguiglobal.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qglobal.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qtversionchecks.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qtconfiginclude.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qconfig.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qtcore-config.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qtconfigmacros.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qtcoreexports.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qcompilerdetection.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qsystemdetection.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qprocessordetection.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qtdeprecationmarkers.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qtpreprocessorsupport.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qassert.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qtnoop.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qtypes.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qtversion.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qtclasshelpermacros.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qtypeinfo.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qcontainerfwd.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qsysinfo.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qlogging.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qflags.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qcompare_impl.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qatomic.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qbasicatomic.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qgenericatomic.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qyieldcpu.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qconstructormacros.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qdarwinhelpers.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qexceptionhandling.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qforeach.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qttypetraits.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qfunctionpointer.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qglobalstatic.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qmalloc.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qminmax.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qnumeric.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qoverload.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qswap.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qtenvironmentvariables.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qtresource.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qttranslation.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qversiontagging.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qtgui-config.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qtguiexports.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qcoreevent.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qnamespace.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qtmetamacros.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qbytearray.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qrefcount.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qarraydata.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qpair.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qarraydatapointer.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qarraydataops.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qcontainertools_impl.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qxptype_traits.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/q20functional.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/q20memory.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qbytearrayalgorithms.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qbytearrayview.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qstringfwd.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/q20type_traits.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qobjectdefs.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qfunctionaltools_impl.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qiodevice.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qiodevicebase.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qobject.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qstring.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qchar.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qstringview.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qstringliteral.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qstringalgorithms.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qlatin1stringview.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qanystringview.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qutf8stringview.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qstringtokenizer.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qstringbuilder.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qstringconverter.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qstringconverter_base.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qlist.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qhashfunctions.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qiterator.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qbytearraylist.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qstringlist.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qalgorithms.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qstringmatcher.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qscopedpointer.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qmetatype.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qcompare.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qcomparehelpers.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qdatastream.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qfloat16.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qmath.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qiterable.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qmetacontainer.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qcontainerinfo.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qtaggedpointer.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qscopeguard.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qobject_impl.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qbindingstorage.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qurl.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qvariant.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qdebug.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qtextstream.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qcontiguouscache.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qsharedpointer.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qshareddata.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qmap.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qshareddata_impl.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qset.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qhash.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qvarlengtharray.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/q23utility.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qeventpoint.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qvector2d.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qvectornd.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qpoint.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qrect.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qmargins.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qsize.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qpointingdevice.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qinputdevice.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qscreen.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/QList \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/QObject \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/QRect \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/QSize \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/QSizeF \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/QTransform \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qtransform.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qpolygon.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qregion.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qwindowdefs.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qline.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qnativeinterface.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qscreen_platform.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qguiapplication.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qcoreapplication.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qdeadlinetimer.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qelapsedtimer.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qeventloop.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qcoreapplication_platform.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qfuture.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qfutureinterface.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qmutex.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qtsan_impl.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qresultstore.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qfuture_impl.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qthreadpool.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qthread.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qrunnable.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qexception.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qpromise.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qinputmethod.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qlocale.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qguiapplication_platform.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qkeysequence.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/QTextEdit \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/qtextedit.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/qtwidgets-config.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/qtwidgetsexports.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/qframe.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/qwidget.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qaction.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qicon.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qpixmap.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qpaintdevice.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qcolor.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qrgb.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qrgba64.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qimage.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qpixelformat.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qpalette.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qbrush.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qfont.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qendian.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qfontmetrics.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qfontinfo.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/qsizepolicy.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qcursor.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qbitmap.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qtextdocument.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qtextoption.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qtextcursor.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qtextformat.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qpen.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o customtextedit.o ../../customtextedit.cpp
 
 keyboard.o: ../../keyboard.cpp ../../keyboard.h \
 		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/QTextEdit \
@@ -2042,16 +2445,18 @@ main.o: ../../main.cpp ../../mainwindow.h \
 		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/QMessageBox \
 		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/qmessagebox.h \
 		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/qdialogbuttonbox.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/QTextCursor \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qtextcursor.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qtextdocument.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qtextformat.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qpen.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qtextoption.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/QCursor \
 		../../keyboard.h \
 		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/QTextEdit \
 		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/qtextedit.h \
 		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/qabstractscrollarea.h \
 		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/qframe.h \
-		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qtextdocument.h \
-		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qtextoption.h \
-		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qtextcursor.h \
-		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qtextformat.h \
-		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qpen.h \
 		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/QPushButton \
 		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/qpushbutton.h \
 		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/qabstractbutton.h \
@@ -2059,6 +2464,7 @@ main.o: ../../main.cpp ../../mainwindow.h \
 		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/qbuttongroup.h \
 		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/QLayout \
 		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/QInputMethod \
+		../../customtextedit.h \
 		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/QApplication \
 		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/qapplication.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../../main.cpp
@@ -2274,16 +2680,18 @@ mainwindow.o: ../../mainwindow.cpp ../../mainwindow.h \
 		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/QMessageBox \
 		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/qmessagebox.h \
 		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/qdialogbuttonbox.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/QTextCursor \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qtextcursor.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qtextdocument.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qtextformat.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qpen.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qtextoption.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/QCursor \
 		../../keyboard.h \
 		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/QTextEdit \
 		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/qtextedit.h \
 		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/qabstractscrollarea.h \
 		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/qframe.h \
-		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qtextdocument.h \
-		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qtextoption.h \
-		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qtextcursor.h \
-		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qtextformat.h \
-		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qpen.h \
 		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/QPushButton \
 		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/qpushbutton.h \
 		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/qabstractbutton.h \
@@ -2291,6 +2699,7 @@ mainwindow.o: ../../mainwindow.cpp ../../mainwindow.h \
 		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/qbuttongroup.h \
 		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/QLayout \
 		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/QInputMethod \
+		../../customtextedit.h \
 		ui_mainwindow.h \
 		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/QVariant \
 		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/QApplication \
@@ -2319,6 +2728,9 @@ mainwindow.o: ../../mainwindow.cpp ../../mainwindow.h \
 		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/qstatusbar.h \
 		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/QWidget
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../../mainwindow.cpp
+
+moc_customtextedit.o: moc_customtextedit.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_customtextedit.o moc_customtextedit.cpp
 
 moc_keyboard.o: moc_keyboard.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_keyboard.o moc_keyboard.cpp

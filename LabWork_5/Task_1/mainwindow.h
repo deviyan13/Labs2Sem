@@ -8,8 +8,11 @@
 #include <QFile>
 #include <QTimer>
 #include <QMessageBox>
+#include <QTextCursor>
+#include <QCursor>
 
 #include "keyboard.h"
+#include "customtextedit.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -28,7 +31,6 @@ public:
 
 private slots:
 
-    void on_openFileButton_clicked();
     void on_beginButton_clicked();
 
 public slots:
@@ -36,14 +38,26 @@ public slots:
     void oneWordPlus();
     void endOfInput();
 
+    void addCorrectCharsCount();
+    void addIncorrectCharsCount();
+    void generateRandomWords(int count);
+
+    void initializeDictionaries();
+
+    void openNewFile();
+
 
 private:
     Ui::MainWindow *ui;
     Keyboard* keyboard;
     QTimer* timer;
+    CustomTextEdit* textEdit;
 
     long long elapsedTime;
     long long inputedWords;
+    long long incorrectCharsCount, correctCharsCount;
 
+    QMap<int, QVector<QString>> DictionariesVector;
+    QString openedFileName;
 };
 #endif // MAINWINDOW_H

@@ -37,12 +37,17 @@ namespace {
 struct qt_meta_stringdata_CLASSMainWindowENDCLASS_t {};
 constexpr auto qt_meta_stringdata_CLASSMainWindowENDCLASS = QtMocHelpers::stringData(
     "MainWindow",
-    "on_openFileButton_clicked",
-    "",
     "on_beginButton_clicked",
+    "",
     "updateTime",
     "oneWordPlus",
-    "endOfInput"
+    "endOfInput",
+    "addCorrectCharsCount",
+    "addIncorrectCharsCount",
+    "generateRandomWords",
+    "count",
+    "initializeDictionaries",
+    "openNewFile"
 );
 #else  // !QT_MOC_HAS_STRINGDATA
 #error "qtmochelpers.h not found or too old."
@@ -55,7 +60,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSMainWindowENDCLASS[] = {
       12,       // revision
        0,       // classname
        0,    0, // classinfo
-       5,   14, // methods
+       9,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -63,16 +68,24 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSMainWindowENDCLASS[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    0,   44,    2, 0x08,    1 /* Private */,
-       3,    0,   45,    2, 0x08,    2 /* Private */,
-       4,    0,   46,    2, 0x0a,    3 /* Public */,
-       5,    0,   47,    2, 0x0a,    4 /* Public */,
-       6,    0,   48,    2, 0x0a,    5 /* Public */,
+       1,    0,   68,    2, 0x08,    1 /* Private */,
+       3,    0,   69,    2, 0x0a,    2 /* Public */,
+       4,    0,   70,    2, 0x0a,    3 /* Public */,
+       5,    0,   71,    2, 0x0a,    4 /* Public */,
+       6,    0,   72,    2, 0x0a,    5 /* Public */,
+       7,    0,   73,    2, 0x0a,    6 /* Public */,
+       8,    1,   74,    2, 0x0a,    7 /* Public */,
+      10,    0,   77,    2, 0x0a,    9 /* Public */,
+      11,    0,   78,    2, 0x0a,   10 /* Public */,
 
  // slots: parameters
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void, QMetaType::Int,    9,
     QMetaType::Void,
     QMetaType::Void,
 
@@ -88,8 +101,6 @@ Q_CONSTINIT const QMetaObject MainWindow::staticMetaObject = { {
     qt_incomplete_metaTypeArray<qt_meta_stringdata_CLASSMainWindowENDCLASS_t,
         // Q_OBJECT / Q_GADGET
         QtPrivate::TypeAndForceComplete<MainWindow, std::true_type>,
-        // method 'on_openFileButton_clicked'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'on_beginButton_clicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'updateTime'
@@ -97,6 +108,17 @@ Q_CONSTINIT const QMetaObject MainWindow::staticMetaObject = { {
         // method 'oneWordPlus'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'endOfInput'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'addCorrectCharsCount'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'addIncorrectCharsCount'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'generateRandomWords'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<int, std::false_type>,
+        // method 'initializeDictionaries'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'openNewFile'
         QtPrivate::TypeAndForceComplete<void, std::false_type>
     >,
     nullptr
@@ -108,15 +130,18 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         auto *_t = static_cast<MainWindow *>(_o);
         (void)_t;
         switch (_id) {
-        case 0: _t->on_openFileButton_clicked(); break;
-        case 1: _t->on_beginButton_clicked(); break;
-        case 2: _t->updateTime(); break;
-        case 3: _t->oneWordPlus(); break;
-        case 4: _t->endOfInput(); break;
+        case 0: _t->on_beginButton_clicked(); break;
+        case 1: _t->updateTime(); break;
+        case 2: _t->oneWordPlus(); break;
+        case 3: _t->endOfInput(); break;
+        case 4: _t->addCorrectCharsCount(); break;
+        case 5: _t->addIncorrectCharsCount(); break;
+        case 6: _t->generateRandomWords((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
+        case 7: _t->initializeDictionaries(); break;
+        case 8: _t->openNewFile(); break;
         default: ;
         }
     }
-    (void)_a;
 }
 
 const QMetaObject *MainWindow::metaObject() const
@@ -138,13 +163,13 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 5)
+        if (_id < 9)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 5;
+        _id -= 9;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 5)
+        if (_id < 9)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 5;
+        _id -= 9;
     }
     return _id;
 }

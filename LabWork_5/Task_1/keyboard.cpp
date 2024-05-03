@@ -279,7 +279,6 @@ void Keyboard::initializeKeyButtonVector()
 
 
 }
-
 void Keyboard::setBelaruisan()
 {
     graveButton->setText("ё");
@@ -335,7 +334,6 @@ void Keyboard::setBelaruisan()
     dotButton->setText("ю");
     slashButton->setText(".");
 }
-
 void Keyboard::setGerman()
 {
     graveButton->setText("^");
@@ -389,7 +387,6 @@ void Keyboard::setGerman()
     dotButton->setText(".");
     slashButton->setText("-");
 }
-
 void Keyboard::setFrench()
 {
     graveButton->setText("²");
@@ -443,7 +440,6 @@ void Keyboard::setFrench()
     dotButton->setText(":");
     slashButton->setText("!");
 }
-
 void Keyboard::setArabic()
 {
     graveButton->setText("ذ");
@@ -497,7 +493,6 @@ void Keyboard::setArabic()
     dotButton->setText("ز");
     slashButton->setText("ظ");
 }
-
 void Keyboard::setHebrew()
 {
     graveButton->setText(";");
@@ -551,7 +546,6 @@ void Keyboard::setHebrew()
     dotButton->setText("ץ");
     slashButton->setText(".");
 }
-
 void Keyboard::setChinese()
 {
     graveButton->setText("`");
@@ -619,7 +613,6 @@ void Keyboard::setChinese()
     rightFnButton->setText("Fn");
     rightCtrlButton->setText("Ctrl");
 }
-
 void Keyboard::clear()
 {
     graveButton->setText("");
@@ -673,7 +666,6 @@ void Keyboard::clear()
     dotButton->setText("");
     slashButton->setText("");
 }
-
 void Keyboard::setTextEdit(QTextEdit *textEdit)
 {
     this->textEdit = textEdit;
@@ -681,62 +673,82 @@ void Keyboard::setTextEdit(QTextEdit *textEdit)
 
 void Keyboard::keyPressEvent(QKeyEvent *event)
 {
-    if(idsOfButtons.contains(event->nativeScanCode()))
+    bool isFinded = false;
+    int index;
+
+    for(int i = 0; i < buttons.size(); i++)
     {
-        idsOfButtons[event->nativeScanCode()]->animateClick();
-
-        if(event->key() != Qt::Key_CapsLock && event->key() != Qt::Key_Shift && event->key() != Qt::Key_Backspace && event->key() != Qt::Key_Tab
-            && event->key() != Qt::Key_Enter && event->key() != Qt::Key_Control && event->key() != Qt::Key_Alt && event->modifiers() != Qt::GroupSwitchModifier
-            && !(event->modifiers() == (Qt::AltModifier | Qt::GroupSwitchModifier))
-            && !(event->modifiers() == (Qt::ShiftModifier | Qt::MetaModifier))
-            && !(event->modifiers() == (Qt::ShiftModifier | Qt::GroupSwitchModifier)))
+        if(buttons[i]->text() == event->text())
         {
-            QTextCharFormat format;
-            QTextCursor cursor = textEdit->textCursor();
-            QString text = textEdit->toPlainText();
+            isFinded = true;
+            index = i;
 
-
-            if(cursor.position() < textEdit->toPlainText().size() - 1)
-            {
-                cursor.setPosition(cursor.position() + 1, QTextCursor::KeepAnchor);
-
-                if(QChar(textEdit->toPlainText()[cursor.position() - 1]) == event->text())
-                {
-                    format.setForeground(QColor(Qt::green)); // Устанавливаем красный цвет
-                    cursor.setCharFormat(format);
-                }
-                else
-                {
-                    isCorrectWord = false;
-
-                    format.setForeground(QColor(Qt::red)); // Устанавливаем красный цвет
-                    cursor.setCharFormat(format);
-                }
-
-                cursor.setPosition(cursor.position());
-                textEdit->setTextCursor(cursor);
-            }
-
-            if(cursor.position() == text.size() - 2 && text[text.size() - 1] != '.')
-            {
-                if(isCorrectWord) emit oneWordWasInputed();
-                emit endOfInput();
-            }
-
-            qDebug() << cursor.position() << QChar(textEdit->toPlainText()[cursor.position()]) << event->text();
-
-
-            if(cursor.position() < text.size() &&
-                !QString(" ,.;:()[]{}").contains(text[cursor.position() - 1]) &&
-                QString(" ,.;:()[]{}").contains(text[cursor.position()]))
-            {
-                if(isCorrectWord) emit oneWordWasInputed();
-
-                isCorrectWord = true;
-            }
+            break;
         }
+    }
 
-        else if(event->key() == Qt::Key_CapsLock)
+    if(isFinded || (event->key() != Qt::Key_unknown && idsOfButtons.contains(event->nativeScanCode())))
+    {
+        if(isFinded) buttons[index]->animateClick();
+        else idsOfButtons[event->nativeScanCode()]->animateClick();
+
+        // if(event->key() != Qt::Key_CapsLock && event->key() != Qt::Key_Shift && event->key() != Qt::Key_Backspace && event->key() != Qt::Key_Tab
+        //     && event->key() != Qt::Key_Enter && event->key() != Qt::Key_Control && event->key() != Qt::Key_Alt && event->modifiers() != Qt::GroupSwitchModifier
+        //     && !(event->modifiers() == (Qt::AltModifier | Qt::GroupSwitchModifier))
+        //     && !(event->modifiers() == (Qt::ShiftModifier | Qt::MetaModifier))
+        //     && !(event->modifiers() == (Qt::ShiftModifier | Qt::GroupSwitchModifier)))
+        // {
+        //     QTextCharFormat format;
+        //     QTextCursor cursor = textEdit->textCursor();
+        //     QString text = textEdit->toPlainText();
+
+
+        //     if(cursor.position() < text.size())
+        //     {
+        //         cursor.setPosition(cursor.position() + 1, QTextCursor::KeepAnchor);
+
+        //         if(QChar(text[cursor.position() - 1]) == event->text())
+        //         {
+        //             format.setForeground(QColor("#52F24D")); // Устанавливаем красный цвет
+        //             cursor.setCharFormat(format);
+
+        //             emit inputCorrectChar();
+        //         }
+        //         else
+        //         {
+        //             if(!QString(" ,.;:()[]{}。").contains(text[cursor.position() - 1]))
+        //             {
+        //                 isCorrectWord = false;
+        //             }
+
+        //             format.setForeground(QColor("#D20000")); // Устанавливаем красный цвет
+        //             cursor.setCharFormat(format);
+
+        //             emit inputIncorrectChar();
+        //         }
+
+        //         cursor.setPosition(cursor.position());
+        //         textEdit->setTextCursor(cursor);
+        //     }
+
+        //     if(cursor.position() == text.size()) //&& text[text.size() - 1] != '.'
+        //     {
+        //         if(isCorrectWord) emit oneWordWasInputed();
+        //         emit endOfInput();
+        //     }
+
+        //     if(cursor.position() < text.size() &&
+        //         !QString(" ,.;:()[]{}。").contains(text[cursor.position() - 1]) &&
+        //         QString(" ,.;:()[]{}。").contains(text[cursor.position()]))
+        //     {
+        //         if(isCorrectWord) emit oneWordWasInputed();
+
+        //         isCorrectWord = true;
+        //     }
+        // }
+
+        //else if(event->key() == Qt::Key_CapsLock)
+        if(event->key() == Qt::Key_CapsLock)
         {
             for(int i = 0; i < buttons.size(); i++)
             {
