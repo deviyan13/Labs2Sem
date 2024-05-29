@@ -52,11 +52,9 @@ OBJECTS_DIR   = ./
 
 ####### Files
 
-SOURCES       = ../../iterator.cpp \
-		../../main.cpp \
+SOURCES       = ../../main.cpp \
 		../../mainwindow.cpp moc_mainwindow.cpp
-OBJECTS       = iterator.o \
-		main.o \
+OBJECTS       = main.o \
 		mainwindow.o \
 		moc_mainwindow.o
 DIST          = /media/deviyan/NewPartForQT/6.7.0/gcc_64/mkspecs/features/spec_pre.prf \
@@ -401,10 +399,8 @@ DIST          = /media/deviyan/NewPartForQT/6.7.0/gcc_64/mkspecs/features/spec_p
 		/media/deviyan/NewPartForQT/6.7.0/gcc_64/mkspecs/features/yacc.prf \
 		/media/deviyan/NewPartForQT/6.7.0/gcc_64/mkspecs/features/lex.prf \
 		../../../../Task_5.pro ../../deque.h \
-		../../iterator.h \
 		../../mainwindow.h \
-		../../node.h ../../iterator.cpp \
-		../../main.cpp \
+		../../node.h ../../main.cpp \
 		../../mainwindow.cpp
 QMAKE_TARGET  = Task_5
 DESTDIR       = 
@@ -1123,8 +1119,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /media/deviyan/NewPartForQT/6.7.0/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../../deque.h ../../iterator.h ../../mainwindow.h ../../node.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../../deque.cpp ../../iterator.cpp ../../main.cpp ../../mainwindow.cpp ../../node.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../../deque.h ../../mainwindow.h ../../node.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../../deque.cpp ../../main.cpp ../../mainwindow.cpp ../../node.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../../mainwindow.ui $(DISTDIR)/
 
 
@@ -1377,11 +1373,6 @@ compiler_lex_clean:
 compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_uic_clean 
 
 ####### Compile
-
-iterator.o: ../../iterator.cpp ../../iterator.h \
-		../../node.h \
-		../../node.cpp
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o iterator.o ../../iterator.cpp
 
 main.o: ../../main.cpp ../../mainwindow.h \
 		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/QMainWindow \
@@ -1777,9 +1768,42 @@ mainwindow.o: ../../mainwindow.cpp ../../mainwindow.h \
 		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/QVariant \
 		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/QApplication \
 		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/qapplication.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/QLabel \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/qlabel.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/qframe.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qpicture.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qtextdocument.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/QLineEdit \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/qlineedit.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qtextcursor.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qtextformat.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qpen.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qtextoption.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/QListWidget \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/qlistwidget.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/qlistview.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/qabstractitemview.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qabstractitemmodel.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qitemselectionmodel.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/qstyleoption.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/qabstractspinbox.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtGui/qvalidator.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtCore/qregularexpression.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/qslider.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/qabstractslider.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/qstyle.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/qtabbar.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/qrubberband.h \
 		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/QMenuBar \
 		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/qmenubar.h \
 		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/qmenu.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/QPushButton \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/qpushbutton.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/qabstractbutton.h \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/QSpinBox \
+		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/qspinbox.h \
 		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/QStatusBar \
 		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/qstatusbar.h \
 		/media/deviyan/NewPartForQT/6.7.0/gcc_64/include/QtWidgets/QWidget

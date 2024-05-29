@@ -27,9 +27,11 @@ void Deque<T>::push_back(const T &Item)
         _capacity += 4;
 
         nodes = (Node<T>*)(realloc(nodes, sizeof(Node<T>) * (_capacity / 4)));
-        if(nodes[_capacity / 4].data == nullptr) nodes[_capacity / 4].data = (T*)(malloc(sizeof(T) * 4));
 
-        back = &(nodes[_size / 4 - 1].data[0]);
+        nodes[_capacity / 4 - 1].data = (T*)(malloc(sizeof(T) * 4));
+
+
+        back = &(nodes[_capacity / 4 - 1].data[0]);
 
 
     }

@@ -10,14 +10,12 @@ CONFIG += c++17
 
 SOURCES += \
     deque.cpp \
-    iterator.cpp \
     main.cpp \
     mainwindow.cpp \
     node.cpp
 
 HEADERS += \
     deque.h \
-    iterator.h \
     mainwindow.h \
     node.h
 
