@@ -24,7 +24,26 @@ template<typename T>
 void HashTable<T>::insert(int key, T value)
 {
     int index = hashFunction(key);
-    if(get(key) == "") table[index].push(Item(key, value));
+    if(get(key) == "error!@#$%^&*()") table[index].push(Item(key, value));
+    else
+    {
+        Stack<Item<T>> tempStack;
+
+        while (!table[index].isEmpty())
+        {
+            Item stackItem = table[index].pop();
+            tempStack.push((stackItem.key == key) ? (Item<T>(key, value)) : stackItem);
+
+            if (stackItem.key == key)
+            {
+                break;
+            }
+        }
+
+        while (!tempStack.isEmpty()) {
+            table[index].push(tempStack.pop());
+        }
+    }
 }
 
 template<typename T>
@@ -50,14 +69,14 @@ T HashTable<T>::get(int key)
         table[index].push(tempStack.pop());
     }
 
-    return isFounded ? foundedValue : "";
+    return isFounded ? foundedValue : "error!@#$%^&*()";
 }
 
 
 template<typename T>
 void HashTable<T>::remove(int key)
 {
-    int index = hashFunction(key) % size;
+    int index = hashFunction(key);
     Stack<Item<T>> tempStack;
 
     while (!table[index].isEmpty()) {

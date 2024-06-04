@@ -41,6 +41,7 @@ void MainWindow::on_removeButton_clicked()
 void MainWindow::on_getButton_clicked()
 {
     ui->getValue->setText(hashtable->get(ui->insertKey->value()));
+    if(ui->getValue->text() == "error!@#$%^&*()") ui->getValue->setText("Not founded");
 }
 
 

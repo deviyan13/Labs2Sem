@@ -11,7 +11,7 @@ Tree<T, U>::Tree(std::pair<T, U> *arr, std::size_t size)
 {
     for(int i = 0; i < size; i++)
     {
-        this->insert(root, arr->first, arr->second);
+        this->insert(root, arr[i]->first, arr[i]->second);
     }
 }
 
